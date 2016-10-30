@@ -1,0 +1,171 @@
+<!-- end .uou-block-2b -->
+
+<!-- SUB Banner -->
+<div class="profile-bnr sub-bnr user-profile-bnr">
+    <div class="position-center-center">
+        <div class="container">
+            <h2>Company Info</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Compny Profile -->
+<div class="compny-profile">
+
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            <div class="row">
+
+                <!-- SIDE BAR -->
+                <div class="col-md-4">
+                    <!-- Company Information -->
+                    <div class="sidebar">
+                        <h5 class="main-title">My Picture</h5>
+                        <div class="sidebar-thumbnail"><img
+                                src="http://ataccama.pracevpraze.cz/images/no_avatar_company.png"
+                                alt=""></div>
+                        <div class="sidebar-information">
+                            <div class="form-group">
+                                <input type="file" class="filestyle" ng-model="picture" data-icon="false">
+                            </div>
+                            </br>
+                            <div>
+                                <!-- Professional Details -->
+                                <h5 class="main-title">Professional Details</h5>
+                                <div class="sidebar-information">
+                                    <ul class="single-category">
+                                        </br>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Name Company</h6>
+                                            <span class="subtitle col-xs-6">{{companys.name}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Address</h6>
+                                            <span class="subtitle col-xs-6">{{companys.address}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Industry company</h6>
+                                            <span class="subtitle col-xs-6">{{companys.industry_company}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Number of member</h6>
+                                            <span class="subtitle col-xs-6">{{companys.number_of_member}} Member</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Phone</h6>
+                                            <span class="subtitle col-xs-6">{{companys.phone}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Website</h6>
+                                            <span class="subtitle col-xs-6"><a href="#/">{{companys.website}}</a></span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Email</h6>
+                                            <span class="subtitle col-xs-6"><a href="#/">{{companys.email}}</a></span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Describe</h6>
+                                            <span class="subtitle col-xs-6">{{companys.describe}}</span></li>
+                                    </ul>
+                                    <a href="#/update_user">
+                                        <input type="submit" class="btn btn-primary" value="Update">
+                                    </a>
+                                </div>
+                                <!-- Rating -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="col-md-8">
+                    <div class="network">
+                        <div class="tab-content">
+
+                            <!-- Connections -->
+                            <div class="tab-pane fade in active">
+                                <div class="net-work-in">
+
+                                    <!-- Members -->
+                                    <div class="main-mem">
+
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Name company:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="name_company"
+                                                       placeholder="Enter name company...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Address:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="address"
+                                                       placeholder="Enter address...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Industry company:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="industry_company"
+                                                       placeholder="Enter industry company...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Number of member:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="number" ng-model="number_of_member"
+                                                       placeholder="Enter number of member...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Phone:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="phone"
+                                                       placeholder="Enter phone...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Website:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="website"
+                                                       placeholder="Enter website...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Email:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="email"
+                                                       placeholder="Enter email...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Describe:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="describe"
+                                                       placeholder="Enter describe...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label"></label>
+                                            <div class="col-md-8">
+                                                <input type="button" class="btn btn-primary" ng-click="post()" value="Save Changes">
+                                                <span></span>
+                                                <input type="reset" class="btn btn-default" value="Cancel">
+                                                <span></span>
+                                                {{update}}
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Footer -->
