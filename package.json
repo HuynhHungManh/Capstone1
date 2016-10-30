@@ -20,7 +20,8 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 3000 -c-1 ./app",
+    "start": "gulp",
+    "build": "gulp webpack",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
