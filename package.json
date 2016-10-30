@@ -18,10 +18,9 @@
     "angular-validation": "^1.4.2"
   },
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower cache clean && bower install"
     "prestart": "npm install",
-    "start": "gulp",
-    "build": "gulp webpack",
+    "start": "http-server -a localhost -p 3000 -c-1 ./app",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
