@@ -18,10 +18,21 @@ angular.module('myApp')
         $scope.dataStore = $cookieStore.get('DataLogin');
 
 
+
+
         $scope.addInter = function () {
             $scope.iconShow = !$scope.iconShow;
             $scope.isAddInter = !$scope.isAddInter;
         }
+
+        $rootScope.checkUser = function () {
+            if ($cookieStore.get('DataLogin').StoreUser != "") {
+                $state.go('profile_user', {"username": $scope.dataStore.StoreUser});
+            }
+            else {
+                alert("Please login Website !");
+            }
+        };
 
 
         $rootScope.doTheBack = function () {
@@ -38,16 +49,8 @@ angular.module('myApp')
             }
         };
 
-        $rootScope.checkUser = function () {
-            if ($cookieStore.get('DataLogin') != undefined) {
-                $state.go('profile_user', {"username": $scope.dataStore.StoreUser});
-            }
-            else {
-                alert("Please login Website !");
-            }
-        };
         $rootScope.checkCompany = function () {
-            if ($cookieStore.get('DataLogin') != undefined) {
+            if ($cookieStore.get('DataLogin').StoreUser != "" ) {
                 $state.go('profile_company');
             }
             else {
