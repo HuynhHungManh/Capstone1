@@ -6,10 +6,10 @@
         <li class="col-sm-9">
             <div class="row">
                 <div class="col-sm-9">
-                    <div ><a ng-class="{red : item.isred}">{{skill.name}}</a></div>
+                    <div ><a ng-class="{red : isred}" ng-model="red.item.isred">{{skill.name}}</a></div>
                 </div>
                 <div class="col-sm-3">
-                    <a class="editskill"><i class="fa fa-remove" ng-click="item.isred =!item.isred"></i></a>
+                    <a class="editskill" ng-click="removeSkillReq(skill.id)"><i class="fa fa-remove" ng-click="isred =!isred"></i></a>
                 </div>
             </div>
         </li>

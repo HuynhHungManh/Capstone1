@@ -895,7 +895,7 @@ td, th {
 	top: 0;
 	right: 0;
 	left: 0;
-	background-color: #000000;
+	/*background-color: #000000;*/
 }
 .modal-backdrop.fade {
 	/*opacity: 0;*/

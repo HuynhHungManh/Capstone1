@@ -14,7 +14,7 @@
 <div class="top-toolbar">
     <div class="container">
         <div class="searchUser">
-            <form ng-submit="Search()" ng-controller="Profile_userController">
+            <form ng-show ="isSearch" ng-submit="Search()" ng-controller="Profile_userController">
                 <input type="text" placeholder="Search..." ng-model="search">
 
             </form>

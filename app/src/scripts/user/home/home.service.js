@@ -4,15 +4,17 @@
 angular.module('myApp')
     .service('HomeService',function ($http) {
 
+
         this.createUser = function (datapost) {
             console.log(datapost);
-            return $http.post('https://afternoon-sands-21716.herokuapp.com/api/personals',datapost).success(function (res) {
-                console.log(res);
+            return $http.post('https://afternoon-sands-21716.herokuapp.com/api/personals',datapost).success(function () {
+
             });
-        }
+        };
+
         this.fetchUser = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals');
-        }
+        };
         this.login = function (datapost) {
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/personals/login',datapost)
                 .success(function (data) {

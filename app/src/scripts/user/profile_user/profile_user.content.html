@@ -162,7 +162,7 @@
                                             <div class="media" ng-repeat="com in showComment" id="321">
                                                 <div class="media-left">
                                                     <div class="inn-simi"><img class="media-object"
-                                                                               src="{{com.commentator.picture}}"
+                                                                              ng-src="{{com.commentator.picture}}"
                                                                                alt=""></div>
                                                 </div>
                                                 <div class="media-body">
@@ -237,10 +237,10 @@
                                     </div>
                                     <div class="sidebar">
                                         <h5 class="main-title">Interest Details
-                                                <a ng-show = "isShowIconInter"><i ng-show="!iconShow" class="edit-pen fa fa-plus"
+                                                <a ng-if = "isShowIconInter"><i ng-show="iconShow" class="edit-pen fa fa-undo"
                                                       ng-click="addInter()">
                                                 </i></a>
-                                                <a ng-show = "isShowIconInter"><i ng-show="iconShow" class="edit-pen fa fa-undo"
+                                                <a ng-if = "isShowIconInter"><i ng-show="!iconShow" class="edit-pen fa fa-plus"
                                                       ng-click="addInter()">
                                                 </i></a>
                                         </h5>

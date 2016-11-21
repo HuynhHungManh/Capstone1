@@ -39,8 +39,14 @@
                                             <input type="email" placeholder="Email Address..." ng-model="emailRegister" >
                                             <input type="text" placeholder="Enter password..." ng-model="passRe">
                                             <input type="password" placeholder="Enter password again..." ng-model="passwordAgain">
-                                            <button type="submit">Register</button>
-                                            
+                                            <button type="submit"  ng-click="post()">Register</button>
+                                            <div class="accept">
+                                                {{accept}}
+                                                <div class="err">
+                                                    {{error}}
+                                                </div>
+                                            </div>
+
                                         </form>
                                     </div>
 
@@ -209,71 +215,71 @@
         </div>
     </div>
 </div>
-<script>
-    $('#exampleModal321').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var recipient = button.data('whatever');
-        var modal = $(this);
-        modal.find('.modal-title').text('Register');
-        modal.find('.modal-body input').val(recipient);
-    })
-</script>
+<!--<script>-->
+    <!--$('#exampleModal321').on('show.bs.modal', function (event) {-->
+        <!--var button = $(event.relatedTarget);-->
+        <!--var recipient = button.data('whatever');-->
+        <!--var modal = $(this);-->
+        <!--modal.find('.modal-title').text('Register');-->
+        <!--modal.find('.modal-body input').val(recipient);-->
+    <!--})-->
+<!--</script>-->
 
-<div class="form-group">
-    <div class="bd-example">
-        <div class="modal fade" id="exampleModal321" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="exampleModalLabel">Register Now</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label class="form-control-label">Username :</label>
-                                <input type="text" class="form-control" placeholder="Enter Username... "
-                                       ng-model="usernameRegister">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Email :</label>
-                                <input type="email" class="form-control" placeholder="Enter Email..."
-                                       ng-model="emailRegister">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">DTU id :</label>
-                                <input type="text" class="form-control" placeholder="Enter dtu id..." ng-model="dtu_id">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">password :</label>
-                                <input type="password" class="form-control" placeholder="Enter password ... "
-                                       ng-model="passRe">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">password again :</label>
-                                <input type="password" class="form-control" placeholder="Enter password again... "
-                                       ng-model="passwordAgain">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" ng-click="post()">Register</button>
-                        <div class="accept">
-                            {{accept}}
-                            <div class="err">
-                                {{error}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="form-group">-->
+    <!--<div class="bd-example">-->
+        <!--<div class="modal fade" id="exampleModal321" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+             <!--aria-hidden="true">-->
+            <!--<div class="modal-dialog" role="document">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                            <!--<span aria-hidden="true">&times;</span>-->
+                        <!--</button>-->
+                        <!--<h4 class="modal-title" id="exampleModalLabel">Register Now</h4>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body">-->
+                        <!--<form>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label">Username :</label>-->
+                                <!--<input type="text" class="form-control" placeholder="Enter Username... "-->
+                                       <!--ng-model="usernameRegister">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label">Email :</label>-->
+                                <!--<input type="email" class="form-control" placeholder="Enter Email..."-->
+                                       <!--ng-model="emailRegister">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label">DTU id :</label>-->
+                                <!--<input type="text" class="form-control" placeholder="Enter dtu id..." ng-model="dtu_id">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label">password :</label>-->
+                                <!--<input type="password" class="form-control" placeholder="Enter password ... "-->
+                                       <!--ng-model="passRe">-->
+                            <!--</div>-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="form-control-label">password again :</label>-->
+                                <!--<input type="password" class="form-control" placeholder="Enter password again... "-->
+                                       <!--ng-model="passwordAgain">-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                    <!--<div class="modal-footer">-->
+                        <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                        <!--<button type="button" class="btn btn-primary" ng-click="post()">Register</button>-->
+                        <!--<div class="accept">-->
+                            <!--{{accept}}-->
+                            <!--<div class="err">-->
+                                <!--{{error}}-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 <div class="form-group">
     <div class="bd-example">

@@ -8,7 +8,30 @@ angular.module('myApp')
         $scope.status = {
             toggle: false
         };
+        $scope.arrSkill = [];
 
+        $scope.trueFalse = false;
+
+        $scope.removeSkillReq = function (id) {
+            $scope.trueFalse = !$scope.trueFalse;
+            if($scope.trueFalse == true){
+                $scope.arrSkill.push(id);
+            }
+            else {
+                $scope.arrSkill.pop();
+            }
+        };
+
+        $scope.removeSkillReq2 = function (id) {
+            $scope.trueFalse = !$scope.trueFalse;
+        };
+
+        function deleRe() {
+            for(var i= 0; i< $scope.arrSkill.length;i++) {
+                console.log($scope.arrSkill[i]);
+                EducationService.deleteSkillRe($scope.arrSkill[i], $scope.data.access_token);
+            }
+        };
 
 
 
@@ -139,10 +162,9 @@ angular.module('myApp')
                             $scope.editProject.personalId = $scope.user.id;
                             $scope.editProject.created_at = new Date();
                             $scope.editProject.updated_at = new Date();
-
-
                             EducationService.updateProject($scope.editProject, id, $scope.data.access_token)
                                 .then(function () {
+                                    deleRe();
                                     alert("Update success !");
                                     $scope.editProject = {};
                                     $window.location.reload();

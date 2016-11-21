@@ -3,10 +3,19 @@
  */
 angular.module('myApp')
     .controller('HomeController', function ($scope, $state, $stateParams, $httpParamSerializer,
-                                            $filter, $resource, HomeService, $rootScope, $cookies, $cookieStore,$window) {
+                                            $filter, $resource, HomeService, $rootScope, $cookies, $cookieStore, $window) {
         $rootScope.isToggleLogout = false;
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
+        $rootScope.isSearch = false;
+
+
+        $scope.dataLogin = {
+            "ToggleLogin": "",
+            "StoreUser": "",
+            "access_token": ""
+        };
+        $cookieStore.put("DataLogin", $scope.dataLogin);
 
         $scope.changeLog = function () {
             $scope.isLogAndRes = !$scope.isLogAndRes;
@@ -79,7 +88,7 @@ angular.module('myApp')
         function validateUsername(abc) {
             // var error = "";
             var illegalChars = /\W/;
-            var abc =  $scope.usernameRegister;
+            var abc = $scope.usernameRegister;
 
             if (abc == undefined) {
                 $scope.error = "You didn't enter a username.\n";
@@ -132,56 +141,56 @@ angular.module('myApp')
         }
 
 
+        function dtu_id1(id) {
 
-        function dtu_id(id) {
-            var dtu_ID = id;
-            console.log(id);
+            console.log(id.length)
+
             if (id == undefined) {
                 $scope.error = "You didn't enter a dtu_id.\n";
                 return false + $scope.error;
             }
-            if(id.length != 10) {
+            if (id.length != 10) {
                 $scope.error = "The dtu_id is the wrong length.\n";
                 return false + $scope.error;
             }
-            // else if (id != number) {
-            //     $scope.error = "The dtu_id is not number.\n";
-            //     return false + $scope.error;
-            // }
+            else if (isNaN(id)) {
+                $scope.error = "The dtu_id is not number.\n";
+                return false + $scope.error;
+            }
             return true;
         }
 
 
-
         $scope.post = function () {
-            if ( testemail($scope.emailRegister) == true && dtu_id($scope.dtu_id) &&validateUsername($scope.usernameRegister)
-                && password($scope.passRe) == true  && passwordAgain($scope.passRe, $scope.passwordAgain) == true) {
+            $scope.err = "";
+            if (  dtu_id1($scope.dtu_id) == true  && validateUsername($scope.usernameRegister) == true && testemail($scope.emailRegister) == true
+                && password($scope.passRe) == true && passwordAgain($scope.passRe, $scope.passwordAgain) == true) {
                 var data = {
                     "username": $scope.usernameRegister,
                     "password": $scope.passRe,
                     "dtu_id": $scope.dtu_id,
                     "email": $scope.emailRegister
                 };
-                console.log(data);
+
                 HomeService.createUser(data)
                     .then(function () {
                         alert("Register success!");
-                        $window.location.reload();
+                        $scope.isLogAndRes = !$scope.isLogAndRes;
                     })
                     .catch(function () {
                         alert("Register faild!");
                     });
             }
-            else if (password($scope.passRe) == false) {
+            else if (dtu_id1($scope.dtu_id) == false) {
+                $scope.err = $scope.error;
+            }
+            else if (validateUsername($scope.usernameRegister) == false) {
                 $scope.err = $scope.error;
             }
             else if (testemail($scope.emailRegister) == false) {
                 $scope.err = "Please enter a valid email address !"
             }
-            else if (validateUsername() == false) {
-                $scope.err = $scope.error;
-            }
-            else if (dtu_id() == false) {
+            else if (password($scope.passRe) == false) {
                 $scope.err = $scope.error;
             }
             else if (passwordAgain($scope.passRe, $scope.passwordAgain) == false) {

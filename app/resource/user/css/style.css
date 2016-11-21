@@ -3256,6 +3256,8 @@ ul li input[type=radio]{
 }
 .err{
 	color: #bf1923;
+	margin-left: 5px;
+	text-align: center;
 }
 .top-toolbar{
     width: 100%;
