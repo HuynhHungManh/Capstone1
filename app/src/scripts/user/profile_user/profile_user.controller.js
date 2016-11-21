@@ -12,6 +12,8 @@ angular.module('myApp')
         $scope.iconShow = false;
         $scope.isShowIconInter = false;
         $scope.dataLogin = {};
+        $rootScope.isGolbalUser = false;
+
 
 
         $scope.addInter = function () {
@@ -74,12 +76,26 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
-                // console.log($scope.user.educations[0].);
+                if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
+                    $scope.isToggle = true;
+                    $scope.isToggleCom = false;
+                    $scope.isCom = false;
+                    $scope.isShowIconInter = !$scope.isShowIconInter;
+                    $rootScope.isGolbalUser = true;
+                }
+                else {
+                    $scope.isToggleCom = true;
+                    $scope.isToggle = false;
+                    $rootScope.isGolbalUser = true;
+                }
+
                 //
                 // if($scope.user.educations == []){
                 //     console.log('wfawfaf')
                 //     $state.go('education', {"username": $scope.user.username});
                 // }
+
+
 
 
 
@@ -170,18 +186,7 @@ angular.module('myApp')
                     }
                 }
 
-                if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
-                    $scope.isToggle = true;
-                    $scope.isToggleCom = false;
-                    $scope.isCom = false;
-                    $scope.isShowIconInter = !$scope.isShowIconInter;
-                    $rootScope.isGolbalUser = true;
-                }
-                else {
-                    $scope.isToggleCom = true;
-                    $scope.isToggle = false;
-                    $rootScope.isGolbalUser = !$rootScope.isGolbalUser;
-                }
+
 
                 $scope.createInter = function () {
                     $scope.inter.personalId = $scope.user.id;
