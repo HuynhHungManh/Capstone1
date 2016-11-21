@@ -15,8 +15,6 @@ angular.module('myApp')
                 $scope.users = response.data
 
 
-
-
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
                 if($scope.user.firstName == undefined ||  $scope.user.lastName == undefined ||
@@ -52,7 +50,7 @@ angular.module('myApp')
                 "firstName": $scope.firstName,
                 "lastName": $scope.firstName,
                 "email": $scope.email,
-                "birthDay": $scope.age,
+                "birthDay": $scope.birthday,
                 "address": $scope.address,
                 "phone": $scope.phone,
                 "sex": result,
@@ -75,11 +73,9 @@ angular.module('myApp')
         $scope.update = function (result) {
 
             var dataUpdate = {
-                "dtu_id": $scope.dtu_id,
                 "firstName": $scope.firstName,
                 "lastName": $scope.firstName,
-                "email": $scope.email,
-                "birthDay": $scope.age,
+                "birthDay": $scope.birthday,
                 "address": $scope.address,
                 "phone": $scope.phone,
                 "sex": result,

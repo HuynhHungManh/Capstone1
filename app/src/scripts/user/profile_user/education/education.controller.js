@@ -8,6 +8,10 @@ angular.module('myApp')
         $scope.status = {
             toggle: false
         };
+
+
+
+
         $scope.statusSkillReq = false;
         $scope.temp1 = [];
         $scope.chooeSkillReq = [];

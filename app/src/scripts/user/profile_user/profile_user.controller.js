@@ -13,6 +13,12 @@ angular.module('myApp')
         $scope.isShowIconInter = false;
         $scope.dataLogin = {};
 
+
+        $scope.addInter = function () {
+            $scope.isAddInter = !$scope.isAddInter;
+        }
+
+
         $rootScope.doTheBack = function () {
             window.history.back();
         };
@@ -68,14 +74,48 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
+                // console.log($scope.user.educations[0].);
+                //
+                // if($scope.user.educations == []){
+                //     console.log('wfawfaf')
+                //     $state.go('education', {"username": $scope.user.username});
+                // }
+
+
+
+                $scope.image = $scope.user.picture;
+                if($scope.image != undefined && $scope.image != 'string'){
+                    $rootScope.picture = $scope.image
+                }
+                else{
+                    $rootScope.picture = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
+                }
+
                 if($scope.user.firstName == undefined ||  $scope.user.lastName == undefined ||
-                    $scope.user.desscribe ==undefined || $scope.user.status == undefined){
+                    $scope.user.desscribe == undefined || $scope.user.status == undefined){
                     console.log($scope.user.username);
                     $state.go('update_user', {"username": $scope.user.username});
                 }
+                // else if($scope.user.educations[0].name_of_school == undefined ||
+                //     $scope.user.educations[0].address_of_school ==undefined ||
+                //     $scope.user.educations[0].describe == undefined ||$scope.user.educations[0].major ==undefined||
+                //     $scope.user.educations[0].achiviement == undefined){
+                //     $state.go('education', {"username": $scope.user.username});
+                // }
+
+
+
                 $scope.showComment = $scope.user.comments;
                 $scope.inters = $scope.user.interests;
                 $scope.userComent = $filter('filter')($scope.users, {username: $scope.data.StoreUser})[0];
+
+
+                if($scope.userComent.picture != undefined || $scope.userComent.picture != 'string'){
+                    $scope.pic = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
+                }
+                else{
+                    $scope.pic = $scope.userComent.picture;
+                }
 
 
 
@@ -83,15 +123,64 @@ angular.module('myApp')
 
                 $scope.langs = $scope.user.languages;
 
+
+
+
+                $scope.Search = function () {
+                    console.log($rootScope.search);
+                    if (testemail($scope.search) == true) {
+                        $scope.user = $filter('filter')($scope.users, {email: $scope.search})[0];
+                        if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
+                            $state.go('profile_user', {"username": $scope.user.username});
+                            $scope.isToggle = false;
+                            $scope.searchuser = false;
+                        }
+                        else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
+                            $state.go('profile_user', {"username": $scope.user.username});
+                            $scope.isToggle = false;
+                            $scope.searchuser = false;
+                            $rootScope.status.toggle404 = !$rootScope.status.toggle404;
+                        }
+                        else if ($scope.user == undefined){
+                            $rootScope.status.toggle404 = true;
+                        }
+                    }
+
+                    else {
+                        $scope.user = $filter('filter')($scope.users, {username: $scope.search})[0];
+                        console.log($scope.user);
+
+                        if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
+                            console.log($scope.user.username);
+                            $state.go('profile_user', {"username": $scope.user.username});
+                            $scope.isToggle = false;
+                            $scope.searchuser = false;
+                        }
+                        else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
+                            console.log($scope.user.username);
+                            $state.go('profile_user', {"username": $scope.user.username});
+                            $scope.isToggle = false;
+                            $scope.searchuser = false;
+                            $rootScope.status.toggle404 = !$rootScope.status.toggle404;
+                        }
+                        else if($scope.user == undefined){
+                            console.log('404')
+                            $rootScope.status.toggle404 = true;
+                        }
+                    }
+                }
+
                 if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
                     $scope.isToggle = true;
                     $scope.isToggleCom = false;
                     $scope.isCom = false;
                     $scope.isShowIconInter = !$scope.isShowIconInter;
+                    $rootScope.isGolbalUser = true;
                 }
                 else {
                     $scope.isToggleCom = true;
                     $scope.isToggle = false;
+                    $rootScope.isGolbalUser = !$rootScope.isGolbalUser;
                 }
 
                 $scope.createInter = function () {
@@ -185,49 +274,6 @@ angular.module('myApp')
                     });
                 };
 
-                $rootScope.Search = function () {
-
-
-                    if (testemail($scope.search) == true) {
-                        $scope.user = $filter('filter')($scope.users, {email: $scope.search})[0];
-
-
-                        if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
-                            $state.go('profile_user', {"username": $scope.user.username});
-                            $scope.isToggle = false;
-                            $scope.searchuser = false;
-                        }
-                        else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
-                            $state.go('profile_user', {"username": $scope.user.username});
-                            $scope.isToggle = false;
-                            $scope.searchuser = false;
-                            $rootScope.status.toggle404 = !$rootScope.status.toggle404;
-                        }
-                        else if ($scope.user == undefined){
-                            $rootScope.status.toggle404 = !true;
-                        }
-                    }
-
-                    else {
-                        $scope.user = $filter('filter')($scope.users, {username: $scope.search})[0];
-
-
-                        if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
-                            $state.go('profile_user', {"username": $scope.user.username});
-                            $scope.isToggle = false;
-                            $scope.searchuser = false;
-                        }
-                        else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
-                            $state.go('profile_user', {"username": $scope.user.username});
-                            $scope.isToggle = false;
-                            $scope.searchuser = false;
-                            $rootScope.status.toggle404 = !$rootScope.status.toggle404;
-                        }
-                        else if($scope.user == undefined){
-                            $rootScope.status.toggle404 = true;
-                        }
-                    }
-                }
             })
             .catch(function () {
                 $scope.users = [];
