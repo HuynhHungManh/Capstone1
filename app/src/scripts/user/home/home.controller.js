@@ -6,6 +6,11 @@ angular.module('myApp')
                                             $filter, $resource, HomeService, $rootScope, $cookies, $cookieStore,$window) {
         $rootScope.isToggleLogout = false;
         $scope.dataLogin = {};
+        $scope.isLogAndRes = false;
+
+        $scope.changeLog = function () {
+            $scope.isLogAndRes = !$scope.isLogAndRes;
+        }
 
 
         $scope.isToggleForget = true;
