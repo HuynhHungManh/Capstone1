@@ -149,12 +149,6 @@ angular.module('myApp')
 
 
         $scope.post = function () {
-            // console.log($scope.dtu_id);
-            // console.log($scope.emailRegister);
-            // console.log($scope.usernameRegister);
-            // console.log($scope.usernameRegister);
-            // console.log($scope.passwordAgain);
-            // console.log('resigter');
             if ( testemail($scope.emailRegister) == true && dtu_id($scope.dtu_id) &&validateUsername($scope.usernameRegister)
                 && password($scope.passRe) == true  && passwordAgain($scope.passRe, $scope.passwordAgain) == true) {
                 var data = {
@@ -172,7 +166,6 @@ angular.module('myApp')
                     .catch(function () {
                         alert("Register faild!");
                     });
-                $scope.accept = ' Đã đăng kí !'
             }
             else if (password($scope.passRe) == false) {
                 $scope.err = $scope.error;
