@@ -4,7 +4,7 @@
 angular.module('myApp')
     .config(function ($stateProvider) {
         $stateProvider.state('education', {
-            url: '/education/id=:id',
+            url: '/education/username=:username',
             parent: 'site',
             views: {
                 'content@':{

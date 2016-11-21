@@ -1,45 +1,47 @@
-
-    <div class="toolbar">
-        <div class="uou-block-1a blog">
-            <div class="container">
-                <div class="search"><a href="#" class="toggle fa"></a>
-                    <form action="#">
-                        <input type="text" class="search-input" placeholder="Search ...">
-                        <input type="submit" value="">
-                    </form>
-                </div>
-
-            </div>
+<!--<div class="toolbar">-->
+<!--<div class="uou-block-1a blog">-->
+<!--<div class="container">-->
+<!--<div class="search"> <a href="#" class="toggle fa fa-search" ng-click="isToggle = !isToggle"></a>-->
+<!--<form>-->
+<!--<input type="text" placeholder="Search ...">-->
+<!--<input type="submit" value="">-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div >-->
+<!--&lt;!&ndash; end .uou-block-1a &ndash;&gt;-->
+<!--</div>-->
+<div class="top-toolbar">
+    <div class="container">
+        <div class="searchUser">
+            <form ng-submit="Search()" ng-controller ="Profile_userController">
+                <input type="text" placeholder="Search..." ng-model="search">
+                <select>
+                    <option value="" disabled="disabled" selected="selected">Please select a name</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                </select>
+            </form>
         </div>
-        <!-- end .uou-block-1a -->
     </div>
-    <div class="box-shadow-for-ui">
-        <div class="uou-block-2b">
-            <div class="container"><a href="#/profile_user/id=1" class="logo"><img src="resource/user/images/Logo2.png" alt=""></a> <a
-                    href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
-                <nav class="nav">
-                    <ul class="sf-menu">
-                        <li class="active"><a href="index.html"><i class="fa  fa-home"></i></a></li>
-                        <li><a href="#profile_company">Company Profile</a>
-                            <ul>
-                                <li><a href="#">Profile Company</a></li>
-                                <li><a href="profile_company-no-tabs.html">Profile Company No Tabs</a></li>
-                                <li><a href="user-dashboard(connections)(hotkeys-disabled).html">User Dashboard 1</a>
-                                </li>
-                                <li><a href="user-dashboard(connections)(hotkeys-enabled).html">User Dashboard 2</a>
-                                </li>
-                                <li><a href="user-dashboard(followers).html">User Dashboard 3</a></li>
-                                <li><a href="user-dashboard(following).html">User Dashboard 4</a></li>
-                                <li><a href="blog-post.html">Blog Post</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#/profile_user/id=1921126474">User Profile</a></li>
+</div>
+<div class="box-shadow-for-ui">
+    <div class="uou-block-2b">
+        <div class="container"><a href="" class="logo"><img src="resource/user/images/Logo2.png"
+                                                                               alt=""></a> <a
+                href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
+            <nav class="nav">
+                <ul class="sf-menu">
+                    <li class="active"><a href="#home"><i class="fa fa-home"></i></a></li>
+                    <li><a href="" ng-click="checkCompany()">Company Profile</a>
 
-
-                    </ul>
-                </nav>
-            </div>
+                    </li>
+                    <li><a href="" ng-click="checkUser()" >User Profile</a></li>
+                    <li ng-show="isToggleLogout"><a ng-click="logout()">Logout</a></li>
+                </ul>
+            </nav>
         </div>
-        <!-- end .uou-block-2b -->
     </div>
+    <!-- end .uou-block-2b -->
+</div>
 

@@ -898,11 +898,11 @@ td, th {
 	background-color: #000000;
 }
 .modal-backdrop.fade {
-	opacity: 0;
+	/*opacity: 0;*/
 	filter: alpha(opacity=0);
 }
 .modal-backdrop.in {
-	opacity: 0.5;
+	/*opacity: 0.5;*/
 	filter: alpha(opacity=50);
 }
 .modal-header {
@@ -14836,7 +14836,7 @@ a:hover, a:focus, a:active, a.active {
 	border-radius: 50%;
 }
 .listing {
-	padding-bottom: 100px;
+	/*padding-bottom: 100px;*/
 }
 .listing .tab-pane {
 	display: none;
@@ -15719,6 +15719,7 @@ a:hover, a:focus, a:active, a.active {
 	display: inline-block;
 	text-align: left;
 	background: #fff;
+	width: 100%;
 }
 .listing.listing-1 .listing-ver-3 .listing-inner .listing-content .title-company {
 	margin: 0 0 5px 0;
@@ -15762,6 +15763,7 @@ a:hover, a:focus, a:active, a.active {
 	padding-left: 0;
 }
 .listing.listing-1 .listing-ver-3 .listing-inner .listing-content .tags li a {
+
 	padding: 3px 10px;
 	display: inline-block;
 	background: #ededed;

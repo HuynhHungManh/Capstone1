@@ -1,0 +1,56 @@
+<ul class="row">
+    <li class="col-sm-3">
+        <h6><i
+                class="fa fa-plus"></i>
+            {{skill.name}}</h6>
+    </li>
+    <li class="col-sm-9">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0"
+                 aria-valuemax="100"
+                 style="width: {{skill.level}}%;"></div>
+        </div>
+    </li>
+</ul>
+<ul class="row">
+    <li class="col-sm-3">
+        <h6><i
+                class="fa fa-edit"></i>
+            Name skill :</h6>
+    </li>
+    <li class="col-sm-9">
+        <input type="text" placeholder="Enter name skill..." ng-model="editSkill.name">
+    </li>
+</ul>
+
+<ul class="row">
+    <li class="col-sm-3">
+        <h6><i class="fa fa-edit"></i>
+            Level :</h6>
+    </li>
+    <li class="col-sm-9">
+        <form>
+            <input class="datalist" type="text" list="levelsSkill" ng-model="editSkill.level"
+                   placeholder="Choose level..."/>
+            <datalist id="levelsSkill">
+                <option value="Beginner"/>
+                <option value="Elementary"/>
+                <option value="Intermediate"/>
+                <option value="Advanced"/>
+                <option value="Proficient"/>
+            </datalist>
+        </form>
+    </li>
+</ul>
+<ul class="row">
+    <li class="col-sm-4">
+        <input type="button" class="btn btn-primary" ng-click="updateSkill()"
+               value="Save">
+        <input type="button" class="btn btn-primary" ng-click="closeformskill()"
+               value="Close">
+    </li>
+    <li class="col-sm-8">
+
+    </li>
+</ul>

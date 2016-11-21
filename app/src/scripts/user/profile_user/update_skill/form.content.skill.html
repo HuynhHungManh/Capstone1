@@ -1,0 +1,29 @@
+<ul class="row" ng-repeat="skill in user.skills">
+    <li class="col-sm-3">
+        <h6><a href="" ng-click="changeFormEditSkill(skill.id)"><i class="fa fa-edit"></i></a>
+            {{skill.name}}</h6>
+    </li>
+    <li class="col-sm-8">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar"
+                 aria-valuenow="60" aria-valuemin="0"
+                 aria-valuemax="100"
+                 style="width: {{skill.level}}%;"></div>
+        </div>
+    </li>
+    <li class="col-sm-1">
+        <a><i class="edit-pen fa fa-remove" ng-click="deleteSkill(skill.id)">
+        </i></a>
+    </li>
+</ul>
+<br>
+<ul class="row">
+    <li class="col-sm-4">
+        <input type="button" class="btn btn-primary" data-toggle="modal"
+               data-target="#exampleModal"
+               value="ADD SKILL">
+    </li>
+    <li class="col-sm-8">
+
+    </li>
+</ul>

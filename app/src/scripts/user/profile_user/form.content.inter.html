@@ -1,0 +1,13 @@
+<ul class="single-category">
+    <li class="row" ng-repeat="inter in inters">
+        <h6 class="title col-xs-9">{{inter.name}}</h6>
+        <div class="col-xs-3">
+            <a ng-show="isToggle" ><i class="edit-pen fa fa-remove" ng-click="deleteInter(inter.id)">
+            </i></a>
+
+            <a ng-show="isToggle"><i class="edit-pen fa fa-edit" ng-click="changeUpdateInter(inter.id, inter.name)">&nbsp; &nbsp;
+            </i></a>
+        </div>
+    </li>
+    <br>
+</ul>

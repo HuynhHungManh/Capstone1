@@ -1,0 +1,29 @@
+<div ng-init="item.isred= false"  style="cursor:pointer" ng-repeat="skill in editer.skills">
+    <ul class="row">
+        <li class="col-sm-3">
+            <h6 class="title-tags">Skills required:</h6>
+        </li>
+        <li class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div ><a ng-class="{red : item.isred}">{{skill.name}}</a></div>
+                </div>
+                <div class="col-sm-3">
+                    <a class="editskill"><i class="fa fa-remove" ng-click="item.isred =!item.isred"></i></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="row">
+        <li class="col-sm-3">
+            <h6 class="title-tags">Edit name skills:</h6>
+        </li>
+        <li class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div><input type="text"></div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

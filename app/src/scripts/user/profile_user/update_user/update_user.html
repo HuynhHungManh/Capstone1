@@ -22,12 +22,17 @@
                     <!-- Company Information -->
                     <div class="sidebar">
                         <h5 class="main-title">My Picture</h5>
-                        <div class="sidebar-thumbnail"><img
-                                src="https://www.sparklabs.com/forum/styles/comboot/theme/images/default_avatar.jpg"
-                                alt=""></div>
+                        <div class="sidebar-thumbnail"><img ng-src={{img}} id="blah" src="#" alt="your image"/></div>
+
                         <div class="sidebar-information">
                             <div class="form-group">
-                                <input type="file" class="filestyle" ng-model="picture" data-icon="false">
+                                <input type="file" onchange="readURL(this)" data-icon="false">
+                                <div>
+                                    <label>Enter link Image online here !</label>
+                                    <input type="text" ng-model="picture">
+                                </div>
+
+                                <!--<input type="button" ng-click="readURL(this)" value="submit">-->
                             </div>
                             </br>
                             <div>
@@ -38,44 +43,41 @@
                                         </br>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Student ID</h6>
-                                            <span class="subtitle col-xs-6">1921126474</span></li>
+                                            <span class="subtitle col-xs-6">{{user.dtu_id}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">First name</h6>
-                                            <span class="subtitle col-xs-6">Manh Hung</span></li>
+                                            <span class="subtitle col-xs-6">{{user.firstName}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Last name</h6>
-                                            <span class="subtitle col-xs-6">Huynh Ba</span></li>
+                                            <span class="subtitle col-xs-6">{{user.lastName}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Age</h6>
-                                            <span class="subtitle col-xs-6">22 Years</span></li>
+                                            <span class="subtitle col-xs-6">{{user.age}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Address</h6>
-                                            <span class="subtitle col-xs-6">42 Ly Trien</span></li>
+                                            <span class="subtitle col-xs-6">{{user.address}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Degree</h6>
-                                            <span class="subtitle col-xs-6">University</span></li>
+                                            <span class="subtitle col-xs-6">{{user.degree}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Sex</h6>
-                                            <span class="subtitle col-xs-6">Male</span></li>
+                                            <span class="subtitle col-xs-6">{{user.sex}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Phone</h6>
-                                            <span class="subtitle col-xs-6">(+84) 905491875</span></li>
+                                            <span class="subtitle col-xs-6">{{user.sex}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">E-mail</h6>
-                                            <span class="subtitle col-xs-6">huynhamanhhungg@gmail.com</a></span>
+                                            <span class="subtitle col-xs-6">{{user.email}}</a></span>
                                         </li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Status</h6>
-                                            <span class="subtitle col-xs-6">I need a company</a></span>
+                                            <span class="subtitle col-xs-6">{{user.status}}</a></span>
                                         </li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Describe</h6>
-                                            <span class="subtitle col-xs-6">I'm a senior student </a></span>
+                                            <span class="subtitle col-xs-6">{{user.desscribe}}</a></span>
                                         </li>
                                     </ul>
-                                    <a href="#/update_user">
-                                        <input type="submit" class="btn btn-primary" value="Update">
-                                    </a>
                                 </div>
                                 <!-- Rating -->
                             </div>
@@ -97,8 +99,8 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Student ID:</label>
                                             <div class="col-lg-8">
-                                                    <input class="form-control" type="text" ng-model="dtu_id "
-                                                           placeholder="Enter student id...">
+                                                <input class="form-control" type="text" ng-model="dtu_id "
+                                                       placeholder="Enter student id...">
                                             </div>
 
 
@@ -120,14 +122,16 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Email:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="email" ng-model="email"  validator="email"
+                                                <input class="form-control" type="email" ng-model="email"
+                                                       validator="email"
                                                        placeholder="Enter Email...">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Age:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="number" ng-model="age"  validator="number"
+                                                <input class="form-control" type="number" ng-model="age"
+                                                       validator="number"
                                                        placeholder="Enter Age...">
                                             </div>
                                         </div>
@@ -149,11 +153,13 @@
                                             <label class="col-lg-3 control-label">Sex:</label>
                                             <div class="col-lg-8">
                                                 <div class="example">
-                                                    <div >
-                                                        <input id="radio1" type="radio" name="radio" ng-value='"male"' ng-model="result">
+                                                    <div>
+                                                        <input id="radio1" type="radio" name="radio" ng-value='"male"'
+                                                               ng-model="result">
                                                         <label for="radio1"><span><span></span></span>Male</label>
                                                         &nbsp; &nbsp;
-                                                        <input id="radio2" type="radio" name="radio" ng-value='"female"' ng-model="result">
+                                                        <input id="radio2" type="radio" name="radio" ng-value='"female"'
+                                                               ng-model="result">
                                                         <label for="radio1"><span><span></span></span>Female</label>
 
                                                     </div>
@@ -177,7 +183,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Status:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="status"
+                                                <input class="form-control" type="text" ng-model="status1"
                                                        placeholder="Enter status...">
                                             </div>
                                         </div>
@@ -191,10 +197,11 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-8">
-                                                <input type="button" class="btn btn-primary" ng-click="post(result)"
+                                                <input type="button" class="btn btn-primary" ng-click="update(result)"
                                                        value="Save Changes">
                                                 <span></span>
-                                                <input type="reset" class="btn btn-default" value="Cancel">
+                                                <input type="reset" ng-click="doTheBack()" class="btn btn-default"
+                                                       value="Cancel">
                                                 <span></span>
                                                 {{update}}
                                             </div>
@@ -210,6 +217,25 @@
     </div>
 </div>
 
+<script>
+    function readURL(input) {
+        console.log(input);
+        if (input.files && input.files[0]) {
 
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                angular.element('#blah')
+                        .attr('src', e.target.result)
+                        .width(320)
+                        .height(306);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+
+        }
+    }
+</script>
 
 <!-- Footer -->

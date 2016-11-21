@@ -2,7 +2,7 @@
 
 // Declare app level module which depends on views, and components
 
-angular.module('myApp', ['ui.router','validation', 'validation.rule'])
+angular.module('myApp', ['ui.router','validation', 'validation.rule','ngResource','ngCookies','ngRoute'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/home');
 

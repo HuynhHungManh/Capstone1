@@ -1,0 +1,58 @@
+<div class="listing-ver-3" ng-repeat="project in projects">
+    <div class="listing-heading">
+        <h5>{{project.name}}</h5>
+    </div>
+    <div class="listing-inner">
+        <div class="listing-content">
+            <div class="job-skills">
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Subject
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <span>{{project.subject}}</span>
+                        <span class="type-work full-time"> {{project.from_date}} - {{project.to_date}}</span>
+                    </li>
+                </ul>
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Content
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <span>{{project.content}}</span>
+                    </li>
+                </ul>
+
+            </div>
+            <br>
+            <h6 class="title-company">
+                <div class="fa fa-asterisk">&nbsp &nbsp</div>
+                Describe of product
+            </h6>
+            <p>{{project.describe}}.
+            </p>
+            <h6 class="title-tags">Skills required:</h6>
+            <ul class="tags list-inline">
+                <li ng-repeat="skill in project.skills"><a
+                        href="#">{{skill.name}}</a></li>
+            </ul>
+            <br>
+            <br>
+            <div>
+                <input type="button" class="btn btn-primary" ng-model="project.name" ng-click="edit(project.id)"
+                       value="Edit">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="back">
+    <a href="" data-toggle="modal" data-target="#exampleModaledu">Add Project</a>&nbsp; &nbsp;
+    <a href="" ng-click="doTheBack()">Back</a>
+</div>

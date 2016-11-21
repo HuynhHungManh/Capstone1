@@ -1,0 +1,64 @@
+
+
+<div class="row">
+    <div class="col-xs-3">
+        <h6 class="title">{{lang.name}} :</h6>
+    </div>
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-xs-9">
+                {{lang.level}}
+            </div>
+            <div class="col-xs-3">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <a><i class="edit-pen fa fa-remove" ng-click="deleteLang()">
+        </i></a>
+        <a><i class="edit-pen fa fa-check" ng-click="updateLang()">
+        </i></a>
+        <a><i class="edit-pen fa fa-arrow-left" ng-click="closeform()">
+        </i></a>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-3">
+        <h6 class="title">Name :</h6>
+    </div>
+    <div class="col-xs-9">
+        <div class="row">
+            <div class="col-xs-9">
+                <input type="text" ng-model="editLang.name" placeholder="Enter name language...">
+            </div>
+            <div class="col-xs-3">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-3">
+        <h6 class="title">Level :</h6>
+    </div>
+    <div class="col-xs-9">
+        <div class="row">
+            <div class="col-xs-9">
+                <form>
+                    <input class="datalist" type="text" list="levelsSkillLang"
+                           ng-model="editLang.level" placeholder="Choose level ..."/>
+                    <datalist id="levelsSkillLang">
+                        <option value="Beginner"/>
+                        <option value="Elementary"/>
+                        <option value="Intermediate"/>
+                        <option value="Advanced"/>
+                        <option value="Proficient"/>
+                    </datalist>
+                </form>
+            </div>
+            <div class="col-xs-3">
+            </div>
+        </div>
+    </div>
+</div>
+

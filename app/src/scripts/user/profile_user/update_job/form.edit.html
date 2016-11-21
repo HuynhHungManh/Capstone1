@@ -1,0 +1,116 @@
+<div class="listing-ver-3">
+    <div class="listing-heading">
+        <h5>{{editer.name_of_company}}</h5>
+    </div>
+    <div class="listing-inner">
+        <div class="listing-content">
+            <div class="job-skills">
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Name company :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.name_of_company}}" ng-model="editProject.name_of_company">
+                    </li>
+                </ul>
+
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Address :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.address_of_company}}"  ng-model="editProject.address_of_company">
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Time :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        from : <input type="date" class="datepicker"  ng-model="editProject.from_date" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        to : <input type="date" class="datepicker" ng-model="editProject.to_date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Phone :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.phone_of_company}}" ng-model="editProject.phone_of_company">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Website of company :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.website_of_company}}" ng-model="editProject.website_of_company">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Type work :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.type_work}}" ng-model="editProject.type_work">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Position :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="editer.position" ng-model="editProject.position">
+                    </li>
+                </ul>
+
+            </div>
+            <br>
+            <h6 class="title-company">
+                <div class="fa fa-asterisk">&nbsp &nbsp</div>
+                Describe of company
+            </h6>
+            <p><textarea rows="4" cols="50"
+                         placeholder="Enter describe..." ng-model="editProject.describe"></textarea>
+            </p>
+            <div>
+                <input type="button" class="btn btn-primary" ng-click="updateProject(editer.id)"
+                       value="Save">
+                <input type="button" class="btn btn-primary" ng-click="deleteProject(editer.id)"
+                       value="Delete">
+                <input type="button" class="btn btn-primary" ng-click="close()"
+                       value="Close">
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>

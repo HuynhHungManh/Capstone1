@@ -1,0 +1,92 @@
+<div class="listing-ver-3">
+    <div class="listing-heading">
+        <h5>{{editer.name}}</h5>
+    </div>
+    <div class="listing-inner">
+        <div class="listing-content">
+            <div class="job-skills">
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Subject
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.name}}" ng-model="editProject.name">
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Subject
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.subject}}" ng-model="editProject.subject">
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Time :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        from : <input type="date" class="datepicker" ng-model="editProject.from_date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        to : <input type="date" class="datepicker" ng-model="editProject.to_date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Content
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editer.content}}" ng-model="editProject.content">
+                    </li>
+                </ul>
+
+            </div>
+            <br>
+            <h6 class="title-company">
+                <div class="fa fa-asterisk">&nbsp &nbsp</div>
+                Describe of product
+            </h6>
+            <p><textarea rows="4" cols="50" ng-model="editProject.describe"
+                         placeholder="{{editer.describe}}"  ></textarea>
+            </p>
+            <div ng-if="!statusEditSkill.toggle"
+                 ng-include="'src/scripts/user/profile_user/education/form.content.editSkill.html'">
+            </div>
+            <div ng-if="statusEditSkill.toggle"
+                 ng-include="'src/scripts/user/profile_user/education/form.editSkill.html'">
+            </div>
+            <br>
+            <br>
+            <div>
+                <input type="button" class="btn btn-primary"
+                       value="Save" ng-click="updateProject(editer.id)">
+                <input type="button" class="btn btn-primary"
+                       value="Delete" ng-click="deleteProject(editer.id)">
+                <input type="button" class="btn btn-primary"
+                       value="Close" ng-click="changeform()">
+            </div>
+        </div>
+    </div>
+</div>

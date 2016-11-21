@@ -4,7 +4,7 @@
 angular.module('myApp')
     .config(function ($stateProvider) {
         $stateProvider.state('profile_user', {
-            url: '/profile_user/id=:id',
+            url: '/profile_user/username=:username',
             parent: 'site',
             views: {
                 'content@':{

@@ -1,0 +1,22 @@
+<ul class="single-category">
+    <li class="row">
+        <h6 class="title col-xs-3">Name Interest: </h6>
+        <div class="col-xs-9">
+            {{name}}
+        </div>
+    </li>
+    <br>
+    <li class="row">
+        <h6 class="title col-xs-3">Edit name: </h6>
+        <div class="col-xs-7">
+            <input type="text" ng-model="inter.name">
+        </div>
+        <div class="media-left col-xs-2">
+            <div class="inn-simi">
+                <button type="button" class="btn btn-info" ng-click="updateInter()" >Save</button>
+            </div>
+        </div>
+    </li>
+    <a href="" ng-click="back()">Back</a>
+    <br>
+</ul>

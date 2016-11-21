@@ -308,7 +308,7 @@ body
 	margin-top: 30px;
 }
 .user-profile-bnr h5 {
-	color: #fff;
+	color: #000000;
 	margin-top: 10px;
 	font-weight: normal;
 	font-size: 18px
@@ -458,7 +458,8 @@ iframe {
 }
 .profile-company-content .com-rate i {
 	color: #2aadde;
-	font-size: 14px;
+	font-size: 25px;
+	margin-left: 10px;
 }
 .profile-company-content .form-side input {
 	border: 1px solid #eaeaea;
@@ -1002,12 +1003,14 @@ iframe {
 	list-style: none;
 }
 .job-skills h6 {
-	text-transform: none;
+	text-transform: capitalize;
 	font-weight: normal;
 	margin: 0px;
 	font-size: 14px;
 	letter-spacing: 0px;
 	font-weight: bold;
+	margin-top: 5px;
+	margin-right: 5px;
 }
 .job-skills .progress {
 	height: 20px;
@@ -1024,7 +1027,6 @@ iframe {
 }
 .job-skills li h6 i {
 	color: #fff;
-	margin-right: 5px;
 	display: inline-block;
 	height: 22px;
 	width: 22px;
@@ -1034,7 +1036,10 @@ iframe {
 	text-align: center;
 	line-height: 22px;
 	font-size: 14px;
+	margin-right: 10px;
+
 }
+
 .job-tittle {
 	margin-bottom: 0px;
 	position: relative;
@@ -1145,7 +1150,7 @@ iframe {
 .similar .inn-simi {
 	display: inline-block;
 	width: 100px;
-	padding-right: 20px;
+	padding-right: 40px;
 }
 .similar p {
 	margin-bottom: 10px;
@@ -1162,7 +1167,7 @@ iframe {
 	background: #0099ff;
 	padding: 5px 0px;
 	width: 100%;
-	margin-top: 10px;
+	margin-top: 2px;
 	border-radius: 4px;
 	text-align: center;
 	font-size: 12px;
@@ -1223,7 +1228,7 @@ iframe {
 	text-align: center;
 }
 .banr-head .login-sec input {
-	background: #424242;
+	background: #fafafa;
 	border-radius: 30px;
 	border: none;
 	height: 40px;
@@ -1303,6 +1308,14 @@ iframe {
 .banr-head input[type="email"], input[type="text"], input[type="password"] {
 	color: #000;
 }
+.searchUser input[type="text"]{
+    color: #000;
+    height: 25px;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 10pt;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
 .home-pro .services ul {
 	margin: 0px;
 	padding: 0px;
@@ -3235,4 +3248,207 @@ CANVAS PAGE STYLE
 ul li input[type=radio]{
 	position: absolute;
 	visibility: hidden;
+}
+
+.accept{
+	margin-top: 12px;
+	color: #64d443;
+}
+.err{
+	color: #bf1923;
+}
+.top-toolbar{
+    width: 100%;
+    background-color: #737373;
+    background: #f4f4f4;
+}
+.searchUser{
+    width: 30%;
+    float: left;
+    height: 45px;
+    padding: 10px;
+}
+.acceptForget{
+	color: #64d443;
+}
+.errForget{
+	color: #bf1923;
+}
+.comment img{
+	margin-top: 2px;
+	height: 40px;
+	width : 40px;
+	max-width: 100px;
+	margin-left: 25px;
+}
+.comment input{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.comment textarea{
+
+}
+
+.rating {
+	color: #a9a9a9;
+	margin: 0;
+	padding: 0;
+}
+ul.rating {
+	display: inline-block;
+}
+.rating li {
+	list-style-type: none;
+	display: inline-block;
+	padding: 1px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+.rating .filled {
+	color: #ffee33;
+}
+
+
+
+.dateholder,
+.inputholder,
+.holder {
+	width: 100%;
+}
+.datepicker input{
+	border: 1px solid #666;
+	width: 100%;
+}
+.datepicker {
+	width: 100%;
+	font-size: 1.5em;
+}
+
+
+
+.rating .filled {
+	color: #21568b;
+}
+.strike {
+	text-decoration: line-through;
+}
+
+.type-work{
+	color: #244bee;
+}
+.time{
+	color: #e230ee;
+}
+.editJob{
+	/*margin-top: 5px;*/
+	margin-bottom: 10px;
+
+}
+
+
+#floating-button{
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	background: #db4437;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	cursor: pointer;
+	box-shadow: 0px 2px 5px #666;
+}
+
+.plus{
+	color: white;
+	position: absolute;
+	top: 0;
+	display: block;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	line-height: 55px;
+	font-size: 38px;
+	font-family: 'Roboto';
+	font-weight: 300;
+	animation: plus-out 0.3s;
+	transition: all 0.3s;
+}
+
+
+
+#container-floating:hover .plus{
+	animation: plus-in 0.15s linear;
+	animation-fill-mode: forwards;
+}
+
+.edit{
+	position: absolute;
+	top: 0;
+	display: block;
+	bottom: 0;
+	left: 0;
+	display: block;
+	right: 0;
+	padding: 0;
+	opacity: 0;
+	margin: auto;
+	line-height: 65px;
+	transform: rotateZ(-70deg);
+	transition: all 0.3s;
+	animation: edit-out 0.3s;
+}
+
+#container-floating:hover .edit{
+	animation: edit-in 0.2s;
+	animation-delay: 0.1s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes edit-in{
+	from {opacity: 0; transform: rotateZ(-70deg);}
+	to {opacity: 1; transform: rotateZ(0deg);}
+}
+.edit-pen{
+	float: right;
+}
+.loading{
+	height: 250px;
+	text-align: center;
+}
+.loading1{
+	margin-top: 150px;
+	color: #b91211;
+}
+.back{
+	color: #31a8ec;
+	border-color: #2aadde;
+	border: 10px;
+}
+.lang{
+	color: #31a8ec;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 120%;
+	font-weight: bold;
+}
+.capitalize{
+	text-transform: capitalize;
+}
+.skillleft{
+	margin-left: 20px;
+}
+.editskill{
+	float : right;
+}
+.red{
+	background-color: #ff4a39;
+}
+.toDate{
+	float: right;
+}
+.buttonRight{
+	float: right;
 }

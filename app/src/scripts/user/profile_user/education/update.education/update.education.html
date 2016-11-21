@@ -1,0 +1,178 @@
+<!-- end .uou-block-2b -->
+
+<!-- SUB Banner -->
+<div class="profile-bnr sub-bnr user-profile-bnr">
+    <div class="position-center-center">
+        <div class="container">
+            <h2>Update Education</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Compny Profile -->
+<div class="compny-profile">
+
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            <div class="row">
+
+                <!-- SIDE BAR -->
+                <div class="col-md-4">
+                    <!-- Company Information -->
+                    <div class="sidebar">
+                        <div class="sidebar-information">
+                            <div>
+                                <!-- Professional Details -->
+                                <h5 class="main-title">Professional Details</h5>
+                                <div class="sidebar-information">
+                                    <ul class="single-category">
+                                        </br>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Name:</h6>
+                                            <span class="subtitle col-xs-6">{{education.name_of_school}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Address :</h6>
+                                            <span class="subtitle col-xs-6">{{education.address_of_school}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Phone :</h6>
+                                            <span class="subtitle col-xs-6">{{education.phone_of_school}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Major :</h6>
+                                            <span class="subtitle col-xs-6">{{education.major}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Achiviement :</h6>
+                                            <span class="subtitle col-xs-6">{{education.achiviement}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">From date :</h6>
+                                            <span class="subtitle col-xs-6">{{education.from_date}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">To date</h6>
+                                            <span class="subtitle col-xs-6">{{education.to_date}}</span></li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Website :</h6>
+                                            <span class="subtitle col-xs-6">{{education.website_of_school}}</a></span>
+                                        </li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-4">Describe :</h6>
+                                            <span class="subtitle col-xs-6">{{education.describe}}</a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Rating -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="col-md-8">
+                    <div class="network">
+                        <div class="tab-content">
+
+                            <!-- Connections -->
+                            <div class="tab-pane fade in active">
+                                <div class="net-work-in">
+
+                                    <!-- Members -->
+                                    <div class="main-mem">
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Name school :</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text"
+                                                       ng-model="updateEdu.name_of_school"
+                                                       placeholder="Enter name...">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Address school:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text"
+                                                       ng-model="updateEdu.address_of_school"
+                                                       placeholder="Enter address...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Phone school:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text"
+                                                       ng-model="updateEdu.phone_of_school"
+                                                       placeholder="Enter phone...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Website :</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="email"
+                                                       ng-model="updateEdu.website_of_school"
+                                                       placeholder="Enter website...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Major :</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="updateEdu.major"
+                                                       placeholder="Enter major...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Achiviement :</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="updateEdu.achiviement"
+                                                       placeholder="Enter achiviement...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Time :</label>
+                                            <div class="col-lg-4">
+                                                <div class="input-group date">
+                                                    <div class="dateholder">
+                                                        <input type="date" class="datepicker"
+                                                               ng-model="updateEdu.from_date">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="toDate">
+                                                    <div class="input-group date">
+                                                        <div class="dateholder">
+                                                            <input type="date" class="datepicker"
+                                                                   ng-model="updateEdu.to_date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">Describe:</label>
+                                            <div class="col-lg-8">
+                                                <textarea rows="4" cols="50" ng-model="updateEdu.describe"
+                                                          placeholder="Enter describe..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label"></label>
+                                            <div class="col-md-8">
+                                                <input type="button" class="btn btn-primary" ng-click="editEdu()"
+                                                       value="Save Changes">
+                                                <span></span>
+                                                <input type="reset" ng-click="doTheBack()" class="btn btn-default"
+                                                       value="Cancel">
+                                                <span></span>
+                                                {{update}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

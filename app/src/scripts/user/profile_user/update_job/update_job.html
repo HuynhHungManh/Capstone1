@@ -1,0 +1,129 @@
+<div id="main-wrapper">
+
+
+    <div class="box-shadow-for-ui">
+
+        <!-- end .uou-block-2b -->
+    </div>
+    <!-- end .uou-block-2b -->
+
+    <div class="compny-profile">
+        <!-- SUB Banner -->
+        <div class="profile-bnr user-profile-bnr">
+            <div class="container">
+                <div class="pull-left">
+                    <h2>Jobs</h2>
+                    <h5>Front-End Developer</h5>
+                </div>
+
+            </div>
+
+
+            <!-- Profile Company Content -->
+            <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Nav Tabs -->
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs">
+                                <li><a data-toggle="tab" href="#profile_user/username={{user.username}}">Profile</a>
+                                </li>
+                                <li><a data-toggle="tab" href="#education/username={{user.username}}">Education</a></li>
+                                <li class="active"><a data-toggle="tab" href="#update_job">Job</a></li>
+                            </ul>
+                        </div>
+                        <div class="listing listing-1">
+                            <div class="listing-section" ng-if="!status.toggle"
+                                 ng-include="'src/scripts/user/profile_user/update_job/form.content.html'">
+                            </div>
+                            <div class="listing-section" ng-if="status.toggle"
+                                 ng-include="'src/scripts/user/profile_user/update_job/form.edit.html'">
+                            </div>
+                            <br>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+</script>
+<div class="form-group">
+
+    <div class="bd-example">
+        <div class="modal fade" id="exampleModaledu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeledu"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="exampleModalLabeledu">Add Job</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-control-label">Name of comany:</label>
+                                <input type="text" class="form-control" placeholder="Enter name..." ng-model="editProject.name_of_company">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control-label">Address of company :</label>
+                                <input type="text" class="form-control" placeholder="Enter address..." ng-model="editProject.address_of_company">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control-label">Content:</label>
+                                <input type="text" class="form-control" placeholder="Enter content..." ng-model="editProject.phone_of_company">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Day start :</label>
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        <input type="date" class="datepicker" ng-model="editProject.from_date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Day end :</label>
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        <input type="date" class="datepicker" ng-model="editProject.to_date">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-control-label" >Describe of company :</label>
+                                <textarea rows="4" cols="50"
+                                          placeholder="Enter describe..." ng-model="editProject.describe"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    {{updateSkill}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary " ng-click="createProject()">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

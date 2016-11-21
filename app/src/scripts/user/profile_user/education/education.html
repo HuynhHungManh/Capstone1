@@ -1,6 +1,4 @@
 <div id="main-wrapper">
-
-
     <div class="compny-profile">
         <!-- SUB Banner -->
         <div class="profile-bnr user-profile-bnr">
@@ -56,10 +54,9 @@
                     <!-- Nav Tabs -->
                     <div class="col-md-12">
                         <ul class="nav nav-tabs">
-                            <li><a data-toggle="tab" href="#profile_user">Profile</a></li>
+                            <li><a data-toggle="tab" href="#profile_user/username={{user.username}}">Profile</a></li>
                             <li class="active"><a data-toggle="tab" href="">Education</a></li>
-
-
+                            <li><a data-toggle="tab" href="#update_job/username={{user.username}}">Job</a></li>
                         </ul>
                     </div>
 
@@ -80,51 +77,49 @@
                                             <div class="sidebar-information">
                                                 <ul class="single-category">
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Name Of School</h6>
+                                                        <h6 class="title col-xs-6">Name Of School:</h6>
                                                         <span class="subtitle col-xs-6">{{education.name_of_school}}</span>
                                                     </li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Address Of School</h6>
+                                                        <h6 class="title col-xs-6">Address Of School:</h6>
                                                         <span class="subtitle col-xs-6">{{education.address_of_school}}</span>
                                                     </li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Phone Of School</h6>
+                                                        <h6 class="title col-xs-6">Phone Of School:</h6>
                                                         <span class="subtitle col-xs-6">{{education.phone_of_school}}</span>
                                                     </li>
                                                     <li class="row">
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Major</h6>
+                                                        <h6 class="title col-xs-6">Major:</h6>
                                                         <span class="subtitle col-xs-6">{{education.major}}</span></li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Achiviement</h6>
+                                                        <h6 class="title col-xs-6">Achiviement:</h6>
                                                         <span class="subtitle col-xs-6">{{education.achiviement}}</span>
                                                     </li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">From Date</h6>
+                                                        <h6 class="title col-xs-6">From Date:</h6>
                                                         <span class="subtitle col-xs-6">{{education.from_date}}</span>
                                                     </li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">To Date</h6>
+                                                        <h6 class="title col-xs-6">To Date:</h6>
                                                         <span class="subtitle col-xs-6">{{education.to_date}}</span>
                                                     </li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Describe</h6>
+                                                        <h6 class="title col-xs-6">Describe:</h6>
                                                         <span class="subtitle col-xs-6">{{education.describe}}</span>
                                                     </li>
                                                     <li class="row">
-                                                        <h6 class="title col-xs-6">Website Of School</h6>
+                                                        <h6 class="title col-xs-6">Website Of School:</h6>
                                                         <span class="subtitle col-xs-6"><a href="">{{education.website_of_school}}</a></span>
                                                     </li>
                                                 </ul>
-                                                <a href="#/update_user">
+                                                <a href="#update_education/username={{user.username}}">
                                                     <input type="submit" class="btn btn-primary" value="Update">
                                                 </a>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-8">
-
                                         <!-- Skills -->
                                         <div class="sidebar">
                                             <h5 class="main-title">Projects</h5>
@@ -132,126 +127,20 @@
 
                                                 <!-- Logo Design -->
                                                 <div class="listing listing-1">
-                                                    <div class="listing-section">
-                                                        <div class="listing-ver-3">
-                                                            <div class="listing-heading">
-                                                                <h5>{{project.name}}</h5>
-                                                            </div>
-                                                            <div class="listing-inner">
-                                                                <div class="listing-content">
-                                                                    <div class="job-skills">
-
-                                                                        <!-- Logo Design -->
-                                                                        <ul class="row">
-                                                                            <li class="col-sm-3">
-                                                                                <h6><i class="fa fa-plus"></i> Subject</h6>
-                                                                            </li>
-                                                                            <li class="col-sm-9">
-                                                                                <span>{{project.subject}}</span>
-                                                                                 <span class="type-work full-time"> {{project.from_date}} - {{project.to_date}}</span>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <!-- Logo Design -->
-                                                                        <ul class="row">
-                                                                        <li class="col-sm-3">
-                                                                            <h6><i class="fa fa-plus"></i> Content</h6>
-                                                                        </li>
-                                                                        <li class="col-sm-9">
-                                                                            <span>{{project.content}}</span>
-                                                                        </li>
-                                                                    </ul>
-
-                                                                    </div>
-                                                                    <br>
-                                                                    <h6 class="title-company"><div class="fa fa-asterisk">&nbsp &nbsp </div>Describe of product</h6>
-                                                                    <p>{{project.describe}}.
-                                                                    </p>
-                                                                    <h6 class="title-tags">Skills required:</h6>
-                                                                    <ul class="tags list-inline">
-                                                                        <li><a href="#">Javascript</a></li>
-                                                                        <li><a href="#">Wordpress</a></li>
-                                                                        <li><a href="#">Presta</a></li>
-                                                                        <li><a href="#">Sass</a></li>
-                                                                    </ul>
-                                                                    <br>
-                                                                    <br>
-                                                                    <div>
-                                                                        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" value="EDIT">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="listing-ver-3">
-                                                            <div class="listing-heading">
-                                                                <h5>Front-End Web Developer</h5>
-                                                            </div>
-                                                            <div class="listing-inner">
-                                                                <div class="listing-content">
-                                                                    <div class="job-skills">
-
-                                                                        <!-- Logo Design -->
-                                                                        <ul class="row">
-                                                                            <li class="col-sm-3">
-                                                                                <h6><i class="fa fa-plus"></i> Subject</h6>
-                                                                            </li>
-                                                                            <li class="col-sm-5">
-                                                                                <span>{{project.subject}}</span>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <!-- Logo Design -->
-                                                                        <ul class="row">
-                                                                            <li class="col-sm-3">
-                                                                                <h6><i class="fa fa-plus"></i> Content</h6>
-                                                                            </li>
-                                                                            <li class="col-sm-5">
-                                                                                <span>A website find jobs</span>
-                                                                            </li>
-                                                                        </ul>
-
-                                                                    </div>
-                                                                    <br>
-                                                                    <h6 class="title-company"><div class="fa fa-asterisk">&nbsp &nbsp </div>Describe of product</h6>
-                                                                    <p>Proin gravida nibh vel velit auctor aliquet
-                                                                        aenean sollicitudin, lorem quis bibendum
-                                                                        auctor, nisi elit consequat ipsum, nec
-                                                                        sagittis sem nibh id elit. Duis sed odio sit
-                                                                        amet nibh vulputate cursus a sit amet
-                                                                        mauris. Morbi accumsan ipsum velit. Nam nec
-                                                                        tellus a odio tincidunt auctor a ornare odio
-                                                                        pellentesque habitant morbi tristique
-                                                                        senectus et netus et malesuada. <a
-                                                                                href="single_job.html">read more</a>
-                                                                    </p>
-                                                                    <h6 class="title-tags">Skills required:</h6>
-                                                                    <ul class="tags list-inline">
-                                                                        <li><a href="#">Javascript</a></li>
-                                                                        <li><a href="#">Wordpress</a></li>
-                                                                        <li><a href="#">Presta</a></li>
-                                                                        <li><a href="#">Sass</a></li>
-                                                                    </ul>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
+                                                    <div class="listing-section" ng-if="!status.toggle"
+                                                         ng-include="'src/scripts/user/profile_user/education/form.content.html'">
                                                     </div>
 
+                                                    <div class="listing-section" ng-if="status.toggle"
+                                                         ng-include="'src/scripts/user/profile_user/education/form.edit.html'">
+                                                    </div>
                                                 </div>
-
-
                                             </div>
-
-                                            <!-- Professional Details -->
                                         </div>
-
-                                        <!-- Col -->
-
                                     </div>
                                 </div>
-
-                                <!-- Jobs -->
                             </div>
+                            <!-- Jobs -->
                         </div>
                     </div>
                 </div>
@@ -259,7 +148,7 @@
         </div>
     </div>
 </div>
-
+</div>
 
 
 <script>
@@ -277,7 +166,7 @@
 <div class="form-group">
 
     <div class="bd-example">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="exampleModaledu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeledu"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -285,54 +174,135 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="exampleModalLabel">Edit Project</h4>
+                        <h4 class="modal-title" id="exampleModalLabeledu">Add Project</h4>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label class="form-control-label" >Name Project:</label>
-                                <input type="text" class="form-control"
-                                       ng-model="skill">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Name Project:</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" ng-model="editProject.name"
+                                               placeholder="Enter name project...">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label  class="form-control-label" >Subject :</label>
-                                <input type="text" class="form-control"
-                                       ng-model="skill">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Subject :</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" ng-model="editProject.subject"
+                                               placeholder="Enter subject...">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-control-label" >Content:</label>
-                                <input type="text" class="form-control"
-                                       ng-model="skill">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" >Skills required :</label>
-                                <input type="text" class="form-control"
-                                       ng-model="skill">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" >Day start :</label>
-                                <input type="text" class="form-control"
-                                       >
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" >Day end :</label>
-                                <input type="text" class="form-control"
-                                      >
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Content:</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" ng-model="editProject.content"
+                                               placeholder="Enter content...">
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="form-control-label" >Describe of product :</label>
-                                <textarea rows="4" cols="50"
-                                          placeholder="Enter describe..."></textarea>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Skills require :</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" ng-model="SkillRe.name">
+                                        <!--<ul class="tags list-inline">-->
+                                            <!--<li style="cursor:pointer"-->
+                                                <!--ng-repeat="skill in skillReqs" ng-init="index = $index">-->
+                                                <!--<a ng-class="{red : isred}" ng-model="skill.id"-->
+                                                   <!--ng-click="find(skill.id)">-->
+                                                    <!--<span ng-click="isred = !isred">{{skill.name}}</span>-->
+                                                <!--</a>-->
+
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <!--<a ng-click="chooseAcceppSkill()"><i class="edit-pen fa fa-check">-->
+                                        <!--</i></a>-->
+                                        <!--<button type="button" class="btn btn-warning" ng-click="index()">Add</button>-->
+                                        <button type="button" class="btn btn-warning" ng-click="addSkillReq()">Add</button>
+                                    </div>
+                                </div>
+
+                                <!--<div class="row" ng-repeat="skill in plusSkills">-->
+                                    <!--<div class="col-sm-2">-->
+                                        <!--<label class="form-control-label">Skills require {{skill.index}}:</label>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-9" >-->
+                                            <!--&lt;!&ndash;<li ng-repeat="skill in choosed"><a>{{skill.name}}</a>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                                                <!--<input type="text" ng-model="test">-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-1">-->
+                                        <!--<a><i class="edit-pen fa fa-remove" ng-click="deleteIndex(skill.index)">-->
+                                        <!--</i></a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Day start :</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="input-group date">
+                                            <div class="dateholder">
+                                                <input type="date" class="datepicker" ng-model="editProject.from_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Day end :</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="input-group date">
+                                            <div class="dateholder">
+                                                <input type="date" class="datepicker" ng-model="editProject.to_date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Describe of product :</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="4" cols="50" ng-model="editProject.describe"
+                                                  placeholder="Enter describe..."
+                                                  ng-model="editProject.describe"></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                     {{updateSkill}}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary " ng-click="postSkill()">Add</button>
+                        <button type="button" class="btn btn-primary " ng-click="createProject()">Add</button>
                     </div>
                 </div>
             </div>

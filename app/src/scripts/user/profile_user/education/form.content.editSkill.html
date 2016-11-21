@@ -1,0 +1,21 @@
+<ul class="row">
+    <li class="col-sm-3">
+        <h6 class="title-tags">Skills required:</h6>
+    </li>
+    <li class="col-sm-9">
+        <div class="row">
+            <div class="col-sm-9">
+                <ul class="tags list-inline">
+                    <li ng-repeat="skill in editer.skills">
+                        <div><a href="">{{skill.name}}</a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <div class="editskill">
+                    <a ><i class="fa fa-edit" ng-click="changeformeditskill()"></i></a>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

@@ -9,6 +9,7 @@
     </div>
 </div>
 
+
 <!-- Compny Profile -->
 <div class="compny-profile">
 
@@ -88,63 +89,33 @@
                                         <div class="sidebar">
                                             <h5 class="main-title">Skills</h5>
                                             <div class="job-skills">
-
-                                                <!-- Logo Design -->
-                                                <ul class="row" ng-repeat= "skill in user.skills">
-                                                    <li class="col-sm-3">
-                                                        <h6><i class="fa fa-plus"></i> &nbsp {{skill.name}}</h6>
-                                                    </li>
-                                                    <li class="col-sm-9">
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar"
-                                                                 aria-valuenow="60" aria-valuemin="0"
-                                                                 aria-valuemax="100" style="width: {{skill.level}}%;"></div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <br>
-                                                <ul class="row">
-                                                    <li class="col-sm-4">
-                                                            <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" value="ADD SKILL">
-                                                    </li>
-                                                    <li class="col-sm-8">
-
-                                                    </li>
-                                                </ul>
+                                                <div  ng-if="!statusSkill.toggle"
+                                                      ng-include="'src/scripts/user/profile_user/update_skill/form.content.skill.html'">
+                                                </div>
+                                                <div  ng-if="statusSkill.toggle"
+                                                      ng-include="'src/scripts/user/profile_user/update_skill/form.edit.skill.html'">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="sidebar">
+                                            <h5 class="main-title">Language</h5>
                                             <div class="job-skills">
-                                                <h5 class="main-title">Language</h5>
-
-                                                <!-- Logo Design -->
                                                 <ul class="row">
-                                                    <li class="col-sm-9">
+                                                    <li class="col-sm-12">
                                                         <ul class="single-category com-rate">
-                                                            <li class="row">
-                                                                <h6 class="title col-xs-4">English:</h6>
-                                                                <span class="col-xs-6"><i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                    <i class="fa fa-star-o"></i>
-                                                                </span></li>
-                                                        </ul>
-                                                        <br>
-                                                        <ul class="row">
-                                                            <li class="col-sm-4">
-                                                                <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo" value="ADD LANGUAGE">
+                                                            <li class="row" ng-if="!status.toggle"
+                                                                ng-include="'src/scripts/user/profile_user/update_skill/form.content.language.html'">
                                                             </li>
-                                                            <li class="col-sm-8">
-
+                                                            <li class="row" ng-if="status.toggle"
+                                                                ng-include="'src/scripts/user/profile_user/update_skill/form.edit.language.html'">
                                                             </li>
                                                         </ul>
-
                                                     </li>
                                                 </ul>
                                                 <br>
                                             </div>
                                         </div>
+                                        <div class="back"><a href="" ng-click="doTheBack()">Back</a></div>
 
                                     </div>
 
@@ -153,6 +124,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -160,7 +132,7 @@
 </div>
 
 <script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
+    $('#exampleModal').on('show.bs.modal1', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var recipient = button.data('whatever') // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -171,7 +143,7 @@
     })
 </script>
 <script>
-    $('#exampleModal1').on('show.bs.modal', function (event) {
+    $('#exampleModal1').on('show.bs.modal1', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var recipient = button.data('whatever') // Extract info from data-* attributes
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -181,6 +153,7 @@
         modal.find('.modal-body input').val(recipient)
     })
 </script>
+
 
 <div class="form-group">
 
@@ -198,16 +171,16 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label" >Skill:</label>
-                                <input type="text" class="form-control" id="recipient-name"
-                                       ng-model="skill">
+                                <label for="recipient-name1" class="form-control-label">Skill:</label>
+                                <input type="text" class="form-control" id="recipient-name1"
+                                       placeholder="Enter skill..." ng-model="editSkill.name">
                             </div>
 
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Levels Skill:</label>
+                                <label for="recipient-name1" class="form-control-label">Levels Skill:</label>
                                 <form>
                                     <input class="datalist" type="text" list="levels1"
-                                        ng-model="levelSkill"   placeholder="Choose level ..."/>
+                                           ng-model="editSkill.level" placeholder="Choose level ..."/>
                                     <datalist id="levels1">
                                         <option value="Beginner"/>
                                         <option value="Elementary"/>
@@ -219,14 +192,12 @@
                             </div>
 
 
-
-
                         </form>
                     </div>
                     {{updateSkill}}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary " ng-click="postSkill()">Add</button>
+                        <button type="button" class="btn btn-primary " ng-click="createSkill()">Add</button>
                     </div>
                 </div>
             </div>
@@ -243,19 +214,20 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="exampleModalLabel1">Update Language</h4>
+                        <h4 class="modal-title" id="exampleModalLabel1">Add Language</h4>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Language:</label>
-                                <input type="text" class="form-control" id="recipient-name1" ng-model="language">
+                                <label for="recipient-name2" class="form-control-label">Language:</label>
+                                <input type="text" class="form-control" placeholder="Enter name language..." id="recipient-name2"
+                                       ng-model="editLang.name">
                             </div>
 
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Levels Language:</label>
+                                <label for="recipient-name2" class="form-control-label">Levels Language:</label>
                                 <form>
-                                    <input class="datalist" type="text" list="levels12" ng-model="levelLanguage"
+                                    <input class="datalist" type="text" list="levels12" ng-model="editLang.level"
                                            placeholder="Choose level ..."/>
                                     <datalist id="levels12">
                                         <option value="Beginner"/>
@@ -270,10 +242,60 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Add</button>
+                        <button type="button" class="btn btn-primary" ng-click="createLang()">Add</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="form-group">
+
+    <div class="bd-example">
+        <div class="modal fade" id="edit_skill" tabindex="-1" role="dialog" aria-labelledby="exEditSkill"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                        <h4 class="modal-title" id="exEditSkill">Edit skill</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient3-name" class="form-control-label">Name Skill:</label>
+                                <input type="text" class="form-control" id="recipient3-name"
+                                       ng-model="skill">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="recipient3-name" class="form-control-label">Levels Skill:</label>
+                                <form>
+                                    <input class="datalist" type="text" list="levels1"
+                                           ng-model="levelSkill" placeholder="Choose level ..."/>
+                                    <datalist id="levelsSkill">
+                                        <option value="Beginner"/>
+                                        <option value="Elementary"/>
+                                        <option value="Intermediate"/>
+                                        <option value="Advanced"/>
+                                        <option value="Proficient"/>
+                                    </datalist>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+                    {{updateSkill}}
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary " ng-click="">Add</button>
+                        <button type="button" class="btn btn-danger" ng-click="">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

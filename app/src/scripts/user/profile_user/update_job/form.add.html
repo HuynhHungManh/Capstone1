@@ -1,0 +1,112 @@
+<div class="listing-ver-3">
+    <div class="listing-heading">
+        <h5>{{editer.name_of_company}}</h5>
+    </div>
+    <div class="listing-inner">
+        <div class="listing-content">
+            <div class="job-skills">
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Name company :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" value="{{editer.name_of_company}}">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Address :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" value="{{editer.address_of_company}}">
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Time :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        from : <input type="date" class="datepicker"  ng-model="daystart" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        to : <input type="date" class="datepicker" ng-model="dayend">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Phone :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" value="{{editer.phone_of_company}}">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Website of company :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" value="{{editer.website_of_company}}">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Type work :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" value="{{editer.type_work}}">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-plus"></i> Position :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" value="{{editer.position}}">
+                    </li>
+                </ul>
+
+            </div>
+            <br>
+            <h6 class="title-company">
+                <div class="fa fa-asterisk">&nbsp &nbsp</div>
+                Describe of company
+            </h6>
+            <p><textarea rows="4" cols="50"
+                         placeholder="Enter describe...">{{editer.describe}}</textarea>
+            </p>
+            <div>
+                <input type="button" class="btn btn-primary"
+                       value="Save">
+                <input type="button" class="btn btn-primary" ng-click="close()"
+                       value="Close">
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>

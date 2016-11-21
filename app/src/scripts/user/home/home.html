@@ -13,7 +13,8 @@
                         <div class="text-area">
                             <div class="position-center-center col-md-10">
                                 <h1> Need to find job listings fast?</h1>
-                                <h6>The job website e-PORTFOLIO.com is an excellent resource for finding job listings quickly. </h6>
+                                <h6>The job website e-PORTFOLIO.com is an excellent resource for finding job listings
+                                    quickly. </h6>
                             </div>
                         </div>
                     </div>
@@ -23,38 +24,82 @@
                         <div class="login-sec">
 
                             <!-- TABS -->
+                            <!--<div class="uou-tabs">-->
+                            <!--<ul class="tabs">-->
+                            <!--<li class="active"><a href="#register" data-toggle="modal" data-target="#exampleModal"  >Register Now</a></li>-->
+
+                            <!--<li ><a href="">Member Login</a></li>-->
+                            <!--</ul>-->
+
+                            <!--&lt;!&ndash; REGISTER &ndash;&gt;-->
+                            <!--<div class="content">-->
+                            <!--<div id="register">-->
+                            <!--<form>-->
+                            <!--<input type="text" placeholder="Full Name">-->
+                            <!--<input type="email" placeholder="Email Address">-->
+                            <!--<input type="text" placeholder="Phone">-->
+                            <!--<input type="password" placeholder="Password">-->
+                            <!--<button type="submit">Register</button>-->
+                            <!--</form>-->
+                            <!--</div>-->
+
+                            <!--&lt;!&ndash; LOGIN &ndash;&gt;-->
+                            <!--<div id="log-in" class="active">-->
+                            <!--<form>-->
+                            <!--<input type="email" placeholder="Email Address" ng-model="email">-->
+                            <!--<input type="password" placeholder="Password" ng-model="password">-->
+                            <!--<button type="submit" ng-click="login()">Login</button>-->
+
+                            <!--</form>-->
+                            <!--</div>-->
+                            <!--<div id="forget">-->
+                            <!--<form>-->
+                            <!--<input type="email" placeholder="Email Address">-->
+                            <!--<button type="submit">Login</button>-->
+                            <!--</form>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
                             <div class="uou-tabs">
                                 <ul class="tabs">
-                                    <li class="active"><a href="#register" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >Register Now</a></li>
-
-                                    <li ><a href="">Member Login</a></li>
+                                    <li class="active"><a href="#register" data-toggle="modal" data-target="#exampleModal321">Register
+                                        Now</a></li>
+                                    <li ><a href="#log-in">Member Login</a></li>
                                 </ul>
 
                                 <!-- REGISTER -->
                                 <div class="content">
-                                    <div id="register">
+                                    <div id="register" >
                                         <form>
                                             <input type="text" placeholder="Full Name">
                                             <input type="email" placeholder="Email Address">
                                             <input type="text" placeholder="Phone">
                                             <input type="password" placeholder="Password">
                                             <button type="submit">Register</button>
+                                            <div class="login-with"><span>Or login with:</span> <a href="#."><i
+                                                    class="fa fa-facebook"></i></a> <a href="#."><i
+                                                    class="fa fa-google"></i></a> <a href="#."><i
+                                                    class="fa fa-linkedin"></i></a></div>
                                         </form>
                                     </div>
 
                                     <!-- LOGIN -->
                                     <div id="log-in" class="active">
                                         <form>
-                                            <input type="email" placeholder="Email Address" ng-model="email">
+                                            <input type="text" placeholder="Email Address or user..."
+                                                   ng-model="emailVsUser">
                                             <input type="password" placeholder="Password" ng-model="password">
                                             <button type="submit" ng-click="login()">Login</button>
-
+                                            <!--<div class="login-with"> <span>Or login with:</span> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-google"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> </div>-->
+                                            <div class="forget">Forgot your password? <a href="" data-toggle="modal"
+                                                                                         data-target="#exampleModalForget" ng-click=forget()>Click
+                                                Here</a></div>
                                         </form>
                                     </div>
                                     <div id="forget">
                                         <form>
                                             <input type="email" placeholder="Email Address">
-                                            <button type="submit" ng-click="login()">Login</button>
+                                            <button type="submit">Login</button>
                                         </form>
                                     </div>
                                 </div>
@@ -111,16 +156,19 @@
                 <div class="row">
 
                     <!-- PRO IMAGE -->
-                    <div class="col-md-6 pro-inside" style="background:url(resource/user/images/img1.jpg) center center no-repeat";
-                         ></div>
+                    <div class="col-md-6 pro-inside"
+                         style="background:url(resource/user/images/img1.jpg) center center no-repeat" ;
+                    ></div>
 
                     <!-- PRO CONTENT -->
-                    <div class="col-md-6 pro-inside"  >
+                    <div class="col-md-6 pro-inside">
                         <div class="position-center-center col-md-6">
                             <h1>
                                 International faculty</h1>
                             <p> International Training Faculty role as a bridge between
-                                Duy Tan University with partners overseas education reputable. More than 15 universities around the world, welcomed hundreds of delegates from the school to visit and exchange. </p>
+                                Duy Tan University with partners overseas education reputable. More than 15 universities
+                                around the world, welcomed hundreds of delegates from the school to visit and
+                                exchange. </p>
                         </div>
                     </div>
                 </div>
@@ -134,13 +182,16 @@
                     <div class="col-md-6 pro-inside">
                         <div class="position-center-center col-md-6">
                             <h1>Wide infrastructure and modern</h1>
-                            <p> Duy Tan University has 6 training base in Da Nang City with a total area of 36 hectares. Physical facilities and teaching facilities are equipped to ensure training needs students. </p>
+                            <p> Duy Tan University has 6 training base in Da Nang City with a total area of 36 hectares.
+                                Physical facilities and teaching facilities are equipped to ensure training needs
+                                students. </p>
                         </div>
                     </div>
 
                     <!-- PRO BACKGROUND -->
-                    <div class="col-md-6 pro-inside" style="background:url(resource/user/images/img2.jpg) center center no-repeat;"
-                        ></div>
+                    <div class="col-md-6 pro-inside"
+                         style="background:url(resource/user/images/img2.jpg) center center no-repeat;"
+                    ></div>
                 </div>
             </div>
         </section>
@@ -153,7 +204,7 @@
                     <!-- TEXT -->
                     <div class="col-md-6 text-center text-area">
                         <h1>E-PORTFOLIO
-                            </h1>
+                        </h1>
                         <p>Website is essential for the newly graduated students or looking for places to practice. </p>
                         <a href="#."><i class="fa fa-book"></i>Register Now</a></div>
 
@@ -198,20 +249,18 @@
     </div>
 </div>
 <script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
+    $('#exampleModal321').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var recipient = button.data('whatever');
+        var modal = $(this);
+        modal.find('.modal-title').text('Register');
+        modal.find('.modal-body input').val(recipient);
     })
 </script>
 
 <div class="form-group">
     <div class="bd-example">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="exampleModal321" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -224,26 +273,87 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label  class="form-control-label">Username :</label>
-                                <input type="text" class="form-control" placeholder="Enter Username..." id="username">
+                                <label class="form-control-label">Username :</label>
+                                <input type="text" class="form-control" placeholder="Enter Username... "
+                                       ng-model="usernameRegister">
                             </div>
                             <div class="form-group">
-                                <label  class="form-control-label">Email :</label>
-                                <input type="text" class="form-control" placeholder="Enter Email..." id="email">
+                                <label class="form-control-label">Email :</label>
+                                <input type="email" class="form-control" placeholder="Enter Email..."
+                                       ng-model="emailRegister">
                             </div>
                             <div class="form-group">
-                                <label  class="form-control-label">password :</label>
-                                <input type="text" class="form-control" placeholder="Enter password..." id="password">
+                                <label class="form-control-label">DTU id :</label>
+                                <input type="text" class="form-control" placeholder="Enter dtu id..." ng-model="dtu_id">
                             </div>
                             <div class="form-group">
-                                <label  class="form-control-label" >password again :</label>
-                                <input type="text" class="form-control"  placeholder="Enter password again... " id="password-again">
+                                <label class="form-control-label">password :</label>
+                                <input type="password" class="form-control" placeholder="Enter password ... "
+                                       ng-model="passRe">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">password again :</label>
+                                <input type="password" class="form-control" placeholder="Enter password again... "
+                                       ng-model="passwordAgain">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Register</button>
+                        <button type="button" class="btn btn-primary" ng-click="post()">Register</button>
+                        <div class="accept">
+                            {{accept}}
+                            <div class="err">
+                                {{error}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="bd-example">
+        <div class="modal fade" id="exampleModalForget" tabindex="-1" role="dialog" aria-labelledby="exampleForget"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" ng-click="isToggleForget=!isToggleForget" class="close"
+                                data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="exampleForget">Enter Email Now</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group" ng-show="isToggleForget">
+                                <label class="form-control-label">Email :</label>
+                                <input type="text" class="form-control" placeholder="Enter Email... "
+                                       ng-model="emailForget">
+                            </div>
+                            <div class="acceptForget">
+                                {{acceptForget}}
+                            </div>
+                            <div class="errForget">
+                                {{errForger}}
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="closeForget()">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" ng-click="SubForgetPass()">Submit</button>
+                        <div class="accept">
+                            {{accept}}
+                            <div class="err">
+                                {{error}}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

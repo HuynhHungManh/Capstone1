@@ -1,0 +1,29 @@
+<div ng-repeat="lang in langs">
+    <div class="skillLang row">
+        <div class="skillleft col-xs-3">
+            <h6 class="title">{{lang.name}}:</h6>
+        </div>
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-9"> {{lang.level}}!</div>
+                <div class="col-xs-3">
+                    <!--<a><i class="edit-pen fa fa-remove" ng-click="changeform()">-->
+                    <!--</i></a>-->
+                    <a><i class="edit-pen fa fa-edit" ng-click="changeform(lang.id)">
+                    </i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<br>
+<ul class="row">
+    <li class="col-sm-4">
+        <input type="button" class="btn btn-primary"
+               data-toggle="modal" data-target="#exampleModal1"
+               value="ADD LANGUAGE">
+    </li>
+    <li class="col-sm-8">
+    </li>
+</ul>
