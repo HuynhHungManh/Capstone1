@@ -13,8 +13,6 @@ angular.module('myApp')
         $scope.isShowIconInter = false;
         $scope.dataLogin = {};
         $rootScope.isGolbalUser = false;
-
-
         $scope.dataStore = $cookieStore.get('DataLogin');
 
 
@@ -67,11 +65,31 @@ angular.module('myApp')
         }
 
 
+        $rootScope.checkCompany = function () {
+            if ($rootScope.isToggleLogout == true) {
+                $state.go('profile_company');
+            }
+            else {
+                alert("Please login Website !");
+            }
+        };
+        $rootScope.checkUser = function () {
+            if ($rootScope.isToggleLogout == true) {
+                $state.go('profile_user', {"username": $cookieStore.get('DataLogin').StoreUser});
+
+            }
+            else {
+                console.log($cookieStore.get('DataLogin').StoreUser);
+                alert("Please login Website !");
+            }
+
+        }
+
+
         Profile_userService.fetchAllUser()
             .then(function (response) {
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
-
 
                 if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
                     $scope.isToggle = true;

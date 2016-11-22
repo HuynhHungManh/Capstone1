@@ -8,19 +8,22 @@ angular.module('myApp')
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
         $rootScope.isSearch = false;
-        if($cookieStore.get("isToggleLogout") == undefined){
+        if ($cookieStore.get("isToggleLogout") == undefined) {
             $rootScope.isToggleLogout = false;
         }
 
 
+        if($rootScope.isToggleLogout == false){
+            $scope.dataLogin = {
+                "ToggleLogin": "",
+                "StoreUser": "",
+                "access_token": ""
+            };
+            $cookieStore.put("DataLogin", $scope.dataLogin);
+        }
 
+        console.log( $cookieStore.get("DataLogin").StoreUser);
 
-        // $scope.dataLogin = {
-        //     "ToggleLogin": "",
-        //     "StoreUser": "",
-        //     "access_token": ""
-        // };
-        $cookieStore.put("DataLogin", $scope.dataLogin);
 
         $scope.changeLog = function () {
             $scope.isLogAndRes = !$scope.isLogAndRes;
@@ -72,24 +75,6 @@ angular.module('myApp')
                         $cookieStore.put("DataLogin", $scope.dataLogin);
                         $rootScope.isToggleLogout = true;
                         $cookieStore.put("isToggleLogout", $rootScope.isToggleLogout);
-
-                        $rootScope.checkCompany = function () {
-                            if ($cookieStore.get('DataLogin') != undefined) {
-                                $state.go('profile_company');
-                            }
-                            else {
-                                alert("Please login Website !");
-                            }
-                        };
-                        $rootScope.checkUser = function () {
-                            if ($cookieStore.get('DataLogin') != undefined) {
-                                $state.go('profile_user', {"username": $cookieStore.get('DataLogin').StoreUser});
-                            }
-                            else {
-                                alert("Please login Website !");
-                            }
-                        };
-
                     })
                     .catch(function () {
                         alert("Username or password faild, please enter again !");
@@ -185,7 +170,7 @@ angular.module('myApp')
 
         $scope.post = function () {
             $scope.err = "";
-            if (  dtu_id1($scope.dtu_id) == true  && validateUsername($scope.usernameRegister) == true && testemail($scope.emailRegister) == true
+            if (dtu_id1($scope.dtu_id) == true && validateUsername($scope.usernameRegister) == true && testemail($scope.emailRegister) == true
                 && password($scope.passRe) == true && passwordAgain($scope.passRe, $scope.passwordAgain) == true) {
                 var data = {
                     "username": $scope.usernameRegister,

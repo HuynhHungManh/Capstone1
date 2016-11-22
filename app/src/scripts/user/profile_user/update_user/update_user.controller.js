@@ -2,7 +2,7 @@
  * Created by PC on 10/12/2016.
  */
 angular.module('myApp')
-    .controller('Update_userController', function ($scope, $stateParams, $filter, Update_userService,
+    .controller('Update_userController', function ($state,$scope, $stateParams, $filter, Update_userService,
                                                    $rootScope, $cookies, $cookieStore ,$window) {
 
         $scope.data = $cookieStore.get('DataLogin');

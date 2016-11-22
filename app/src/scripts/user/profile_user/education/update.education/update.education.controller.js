@@ -13,13 +13,7 @@ angular.module('myApp')
             .then(function (res) {
                 $scope.user = $filter('filter')(res.data, {username: $stateParams.username})[0];
                 $scope.education = $scope.user.educations[0];
-
-                if ($scope.education.name_of_school == undefined ||
-                    $scope.education.address_of_school == undefined ||
-                    $scope.education.describe == undefined || $scope.education.major == undefined ||
-                    $scope.education.achiviement == undefined) {
-                    alert("Please enter education.. !");
-                }
+                console.log($scope.education);
 
                 $scope.createEdu = function () {
                     $scope.updateEduca.personalId = $scope.user.id;

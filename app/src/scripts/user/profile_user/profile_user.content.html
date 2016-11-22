@@ -9,44 +9,11 @@
             <div class="buttonRightImg">
                 <a href=""><img
                         src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"
-                        height="70" width="70"></a></div>
+                       ></a></div>
         </div>
     </div>
 
     <!-- Modal POPUP -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <h6><a class="close" href="#." data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></a> Send Message</h6>
-                    <!-- Forms -->
-                    <form action="#">
-                        <ul class="row">
-                            <li class="col-xs-6">
-                                <input type="text" placeholder="First Name ">
-                            </li>
-                            <li class="col-xs-6">
-                                <input type="text" placeholder="Last Name">
-                            </li>
-                            <li class="col-xs-6">
-                                <input type="text" placeholder="Country">
-                            </li>
-                            <li class="col-xs-6">
-                                <input type="text" placeholder="Email">
-                            </li>
-                            <li class="col-xs-12">
-                                <textarea placeholder="Your Message"></textarea>
-                            </li>
-                            <li class="col-xs-12">
-                                <button class="btn btn-primary">Send message</button>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- Profile Company Content -->
@@ -83,11 +50,9 @@
                                                                           alt=""></div>
                                         </div>
                                         <div class="media-body">
-                                            <p>{{user.status}}<br>
-                                                <br>
-                                                {{user.desscribe}} <br>
-                                                <br>
-                                            </p>
+                                            <div class="indexdes">
+                                                {{user.desscribe}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +116,7 @@
                                         <div class="comment" ng-show="isToggleCom">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <img src="{{pic}}">
+                                                    <img src="{{pic}} ">
                                                 </div>
                                                 <div class="col-md-8">
                                                         <textarea placeholder="Enter text here..."
@@ -168,9 +133,11 @@
                                         <hr>
                                         <div class="media" ng-repeat="com in showComment" id="321">
                                             <div class="media-left">
-                                                <div class="inn-simi"><img class="media-object"
-                                                                           ng-src="{{com.commentator.picture}}"
-                                                                           alt=""></div>
+                                                <div class="inn-simi">
+                                                    <div class="imgCom"><img class="media-object"
+                                                                             ng-src="{{com.commentator.picture}}"
+                                                    ></div>
+                                                </div>
                                             </div>
                                             <div class="media-body">
                                                 <h5>
@@ -224,6 +191,9 @@
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Phone</h6>
                                                 <span class="subtitle col-xs-6">{{user.phone}}</span></li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Status</h6>
+                                                <span class="subtitle col-xs-6">{{user.status}}</span></li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Email</h6>
                                                 <span class="subtitle col-xs-6"><a

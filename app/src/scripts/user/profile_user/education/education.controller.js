@@ -112,6 +112,8 @@ angular.module('myApp')
                 $scope.infoEducations = response.data;
                 $scope.user = $filter('filter')($scope.infoEducations, {username: $stateParams.username})[0];
                 $scope.education = $scope.user.educations[0];
+
+
                 $scope.skillReqs = $scope.user.skills;
                 for (var i = 0; i < $scope.skillReqs.length; i++) {
                     $scope.temp = {'id': '', 'name': '', 'bool': ''};
