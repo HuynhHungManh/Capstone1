@@ -6,273 +6,279 @@
                 <h2>PROFILE</h2>
                 <h5>Information Student</h5>
             </div>
+            <div class="buttonRightImg">
+                <a href=""><img
+                        src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"
+                        height="70" width="70"></a></div>
         </div>
+    </div>
 
-        <!-- Modal POPUP -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="container">
-                        <h6><a class="close" href="#." data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></a> Send Message</h6>
-                        <!-- Forms -->
-                        <form action="#">
-                            <ul class="row">
-                                <li class="col-xs-6">
-                                    <input type="text" placeholder="First Name ">
-                                </li>
-                                <li class="col-xs-6">
-                                    <input type="text" placeholder="Last Name">
-                                </li>
-                                <li class="col-xs-6">
-                                    <input type="text" placeholder="Country">
-                                </li>
-                                <li class="col-xs-6">
-                                    <input type="text" placeholder="Email">
-                                </li>
-                                <li class="col-xs-12">
-                                    <textarea placeholder="Your Message"></textarea>
-                                </li>
-                                <li class="col-xs-12">
-                                    <button class="btn btn-primary">Send message</button>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
+    <!-- Modal POPUP -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <h6><a class="close" href="#." data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></a> Send Message</h6>
+                    <!-- Forms -->
+                    <form action="#">
+                        <ul class="row">
+                            <li class="col-xs-6">
+                                <input type="text" placeholder="First Name ">
+                            </li>
+                            <li class="col-xs-6">
+                                <input type="text" placeholder="Last Name">
+                            </li>
+                            <li class="col-xs-6">
+                                <input type="text" placeholder="Country">
+                            </li>
+                            <li class="col-xs-6">
+                                <input type="text" placeholder="Email">
+                            </li>
+                            <li class="col-xs-12">
+                                <textarea placeholder="Your Message"></textarea>
+                            </li>
+                            <li class="col-xs-12">
+                                <button class="btn btn-primary">Send message</button>
+                            </li>
+                        </ul>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Profile Company Content -->
-    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
-        <div class="container">
-            <div class="row">
+<!-- Profile Company Content -->
+<div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+    <div class="container">
+        <div class="row">
 
-                <!-- Nav Tabs -->
-                <div class="col-md-12">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab"
-                                              href="#/profile_user/username={{user.username}}">Profile</a></li>
-                        <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
-                        <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
-                        <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
-                    </ul>
-                </div>
+            <!-- Nav Tabs -->
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a>
+                    </li>
+                    <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
+                    <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
+                    <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
+                    <li><a data-toggle="tab" href="#/confirm/username={{user.username}}">Approve</a></li>
+                </ul>
+            </div>
 
-                <!-- Tab Content -->
-                <div class="col-md-12">
-                    <div class="tab-content">
+            <!-- Tab Content -->
+            <div class="col-md-12">
+                <div class="tab-content">
 
-                        <!-- PROFILE -->
-                        <div id="profile" class="tab-pane fade in active">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="profile-main">
-                                        <h3>About</h3>
-                                        <div class="profile-in">
-                                            <div class="media-left">
-                                                <div class="img-profile"><img class="media-object"
-                                                                              src="{{picture}}"
-                                                                              alt=""></div>
-                                            </div>
-                                            <div class="media-body">
-                                                <p>{{user.status}}<br>
-                                                    <br>
-                                                    {{user.desscribe}} <br>
-                                                    <br>
-                                                </p>
-                                            </div>
+                    <!-- PROFILE -->
+                    <div id="profile" class="tab-pane fade in active">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="profile-main">
+                                    <h3>About</h3>
+                                    <div class="profile-in">
+                                        <div class="media-left">
+                                            <div class="img-profile"><img class="media-object"
+                                                                          src="{{picture}}"
+                                                                          alt=""></div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <!-- Skills -->
-                                    <div class="sidebar">
-                                        <h5 class="main-title">Skills</h5>
-                                        <div class="job-skills">
-                                            <ul class="row" ng-repeat="skill in user.skills">
-                                                <li class="col-sm-3">
-                                                    <h6><i class="fa fa-check"></i>{{skill.name}}</h6>
-                                                </li>
-                                                <li class="col-sm-9">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" role="progressbar"
-                                                             aria-valuenow="60" aria-valuemin="0"
-                                                             aria-valuemax="100"
-                                                             style="width: {{skill.level}}%;"></div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <br>
-                                        <div>
-                                            <a href="#/update_skill/username={{user.username}}">
-                                                <input type="submit" class="btn btn-primary" value="Edit"
-                                                       ng-show="isToggle">
-                                            </a>
-                                        </div>
-                                        <h5 class="main-title"></h5>
-                                        <div class="job-skills">
-                                            <h5 class="main-title">Language</h5>
-
-                                            <!-- Logo Design -->
-                                            <ul class="row">
-                                                <li class="col-sm-9">
-                                                    <ul class="single-category com-rate">
-                                                        <li class="row" ng-repeat="lang in langs">
-                                                            <h6 class="title col-xs-4">{{lang.name}}:</h6>
-                                                            <span class="lang col-xs-6">
-                                                                    {{lang.level}}
-                                                                </span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                            <br>
-                                        </div>
-                                        <div>
-                                            <a href="#/update_skill/username={{user.username}} ">
-                                                <input type="submit" class="btn btn-primary" value="Edit"
-                                                       ng-show="isToggle">
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                    <div class="sidebar">
-                                        <h5 class="main-title">Similar Professionals</h5>
-                                        <!-- Similar -->
-                                        <div class="similar">
-                                            <div class="comment" ng-show="isToggleCom">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <img src="{{pic}}">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <textarea placeholder="Enter text here..."
-                                                                  ng-model="comment.content"></textarea>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <div class="media-left">
-                                                            <div class="inn-simi"><a ng-click="createCom()">Comment </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="media" ng-repeat="com in showComment" id="321">
-                                                <div class="media-left">
-                                                    <div class="inn-simi"><img class="media-object"
-                                                                              ng-src="{{com.commentator.picture}}"
-                                                                               alt=""></div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5>
-                                                        {{com.commentator.lastName}}&nbsp;{{com.commentator.firstName}}</h5>
-
-                                                    <p>Working at {{com.commentator.jobs[0].name_of_company}}.</p>
-                                                    <p>{{com.content}}
-                                                        <a><i class="edit-pen fa fa-remove"
-                                                              ng-click="deleteCom(com.id)">
-                                                        </i></a>
-                                                        <a><i ng-show="isCom" class="edit-pen fa fa-edit"
-                                                              ng-click="isEditCom = !isEditCom">
-                                                        </i></a>
-                                                    </p>
-                                                    <div ng-if="!isEditCom"
-                                                         ng-include="'src/scripts/user/profile_user/form.content.comment.html'">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Professional Details -->
-
-                                </div>
-
-                                <!-- Col -->
-                                <div class="col-md-4">
-
-                                    <!-- Professional Details -->
-                                    <div class="sidebar">
-                                        <h5 class="main-title">Professional Details</h5>
-                                        <div class="sidebar-information">
-                                            <ul class="single-category">
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Firts Name</h6>
-                                                    <span class="subtitle col-xs-6">{{user.firstName}}</span></li>
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Firts Name</h6>
-                                                    <span class="subtitle col-xs-6">{{user.lastName}}</span></li>
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">BirthDay</h6>
-                                                    <span class="subtitle col-xs-6">{{user.birthDay}}</span></li>
-                                                <li class="row">
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Degree</h6>
-                                                    <span class="subtitle col-xs-6">{{user.degree}}</span></li>
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Sex</h6>
-                                                    <span class="subtitle col-xs-6">{{user.sex}}</span></li>
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Phone</h6>
-                                                    <span class="subtitle col-xs-6">{{user.phone}}</span></li>
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Email</h6>
-                                                    <span class="subtitle col-xs-6"><a
-                                                            href="#.">{{user.email}}</a></span>
-                                                </li>
-                                                <li class="row">
-                                                    <h6 class="title col-xs-6">Status</h6>
-                                                    <span class="subtitle col-xs-6">{{user.status}}</a></span>
-                                                </li>
+                                        <div class="media-body">
+                                            <p>{{user.status}}<br>
                                                 <br>
-                                            </ul>
-                                            <a href="#/update_user/username={{user.username}} ">
-                                                <input type="submit" class="btn btn-primary" value="Update"
-                                                       ng-show="isToggle">
-                                            </a>
-                                            <!--<button ng-click="isToggle = !isToggle">Toggle</button>-->
-                                        </div>
-                                    </div>
-                                    <div class="sidebar">
-                                        <h5 class="main-title">Interest Details
-                                                <a ng-if = "isShowIconInter"><i ng-show="iconShow" class="edit-pen fa fa-undo"
-                                                      ng-click="addInter()">
-                                                </i></a>
-                                                <a ng-if = "isShowIconInter"><i ng-show="!iconShow" class="edit-pen fa fa-plus"
-                                                      ng-click="addInter()">
-                                                </i></a>
-                                        </h5>
-                                        <div class="row" ng-show="isAddInter">
-                                            <div class="col-md-3">
-                                                Name :
-                                            </div>
-                                            <div class="col-md-7">
-                                                <input type="text" ng-model="inter.name">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <a><i class="edit-pen fa fa-check" ng-click="createInter()">
-                                                </i></a>
-                                            </div>
-
-                                        </div>
-                                        <div class="sidebar-information" ng-if="!isInter"
-                                             ng-include="'src/scripts/user/profile_user/form.content.inter.html'">
-                                        </div>
-                                        <div class="sidebar-information" ng-if="isInter"
-                                             ng-include="'src/scripts/user/profile_user/form.edit.inter.html'">
+                                                {{user.desscribe}} <br>
+                                                <br>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-8">
+                                <!-- Skills -->
+                                <div class="sidebar">
+                                    <h5 class="main-title">Skills</h5>
+                                    <div class="job-skills">
+                                        <ul class="row" ng-repeat="skill in user.skills">
+                                            <li class="col-sm-3">
+                                                <h6><i class="fa fa-check"></i>{{skill.name}}</h6>
+                                            </li>
+                                            <li class="col-sm-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar"
+                                                         aria-valuenow="60" aria-valuemin="0"
+                                                         aria-valuemax="100"
+                                                         style="width: {{skill.level}}%;"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <a href="#/update_skill/username={{user.username}}">
+                                            <input type="submit" class="btn btn-primary" value="Edit"
+                                                   ng-show="isToggle">
+                                        </a>
+                                    </div>
+                                    <h5 class="main-title"></h5>
+                                    <div class="job-skills">
+                                        <h5 class="main-title">Language</h5>
+
+                                        <!-- Logo Design -->
+                                        <ul class="row">
+                                            <li class="col-sm-9">
+                                                <ul class="single-category com-rate">
+                                                    <li class="row" ng-repeat="lang in langs">
+                                                        <h6 class="title col-xs-4">{{lang.name}}:</h6>
+                                                        <span class="lang col-xs-6">
+                                                                    {{lang.level}}
+                                                                </span></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <br>
+                                    </div>
+                                    <div>
+                                        <a href="#/update_skill/username={{user.username}} ">
+                                            <input type="submit" class="btn btn-primary" value="Edit"
+                                                   ng-show="isToggle">
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="sidebar">
+                                    <h5 class="main-title">Similar Professionals</h5>
+                                    <!-- Similar -->
+                                    <div class="similar">
+                                        <div class="comment" ng-show="isToggleCom">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <img src="{{pic}}">
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <textarea placeholder="Enter text here..."
+                                                                  ng-model="comment.content"></textarea>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="media-left">
+                                                        <div class="inn-simi"><a ng-click="createCom()">Comment </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="media" ng-repeat="com in showComment" id="321">
+                                            <div class="media-left">
+                                                <div class="inn-simi"><img class="media-object"
+                                                                           ng-src="{{com.commentator.picture}}"
+                                                                           alt=""></div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5>
+                                                    {{com.commentator.lastName}}&nbsp;{{com.commentator.firstName}}</h5>
+
+                                                <p>Working at {{com.commentator.jobs[0].name_of_company}}.</p>
+                                                <p>{{com.content}}
+                                                    <a><i class="edit-pen fa fa-remove"
+                                                          ng-click="deleteCom(com.id)">
+                                                    </i></a>
+                                                    <a><i ng-show="isCom" class="edit-pen fa fa-edit"
+                                                          ng-click="isEditCom = !isEditCom">
+                                                    </i></a>
+                                                </p>
+                                                <div ng-if="!isEditCom"
+                                                     ng-include="'src/scripts/user/profile_user/form.content.comment.html'">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Professional Details -->
+
+                            </div>
+
+                            <!-- Col -->
+                            <div class="col-md-4">
+
+                                <!-- Professional Details -->
+                                <div class="sidebar">
+                                    <h5 class="main-title">Professional Details</h5>
+                                    <div class="sidebar-information">
+                                        <ul class="single-category">
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Firts Name</h6>
+                                                <span class="subtitle col-xs-6">{{user.firstName}}</span></li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Firts Name</h6>
+                                                <span class="subtitle col-xs-6">{{user.lastName}}</span></li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">BirthDay</h6>
+                                                <span class="subtitle col-xs-6">{{user.birthDay}}</span></li>
+                                            <li class="row">
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Degree</h6>
+                                                <span class="subtitle col-xs-6">{{user.degree}}</span></li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Sex</h6>
+                                                <span class="subtitle col-xs-6">{{user.sex}}</span></li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Phone</h6>
+                                                <span class="subtitle col-xs-6">{{user.phone}}</span></li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Email</h6>
+                                                <span class="subtitle col-xs-6"><a
+                                                        href="#.">{{user.email}}</a></span>
+                                            </li>
+                                            <li class="row">
+                                                <h6 class="title col-xs-6">Status</h6>
+                                                <span class="subtitle col-xs-6">{{user.status}}</a></span>
+                                            </li>
+                                            <br>
+                                        </ul>
+                                        <a href="#/update_user/username={{user.username}} ">
+                                            <input type="submit" class="btn btn-primary" value="Update"
+                                                   ng-show="isToggle">
+                                        </a>
+                                        <!--<button ng-click="isToggle = !isToggle">Toggle</button>-->
+                                    </div>
+                                </div>
+                                <div class="sidebar">
+                                    <h5 class="main-title">Interest Details
+                                        <a ng-if="isShowIconInter"><i ng-show="iconShow" class="edit-pen fa fa-undo"
+                                                                      ng-click="addInter()">
+                                        </i></a>
+                                        <a ng-if="isShowIconInter"><i ng-show="!iconShow" class="edit-pen fa fa-plus"
+                                                                      ng-click="addInter()">
+                                        </i></a>
+                                    </h5>
+                                    <div class="row" ng-show="isAddInter">
+                                        <div class="col-md-3">
+                                            Name :
+                                        </div>
+                                        <div class="col-md-7">
+                                            <input type="text" ng-model="inter.name">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a><i class="edit-pen fa fa-check" ng-click="createInter()">
+                                            </i></a>
+                                        </div>
+
+                                    </div>
+                                    <div class="sidebar-information" ng-if="!isInter"
+                                         ng-include="'src/scripts/user/profile_user/form.content.inter.html'">
+                                    </div>
+                                    <div class="sidebar-information" ng-if="isInter"
+                                         ng-include="'src/scripts/user/profile_user/form.edit.inter.html'">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-
                     </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

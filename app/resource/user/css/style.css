@@ -1259,7 +1259,7 @@ iframe {
 	border-radius: 50%;
 	display: inline-block;
 	margin: 0px;
-	font-size: 12px;
+	font-size: 14px;
 	color: #fff;
 	background: rgba(0,0,0,0.9);
 	transition: all 0.3s;
@@ -3257,7 +3257,9 @@ ul li input[type=radio]{
 .err{
 	color: #bf1923;
 	margin-left: 5px;
-	text-align: center;
+	padding: 30px;
+	font-size: 20px;
+	/*text-align: center;*/
 }
 .top-toolbar{
     width: 100%;
@@ -3453,5 +3455,10 @@ ul.rating {
 }
 .buttonRight{
 	float: right;
+}
+.buttonRightImg{
+	float: right;
+	margin-top: 30px;
+	margin-right: 20px;
 }
 

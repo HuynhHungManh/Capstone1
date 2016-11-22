@@ -7,82 +7,64 @@
                     <h2>EDUCATION</h2>
                     <h5>Information Student </h5>
                 </div>
+                <div class="buttonRightImg">
+                    <a href=""><img
+                            src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"
+                            height="70" width="70"></a></div>
             </div>
         </div>
+    </div>
 
-        <!-- Profile Company Content -->
-        <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
-            <div class="container">
-                <div class="row">
+    <!-- Profile Company Content -->
+    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
 
-                    <!-- Nav Tabs -->
-                    <div class="col-md-12">
-                        <ul class="nav nav-tabs">
-                            <li><a data-toggle="tab" href="#profile_user/username={{user.username}}">Profile</a></li>
-                            <li class="active"><a data-toggle="tab" href="">Education</a></li>
-                            <li><a data-toggle="tab"  href="#project/username={{user.username}}">Project</a></li>
-                            <li><a data-toggle="tab" href="#update_job/username={{user.username}}">Job</a></li>
-                        </ul>
-                    </div>
+                <!-- Nav Tabs -->
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li><a data-toggle="tab" href="#profile_user/username={{user.username}}">Profile</a></li>
+                        <li class="active"><a data-toggle="tab" href="">Education</a></li>
+                        <li><a data-toggle="tab" href="#project/username={{user.username}}">Project</a></li>
+                        <li><a data-toggle="tab" href="#update_job/username={{user.username}}">Job</a></li>
+                        <li><a data-toggle="tab" href="#/confirm/username={{user.username}}">Approve</a></li>
+                    </ul>
+                </div>
 
-                    <!-- Tab Content -->
-                    <div class="col-md-12">
-                        <div class="tab-content">
+                <!-- Tab Content -->
+                <div class="col-md-12">
+                    <div class="tab-content">
 
-                            <!-- PROFILE -->
-                            <div id="profile" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                    </div>
-                                    <div class="col-md-4">
+                        <!-- PROFILE -->
+                        <div id="profile" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Skills -->
+                                    <div class="sidebar">
+                                        <h5 class="main-title">Education</h5>
+                                        <div class="job-skills">
 
-                                        <!-- Professional Details -->
-                                        <div class="sidebar">
-                                            <h5 class="main-title">Teacher Details</h5>
-                                            <div class="sidebar-information">
-                                                <ul class="single-category">
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Position:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.name_of_school}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Department:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.address_of_school}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Picture:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.phone_of_school}}</span>
-                                                    </li>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <!-- Skills -->
-                                        <div class="sidebar">
-                                            <h5 class="main-title">Education</h5>
-                                            <div class="job-skills">
-
-                                                <!-- Logo Design -->
-                                                <div class="listing listing-1">
-                                                    <div class="listing-section" ng-if="!isEducation"
-                                                         ng-include="'src/scripts/user/profile_user/education.fix/edit.Education/form.listEducation.html'">
-                                                    </div>
-                                                    <div class="listing-section" ng-if="isEducation"
-                                                         ng-include="'src/scripts/user/profile_user/education.fix/edit.Education/form.editEducation.html'">
-                                                    </div>
+                                            <!-- Logo Design -->
+                                            <div class="listing listing-1">
+                                                <div class="listing-section" ng-if="!isEducation"
+                                                     ng-include="'src/scripts/user/profile_user/education.fix/edit.Education/form.listEducation.html'">
+                                                </div>
+                                                <div class="listing-section" ng-if="isEducation"
+                                                     ng-include="'src/scripts/user/profile_user/education.fix/edit.Education/form.editEducation.html'">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Jobs -->
                         </div>
+                        <!-- Jobs -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 

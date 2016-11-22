@@ -95,6 +95,7 @@ angular.module('myApp')
                 }
 
                 if ($scope.user.firstName == undefined || $scope.user.lastName == undefined) {
+                    alert("You don't enter first name or lastname !");
                     $state.go('update_user', {"username": $scope.user.username});
                 }
                 // else if($scope.user.educations[0].name_of_school == undefined ||

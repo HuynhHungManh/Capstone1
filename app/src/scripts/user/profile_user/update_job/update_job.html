@@ -15,41 +15,47 @@
                     <h2>Jobs</h2>
                     <h5>Front-End Developer</h5>
                 </div>
-
+                <div class="buttonRightImg">
+                    <a href=""><img
+                            src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"
+                            height="70" width="70"></a></div>
             </div>
 
+        </div>
 
-            <!-- Profile Company Content -->
-            <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
-                <div class="container">
-                    <div class="row">
 
-                        <!-- Nav Tabs -->
-                        <div class="col-md-12">
-                            <ul class="nav nav-tabs">
-                                <li><a data-toggle="tab" href="#profile_user/username={{user.username}}">Profile</a>
-                                </li>
-                                <li><a data-toggle="tab" href="#education/username={{user.username}}">Education</a></li>
-                                <li><a data-toggle="tab" href="#project/username={{user.username}}">Project</a></li>
-                                <li class="active"><a data-toggle="tab" href="">Job</a></li>
-                            </ul>
+        <!-- Profile Company Content -->
+        <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Nav Tabs -->
+                    <div class="col-md-12">
+                        <ul class="nav nav-tabs">
+                            <li><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a>
+                            </li>
+                            <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
+                            <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
+                            <li class="active"><a data-toggle="tab" href="">Job</a></li>
+                            <li><a data-toggle="tab" href="#/confirm/username={{user.username}}">Approve</a></li>
+                        </ul>
+                    </div>
+                    <div class="listing listing-1">
+                        <div class="listing-section" ng-if="!status.toggle"
+                             ng-include="'src/scripts/user/profile_user/update_job/form.content.html'">
                         </div>
-                        <div class="listing listing-1">
-                            <div class="listing-section" ng-if="!status.toggle"
-                                 ng-include="'src/scripts/user/profile_user/update_job/form.content.html'">
-                            </div>
-                            <div class="listing-section" ng-if="status.toggle"
-                                 ng-include="'src/scripts/user/profile_user/update_job/form.edit.html'">
-                            </div>
-                            <br>
-                            <br>
-
+                        <div class="listing-section" ng-if="status.toggle"
+                             ng-include="'src/scripts/user/profile_user/update_job/form.edit.html'">
                         </div>
+                        <br>
+                        <br>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>
@@ -80,17 +86,20 @@
                         <form>
                             <div class="form-group">
                                 <label class="form-control-label">Name of comany:</label>
-                                <input type="text" class="form-control" placeholder="Enter name..." ng-model="editProject.name_of_company">
+                                <input type="text" class="form-control" placeholder="Enter name..."
+                                       ng-model="editProject.name_of_company">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-control-label">Address of company :</label>
-                                <input type="text" class="form-control" placeholder="Enter address..." ng-model="editProject.address_of_company">
+                                <input type="text" class="form-control" placeholder="Enter address..."
+                                       ng-model="editProject.address_of_company">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-control-label">Content:</label>
-                                <input type="text" class="form-control" placeholder="Enter content..." ng-model="editProject.phone_of_company">
+                                <input type="text" class="form-control" placeholder="Enter content..."
+                                       ng-model="editProject.phone_of_company">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Day start :</label>
@@ -110,7 +119,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-control-label" >Describe of company :</label>
+                                <label class="form-control-label">Describe of company :</label>
                                 <textarea rows="4" cols="50"
                                           placeholder="Enter describe..." ng-model="editProject.describe"></textarea>
                             </div>
