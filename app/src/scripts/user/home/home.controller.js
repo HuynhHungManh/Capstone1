@@ -4,17 +4,22 @@
 angular.module('myApp')
     .controller('HomeController', function ($scope, $state, $stateParams, $httpParamSerializer,
                                             $filter, $resource, HomeService, $rootScope, $cookies, $cookieStore, $window) {
-        $rootScope.isToggleLogout = false;
+
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
         $rootScope.isSearch = false;
+        if($cookieStore.get("isToggleLogout") == undefined){
+            $rootScope.isToggleLogout = false;
+        }
 
 
-        $scope.dataLogin = {
-            "ToggleLogin": "",
-            "StoreUser": "",
-            "access_token": ""
-        };
+
+
+        // $scope.dataLogin = {
+        //     "ToggleLogin": "",
+        //     "StoreUser": "",
+        //     "access_token": ""
+        // };
         $cookieStore.put("DataLogin", $scope.dataLogin);
 
         $scope.changeLog = function () {
@@ -67,6 +72,23 @@ angular.module('myApp')
                         $cookieStore.put("DataLogin", $scope.dataLogin);
                         $rootScope.isToggleLogout = true;
                         $cookieStore.put("isToggleLogout", $rootScope.isToggleLogout);
+
+                        $rootScope.checkCompany = function () {
+                            if ($cookieStore.get('DataLogin') != undefined) {
+                                $state.go('profile_company');
+                            }
+                            else {
+                                alert("Please login Website !");
+                            }
+                        };
+                        $rootScope.checkUser = function () {
+                            if ($cookieStore.get('DataLogin') != undefined) {
+                                $state.go('profile_user', {"username": $cookieStore.get('DataLogin').StoreUser});
+                            }
+                            else {
+                                alert("Please login Website !");
+                            }
+                        };
 
                     })
                     .catch(function () {

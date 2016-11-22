@@ -25,14 +25,7 @@ angular.module('myApp')
             $scope.isAddInter = !$scope.isAddInter;
         }
 
-        $rootScope.checkUser = function () {
-            if ($cookieStore.get('DataLogin').StoreUser != "") {
-                $state.go('profile_user', {"username": $scope.dataStore.StoreUser});
-            }
-            else {
-                alert("Please login Website !");
-            }
-        };
+
 
 
         $rootScope.doTheBack = function () {
@@ -49,14 +42,6 @@ angular.module('myApp')
             }
         };
 
-        $rootScope.checkCompany = function () {
-            if ($cookieStore.get('DataLogin').StoreUser != "" ) {
-                $state.go('profile_company');
-            }
-            else {
-                alert("Please login Website !");
-            }
-        };
 
 
         $scope.isEditCom = true;
@@ -109,7 +94,7 @@ angular.module('myApp')
                     $rootScope.picture = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
                 }
 
-                if ($scope.user.firstName == undefined || $scope.user.lastName == undefined ||) {
+                if ($scope.user.firstName == undefined || $scope.user.lastName == undefined) {
                     $state.go('update_user', {"username": $scope.user.username});
                 }
                 // else if($scope.user.educations[0].name_of_school == undefined ||
@@ -280,6 +265,7 @@ angular.module('myApp')
             alert("Do you want to out website ?");
             $cookieStore.remove('isToggleLogout');
             $cookieStore.remove('DataLogin');
+            $rootScope.isToggleLogout = false;
             Profile_userService.logout($scope.data.access_token);
             $state.go('home');
         };
