@@ -17,29 +17,6 @@
                             <h6><a class="close" href="#." data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></a> Send Message</h6>
 
-                            <!-- Forms -->
-                            <form action="#">
-                                <ul class="row">
-                                    <li class="col-xs-6">
-                                        <input type="text" placeholder="First Name ">
-                                    </li>
-                                    <li class="col-xs-6">
-                                        <input type="text" placeholder="Last Name">
-                                    </li>
-                                    <li class="col-xs-6">
-                                        <input type="text" placeholder="Country">
-                                    </li>
-                                    <li class="col-xs-6">
-                                        <input type="text" placeholder="Email">
-                                    </li>
-                                    <li class="col-xs-12">
-                                        <textarea placeholder="Your Message"></textarea>
-                                    </li>
-                                    <li class="col-xs-12">
-                                        <button class="btn btn-primary">Send message</button>
-                                    </li>
-                                </ul>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -55,7 +32,8 @@
                     <div class="col-md-12">
                         <ul class="nav nav-tabs">
                             <li><a data-toggle="tab" href="#profile_user/username={{user.username}}">Profile</a></li>
-                            <li class="active"><a data-toggle="tab" href="">Education</a></li>
+                            <li ><a data-toggle="tab" href="#education/username={{user.username}}">Education</a></li>
+                            <li class="active"><a data-toggle="tab" href="">Project</a></li>
                             <li><a data-toggle="tab" href="#update_job/username={{user.username}}">Job</a></li>
                         </ul>
                     </div>
@@ -67,59 +45,8 @@
                             <!-- PROFILE -->
                             <div id="profile" class="tab-pane fade in active">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                    </div>
-                                    <div class="col-md-4">
 
-                                        <!-- Professional Details -->
-                                        <div class="sidebar">
-                                            <h5 class="main-title">Education Details</h5>
-                                            <div class="sidebar-information">
-                                                <ul class="single-category">
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Name Of School:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.name_of_school}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Address Of School:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.address_of_school}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Phone Of School:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.phone_of_school}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Major:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.major}}</span></li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Achiviement:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.achiviement}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">From Date:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.from_date}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">To Date:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.to_date}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Describe:</h6>
-                                                        <span class="subtitle col-xs-6">{{education.describe}}</span>
-                                                    </li>
-                                                    <li class="row">
-                                                        <h6 class="title col-xs-6">Website Of School:</h6>
-                                                        <span class="subtitle col-xs-6"><a href="">{{education.website_of_school}}</a></span>
-                                                    </li>
-                                                </ul>
-                                                <a href="#update_education/username={{user.username}}">
-                                                    <input ng-show="isGolbalUser" type="submit" class="btn btn-primary" value="Update">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <!-- Skills -->
                                         <div class="sidebar">
                                             <h5 class="main-title">Projects</h5>

@@ -18,15 +18,9 @@ angular.module('myApp')
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
                 if($scope.user.firstName == undefined ||  $scope.user.lastName == undefined ||
-                    $scope.user.desscribe ==undefined || $scope.user.status == undefined){
+                    $scope.user.desscribe ==undefined || $scope.user.status == undefined || $scope.user.sex ==undefined ){
                     alert("Please update profile of you !");
                 }
-
-
-
-
-
-
 
                 $scope.id = $scope.user.id;
                 if ($scope.users.length > 0) {
@@ -41,6 +35,8 @@ angular.module('myApp')
             })
 
         $scope.result = 'male';
+
+
 
         $scope.post = function (result) {
             if ($scope.dtu_id.length == 10) {
@@ -72,6 +68,7 @@ angular.module('myApp')
 
         $scope.update = function (result) {
 
+
             var dataUpdate = {
                 "firstName": $scope.firstName,
                 "lastName": $scope.firstName,
@@ -84,12 +81,11 @@ angular.module('myApp')
                 "status": $scope.status1,
                 "desscribe": $scope.desscribe
             };
-            console.log($scope.data.access_token);
 
             Update_userService.update123(dataUpdate,$scope.user.id, $scope.data.access_token)
                 .then(function () {
                     alert("Update access !");
-                    $window.location.reload();
+                    $state.go('profile_user', {"username": $scope.user.username});
                 })
                 .catch(function () {
                     alert("Update failed !");

@@ -27,9 +27,10 @@
                         <div class="sidebar-information">
                             <div class="form-group">
                                 <input type="file" onchange="readURL(this)" data-icon="false">
+                                <br>
                                 <div>
                                     <label>Enter link Image online here !</label>
-                                    <input type="text" ng-model="picture">
+                                    <input type="text" ng-model="picture" placeholder="Please enter address image online..">
                                 </div>
 
                                 <!--<input type="button" ng-click="readURL(this)" value="submit">-->
@@ -51,8 +52,8 @@
                                             <h6 class="title col-xs-4">Last name</h6>
                                             <span class="subtitle col-xs-6">{{user.lastName}}</span></li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Age</h6>
-                                            <span class="subtitle col-xs-6">{{user.age}}</span></li>
+                                            <h6 class="title col-xs-4">Birthday</h6>
+                                            <span class="subtitle col-xs-6">{{user.birthDay}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Address</h6>
                                             <span class="subtitle col-xs-6">{{user.address}}</span></li>
@@ -64,7 +65,7 @@
                                             <span class="subtitle col-xs-6">{{user.sex}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Phone</h6>
-                                            <span class="subtitle col-xs-6">{{user.sex}}</span></li>
+                                            <span class="subtitle col-xs-6">{{user.phone}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">E-mail</h6>
                                             <span class="subtitle col-xs-6">{{user.email}}</a></span>
@@ -100,14 +101,14 @@
                                             <label class="col-lg-3 control-label">First name:</label>
                                             <div class="col-lg-8">
                                                 <input class="form-control" type="text" ng-model="firstName"
-                                                       placeholder="Enter first name...">
+                                                       placeholder="{{user.firstName}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Last name:</label>
                                             <div class="col-lg-8">
                                                 <input class="form-control" type="text" ng-model="lastName"
-                                                       placeholder="Enter last name...">
+                                                       placeholder="{{user.lastName}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -124,14 +125,14 @@
                                             <label class="col-lg-3 control-label">Address:</label>
                                             <div class="col-lg-8">
                                                 <input class="form-control" type="text" ng-model="address"
-                                                       placeholder="Enter Address...">
+                                                       placeholder="{{user.address}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Phone:</label>
                                             <div class="col-lg-8">
                                                 <input class="form-control" type="text" ng-model="phone"
-                                                       placeholder="Enter phone...">
+                                                       placeholder="{{user.phone}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -156,9 +157,8 @@
                                             <div class="col-lg-8">
                                                 <!--<input list="eLevels" name="eLevel" />-->
                                                 <input list="eLevels" class="form-control" type="text"
-                                                       name="eLevel" placeholder="Choose degree...">
+                                                       name="eLevel" placeholder="{{user.degree}}">
                                                 <datalist id="eLevels">
-                                                    <option value="High School">
                                                     <option value="Associate Degree">
                                                     <option value="Bachelors Degree">
                                                     <option value="Graduate Degree">
@@ -166,17 +166,29 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label">Status:</label>
+                                            <label class="col-lg-3 control-label" >Status:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="status1"
-                                                       placeholder="Enter status...">
+                                                <!--<input list="eLevels" name="eLevel" />-->
+                                                <input list="status" class="form-control" type="text"
+                                                    ng-model="status1"  name="status" placeholder="{{user.status}}">
+                                                <datalist id="status">
+                                                    <option value="Single">
+                                                    <option value="Married">
+                                                </datalist>
                                             </div>
                                         </div>
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-lg-3 control-label">Status:</label>-->
+                                            <!--<div class="col-lg-8">-->
+                                                <!--<input class="form-control" type="text" ng-model="status1"-->
+                                                       <!--placeholder="{{user.status}}">-->
+                                            <!--</div>-->
+                                        <!--</div>-->
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Describe:</label>
                                             <div class="col-lg-8">
                                                 <textarea rows="4" cols="50" ng-model="desscribe"
-                                                          placeholder="Enter describe..."></textarea>
+                                                          placeholder="{{user.desscribe}}"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -185,10 +197,17 @@
                                                 <input type="button" class="btn btn-primary" ng-click="update(result)"
                                                        value="Save Changes">
                                                 <span></span>
-                                                <input type="reset" ng-click="doTheBack()" class="btn btn-default"
-                                                       value="Cancel">
+                                                <!--<input type="reset" ng-click="doTheBack()" class="btn btn-default"-->
+                                                       <!--value="Cancel">-->
                                                 <span></span>
-                                                {{update}}
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <a href="" ng-click="doTheBack()">Back</a>
+                                            </div>
+                                            <div class="col-md-8">
                                             </div>
                                         </div>
                                     </div>

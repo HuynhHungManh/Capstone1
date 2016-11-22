@@ -8,30 +8,19 @@ angular.module('myApp')
         $scope.status = {
             toggle: false
         };
+        $scope.isAddSkill = false;
+        $scope.changaddskill = function () {
+            $scope.isAddSkill = !$scope.isAddSkill;
+        };
+        $scope.isEduPro = false;
+        $scope.changeformEduPro = function () {
+            $scope.isEduPro = !$scope.isEduPro;
+        };
         $scope.arrSkill = [];
+        $scope.objAddSkill = {};
 
         $scope.trueFalse = false;
 
-        $scope.removeSkillReq = function (id) {
-            $scope.trueFalse = !$scope.trueFalse;
-            if($scope.trueFalse == true){
-                $scope.arrSkill.push(id);
-            }
-            else {
-                $scope.arrSkill.pop();
-            }
-        };
-
-        $scope.removeSkillReq2 = function (id) {
-            $scope.trueFalse = !$scope.trueFalse;
-        };
-
-        function deleRe() {
-            for(var i= 0; i< $scope.arrSkill.length;i++) {
-                console.log($scope.arrSkill[i]);
-                EducationService.deleteSkillRe($scope.arrSkill[i], $scope.data.access_token);
-            }
-        };
 
 
 
@@ -157,6 +146,19 @@ angular.module('myApp')
                                     alert("Create failed !");
                                 })
                         };
+                        $scope.createSkill = function () {
+                            $scope.objAddSkill.personalId = $scope.user.id
+                            $scope.objAddSkill.created_at = new Date();
+                            $scope.objAddSkill.updated_at = new Date();
+                            EducationService.createSkill($scope.objAddSkill, $scope.data.access_token)
+                                .then(function () {
+                                    alert("Create success !");
+                                    $window.location.reload();
+                                })
+                                .catch(function () {
+                                    alert("Create failed !");
+                                })
+                        };
 
                         $scope.updateProject = function (id) {
                             $scope.editProject.personalId = $scope.user.id;
@@ -182,12 +184,28 @@ angular.module('myApp')
                                 .catch(function () {
                                     alert("Delete failed !");
                                 });
+                        };
+
+                        $scope.edit = function (id) {
+                            $scope.status.toggle = !$scope.status.toggle;
+                            $scope.editer = $filter('filter')($scope.projects, {id: id})[0];
+
+                            $scope.removeSkillReq = function (id) {
+                                console.log('sfsfsf');
+                                $scope.editer = $filter('filter')($scope.projects, {id: id})[0];
+                                console.log($scope.skillReqs);
+                                EducationService.deleteSkillRe(id,$scope.data.access_token)
+                                    .then(function () {
+                                        $scope.user = $filter('filter')($scope.infoEducations, {username: $stateParams.username})[0];
+                                        $scope.skillReqs = $scope.user.skills;
+                                    })
+                                    .catch(function () {
+                                        alert("Delete failed !");
+                                    })
+                            };
                         }
+
                     });
-                $scope.edit = function (id) {
-                    $scope.status.toggle = !$scope.status.toggle;
-                    $scope.editer = $filter('filter')($scope.projects, {id: id})[0];
-                }
 
 
             })

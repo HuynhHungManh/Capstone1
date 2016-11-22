@@ -7,13 +7,14 @@
             <div class="col-sm-9">
                 <ul class="tags list-inline">
                     <li ng-repeat="skill in editer.skills">
-                        <div><a href="">{{skill.name}}</a></div>
+                        <div><a>{{skill.name}}</a></div>
                     </li>
                 </ul>
             </div>
             <div class="col-sm-3">
                 <div class="editskill">
                     <a ><i class="fa fa-edit" ng-click="changeformeditskill()"></i></a>
+                    <a ><i class="fa fa-plus" ng-click="changaddskill()"></i></a>
                 </div>
             </div>
         </div>

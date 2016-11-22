@@ -3,15 +3,14 @@
  */
 angular.module('myApp')
     .config(function ($stateProvider) {
-        $stateProvider.state('education', {
-            url: '/education/username=:username',
+        $stateProvider.state('project', {
+            url: '/project/username=:username',
             parent: 'site',
             views: {
                 'content@':{
-                    templateUrl: 'src/scripts/user//profile_user/education/education.html',
+                    templateUrl: 'src/scripts/user/profile_user/education/education.html',
                     controller : 'EducationController'
                 }
             }
         });
-
     });

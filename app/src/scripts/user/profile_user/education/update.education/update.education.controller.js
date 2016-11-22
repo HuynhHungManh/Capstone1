@@ -2,13 +2,13 @@
  * Created by PC on 10/12/2016.
  */
 angular.module('myApp')
-    .controller('UpdateEducationController', function ($scope, UpdateEducationService, $stateParams, $filter, $cookieStore,
+    .controller('UpdateEducationController', function ($state,$scope, UpdateEducationService, $stateParams, $filter, $cookieStore,
                                                        $rootScope) {
         $rootScope.doTheBack = function () {
             window.history.back();
         };
         $scope.data = $cookieStore.get('DataLogin');
-        $scope.updateEdu = {};
+        $scope.updateEduca = {};
         UpdateEducationService.fetchEducation()
             .then(function (res) {
                 $scope.user = $filter('filter')(res.data, {username: $stateParams.username})[0];
@@ -21,34 +21,35 @@ angular.module('myApp')
                     alert("Please enter education.. !");
                 }
 
-                $scope.editEdu = function () {
-                    $scope.updateEdu.personalId = $scope.user.id;
-                    $scope.updateEdu.created_at = new Date();
-                    $scope.updateEdu.updated_at = new Date();
-                    if ($scope.education == undefined) {
-                        UpdateEducationService.createEducation($scope.updateEdu, $scope.data.access_token)
-                            .then(function () {
-                                $scope.updateEdu = {};
-                                $window.location.reload();
-                            })
-                            .catch(function () {
-                                alert("Create failed !");
-                            });
-                    }
-                    else {
-                        UpdateEducationService.updateEducation($scope.updateEdu, $scope.education.id, $scope.data.access_token)
-                            .then(function () {
-                                $scope.updateEdu = {};
-                                $window.location.reload();
-                            })
-                            .catch(function () {
-                                alert("Update failed !");
-                            });
-                    }
-                }
+                $scope.createEdu = function () {
+                    $scope.updateEduca.personalId = $scope.user.id;
+                    $scope.updateEduca.created_at = new Date();
+                    $scope.updateEduca.updated_at = new Date();
+                    UpdateEducationService.createEducation($scope.updateEduca, $scope.data.access_token)
+                        .then(function () {
+                            $scope.updateEduca = {};
+                            $state.go('education', {"username": $scope.user.username});
+                        })
+                        .catch(function () {
+                            alert("Create failed !");
+                        });
+                };
+                // $scope.updateEdu = function () {
+                //     $scope.updateEduca.personalId = $scope.user.id;
+                //     $scope.updateEduca.created_at = new Date();
+                //     $scope.updateEduca.updated_at = new Date();
+                //     UpdateEducationService.updateEducation($scope.updateEduca, $scope.education.id, $scope.data.access_token)
+                //         .then(function () {
+                //             $scope.updateEduca = {};
+                //             $state.go('education', {"username": $scope.user.username});
+                //         })
+                //         .catch(function () {
+                //             alert("Update failed !");
+                //         });
+                // };
             })
             .catch(function () {
-            })
+            });
 
 
     });

@@ -40,5 +40,11 @@ angular.module('myApp')
             return $http.delete('https://afternoon-sands-21716.herokuapp.com/api/skills/'+id+'?access_token='+token).success(function () {
             });
         };
+        this.createSkill = function (dataupdat,token) {
+            console.log('API');
+            console.log(token);
+            return $http.post('https://afternoon-sands-21716.herokuapp.com/api/skills?access_token='+token,dataupdat).success(function () {
+            });
+        };
 
     });

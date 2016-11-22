@@ -1,0 +1,90 @@
+<div class="listing-ver-3" ng-repeat="edu in educations">
+    <div class="listing-heading">
+        <h5>{{edu.name_of_school}} University</h5>
+    </div>
+    <div class="listing-inner">
+        <div class="listing-content">
+            <div class="job-skills">
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-university"></i> Major :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <span>{{edu.achiviement}}</span>
+                        <span class="type-work full-time"> {{edu.from_date}} - {{edu.to_date}}</span>
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-phone"></i> Phone :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <span>{{edu.phone_of_school}}</span>
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-globe"></i> Website :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <a href=""><span>{{edu.website_of_school}}</span></a>
+                    </li>
+                </ul>
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-arrows"></i> Address :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <span>{{edu.address_of_school}}</span>
+
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-building"></i> Achiviement :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <span>{{edu.achiviement}}</span>
+
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-check"></i> Verify :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <!--<span>{{edu.verify}}</span>-->
+
+                    </li>
+                </ul>
+
+            </div>
+            <br>
+            <h6 class="title-company">
+                <div class="fa fa-asterisk">&nbsp &nbsp</div>
+                Describe of education :
+            </h6>
+            <p>{{edu.describe}}.
+            </p>
+            <div>
+                <input ng-show="isGolbalUser" type="button" class="btn btn-primary"  ng-click="editformEdu(edu.id)"
+                       value="Edit">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="back">
+    <a ng-show="isGolbalUser" href="#update_education/username={{user.username}}" ng-click="" >Add Education</a>&nbsp; &nbsp;
+    <a href="" ng-click="doTheBack()">Back</a>
+</div>

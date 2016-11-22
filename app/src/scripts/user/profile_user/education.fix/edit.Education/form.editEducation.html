@@ -1,0 +1,112 @@
+<div class="listing-ver-3">
+    <div class="listing-heading">
+        <h5>{{editEdu.name_of_school}} University</h5>
+    </div>
+    <div class="listing-inner">
+        <div class="listing-content">
+            <div class="job-skills">
+
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Name :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editEdu.name_of_school}}" ng-model="editEducation.name_of_school">
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Major :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editEdu.major}}" ng-model="editEducation.major">
+                    </li>
+                </ul>
+
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Time :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        from : <input type="date" class="datepicker" ng-model="editEducation.from_date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date">
+                                    <div class="dateholder">
+                                        to : <input type="date" class="datepicker" ng-model="editEducation.to_date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Logo Design -->
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Phone :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editEdu.phone_of_school}}" ng-model="editEducation.phone_of_school">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Website :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editEdu.website_of_school}}" ng-model="editEducation.website_of_school">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Address :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editEdu.address_of_school}}" ng-model="editEducation.address_of_school">
+                    </li>
+                </ul>
+                <ul class="row">
+                    <li class="col-sm-3">
+                        <h6><i class="fa fa-edit"></i> Achiviement :
+                        </h6>
+                    </li>
+                    <li class="col-sm-9">
+                        <input type="text" placeholder="{{editEdu.achiviement}}" ng-model="editEducation.achiviement">
+                    </li>
+                </ul>
+
+            </div>
+            <br>
+            <h6 class="title-company">
+                <div class="fa fa-asterisk">&nbsp &nbsp</div>
+                Describe of product
+            </h6>
+            <p><textarea rows="4" cols="50" ng-model="editEducation.describe"
+                         placeholder="{{editEdu.describe}}"  ></textarea>
+            </p>
+            <br>
+            <div>
+                <input type="button" class="btn btn-primary"
+                       value="Save" ng-click="updateEducation(editEdu.id)">
+                <input type="button" class="btn btn-primary"
+                       value="Delete" ng-click="deleteEducation(editEdu.id)">
+                <input type="button" class="btn btn-primary"
+                       value="Close" ng-click="changeformEdu()">
+            </div>
+        </div>
+    </div>
+</div>

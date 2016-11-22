@@ -37,11 +37,18 @@
             </h6>
             <p>{{project.describe}}.
             </p>
-            <h6 class="title-tags">Skills required:</h6>
-            <ul class="tags list-inline">
-                <li ng-repeat="skill in project.skills"><a
-                        href="#">{{skill.name}}</a></li>
-            </ul>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="title-tags">Skills required:</h6>
+                </div>
+                <div class="col-sm-9">
+                    <ul class="tags list-inline">
+                        <li ng-repeat="skill in project.skills"><a
+                                >{{skill.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+
             <br>
             <br>
             <div>

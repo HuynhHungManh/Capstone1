@@ -82,14 +82,11 @@ angular.module('myApp')
         }
 
 
-        // $scope.load = function () {
-        //     angular.element('#321').DataTable().ajax.reload(null, false);
-        // };
-
         Profile_userService.fetchAllUser()
             .then(function (response) {
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
+
 
                 if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
                     $scope.isToggle = true;
@@ -104,15 +101,6 @@ angular.module('myApp')
                     $rootScope.isGolbalUser = true;
                 }
 
-                //
-                // if($scope.user.educations == []){
-                //     console.log('wfawfaf')
-                //     $state.go('education', {"username": $scope.user.username});
-                // }
-
-
-
-
                 $scope.image = $scope.user.picture;
                 if ($scope.image != undefined && $scope.image != 'string') {
                     $rootScope.picture = $scope.image
@@ -121,8 +109,7 @@ angular.module('myApp')
                     $rootScope.picture = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
                 }
 
-                if ($scope.user.firstName == undefined || $scope.user.lastName == undefined ||
-                    $scope.user.desscribe == undefined || $scope.user.status == undefined) {
+                if ($scope.user.firstName == undefined || $scope.user.lastName == undefined ||) {
                     $state.go('update_user', {"username": $scope.user.username});
                 }
                 // else if($scope.user.educations[0].name_of_school == undefined ||
