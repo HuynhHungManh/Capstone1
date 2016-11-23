@@ -8,8 +8,12 @@ angular.module('myApp')
             // return $http.get('https://afternoon-sands-21716.herokuapp.com/api/persons');
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%20[%22languages%22,%22skills%22,%22jobs%22,%22comments%22,%22interests%22,%22educations%22]}');
         };
-        this.updateUser = function () {
-        }
+        this.fetchComs = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/commentes?access_token='+token);
+        };
+        this.fetchInters = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/interests?access_token='+token);
+        };
 
         this.createCom = function (datapost) {
             console.log('Đã update');

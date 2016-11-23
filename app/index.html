@@ -20,7 +20,6 @@
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
@@ -35,14 +34,12 @@
     <script src="resource/user/js/bootstrap-rating-input.js"></script>
 
 
-
     <!--USER -->
     <link rel="stylesheet" href="resource/user/css/owl.carousel.css">
     <link rel="stylesheet" href="resource/user/css/main-style.css">
     <link rel="stylesheet" href="resource/user/css/style.css">
     <link rel="stylesheet" href="resource/user/css/radio.css">
     <link rel="stylesheet" href="resource/user/css/font.css">
-
 
 
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -54,84 +51,82 @@
 <body>
 
 
-    <div ui-view="navbar"></div>
-    <div ui-view="content"></div>
-    <div ui-view="footer"></div>
+<div ui-view="navbar"></div>
+<div ui-view="content"></div>
+<div ui-view="footer"></div>
 
-    <!--[if lt IE 7]>
+<!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
 
-    <!-- In production use:
+<!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="app.js"></script>
-    <script src="app.constant.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-validation/dist/angular-validation.js"></script>
-    <script src="bower_components/angular-validation/dist/angular-validation-rule.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="app.js"></script>
+<script src="app.constant.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-validation/dist/angular-validation.js"></script>
+<script src="bower_components/angular-validation/dist/angular-validation-rule.js"></script>
 
 
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
 
-
-    <script src="components/version/version.js"></script>
-    <script src="components/version/version-directive.js"></script>
-    <script src="components/version/interpolate-filter.js"></script>
-
-    <!--USER-->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <script src="resource/user/js/jquery-2.1.3.min.js"></script>
-    <script src="resource/user/js/bootstrap.js"></script>
-    <script src="resource/user/js/plugins/superfish.min.js"></script>
-    <script src="resource/user/js/jquery.ui.min.js"></script>
-    <script src="resource/user/js/plugins/rangeslider.min.js"></script>
-    <script src="resource/user/js/plugins/jquery.flexslider-min.js"></script>
-    <script src="resource/user/js/uou-accordions.js"></script>
-    <script src="resource/user/js/uou-tabs.js"></script>
-    <script src="resource/user/js/plugins/select2.min.js"></script>
-    <script src="resource/user/js/owl.carousel.min.js"></script>
-    <script src="resource/user/js/gmap3.min.js"></script>
-    <script src="resource/user/js/scripts.js"></script>
-    <script src="src/scripts/user/home/home.state.js"></script>
-    <script src="src/scripts/user/home/home.controller.js"></script>
-    <script src="src/scripts/user/profile_company/profile_company_controller.js"></script>
-    <script src="src/scripts/user/profile_company/profile_company.state.js"></script>
-    <script src="src/scripts/user/profile_user/profile_user.controller.js"></script>
-    <script src="src/scripts/user/profile_user/profile_user.state.js"></script>
-    <script src="src/scripts/user/profile_user/update_user/update_user.controller.js"></script>
-    <script src="src/scripts/user/profile_user/update_user/update_user.state.js"></script>
-    <script src="src/scripts/user/profile_user/profile_user.service.js"></script>
-    <script src="src/scripts/user/profile_user/update_user/update_user.service.js"></script>
-    <script src="src/scripts/user/profile_company/update_company/update_company.controller.js"></script>
-    <script src="src/scripts/user/profile_company/update_company/update_company.service.js"></script>
-    <script src="src/scripts/user/profile_company/update_company/update_company.state.js"></script>
-    <script src="src/scripts/user/profile_user/education/education.controller.js"></script>
-    <script src="src/scripts/user/profile_user/education/education.state.js"></script>
-    <script src="src/scripts/user/profile_user/navbar-directive/navbar.directive.js"></script>
-    <script src="src/scripts/user/profile_user/education/education.service.js"></script>
-    <script src="src/scripts/user/profile_user/update_skill/update_skill.controller.js"></script>
-    <script src="src/scripts/user/profile_user/update_skill/update_skill.state.js"></script>
-    <script src="src/scripts/user/profile_user/update_skill/update_skill.service.js"></script>
-    <script src="src/scripts/user/home/home.service.js"></script>
-    <script src="src/scripts/user/profile_user/update_job/update_job.controller.js"></script>
-    <script src="src/scripts/user/profile_user/update_job/update_job.state.js"></script>
-    <script src="src/scripts/user/profile_user/update_job/update_job.service.js"></script>
-    <script src="src/scripts/user/profile_user/education/update.education/update.education.controller.js"></script>
-    <script src="src/scripts/user/profile_user/education/update.education/update.education.state.js"></script>
-    <script src="src/scripts/user/profile_user/education/update.education/update.education.service.js"></script>
-    <script src="src/scripts/user/profile_user/education.fix/educationFix.controller.js"></script>
-    <script src="src/scripts/user/profile_user/education.fix/educationFix.state.js"></script>
-    <script src="src/scripts/user/profile_user/education.fix/educationFix.service.js"></script>
-    <script src="src/scripts/user/profile_user/confirm/confirm.controller.js"></script>
-    <script src="src/scripts/user/profile_user/confirm/confirm.service.js"></script>
-    <script src="src/scripts/user/profile_user/confirm/confirm.state.js"></script>
-    <script src="src/component/user/cookies/cookies.service.js"></script>
+<!--USER-->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="resource/user/js/jquery-2.1.3.min.js"></script>
+<script src="resource/user/js/bootstrap.js"></script>
+<script src="resource/user/js/plugins/superfish.min.js"></script>
+<script src="resource/user/js/jquery.ui.min.js"></script>
+<script src="resource/user/js/plugins/rangeslider.min.js"></script>
+<script src="resource/user/js/plugins/jquery.flexslider-min.js"></script>
+<script src="resource/user/js/uou-accordions.js"></script>
+<script src="resource/user/js/uou-tabs.js"></script>
+<script src="resource/user/js/plugins/select2.min.js"></script>
+<script src="resource/user/js/owl.carousel.min.js"></script>
+<script src="resource/user/js/gmap3.min.js"></script>
+<script src="resource/user/js/scripts.js"></script>
+<script src="src/scripts/user/home/home.state.js"></script>
+<script src="src/scripts/user/home/home.controller.js"></script>
+<script src="src/scripts/user/profile_company/profile_company_controller.js"></script>
+<script src="src/scripts/user/profile_company/profile_company.state.js"></script>
+<script src="src/scripts/user/profile_user/profile_user.controller.js"></script>
+<script src="src/scripts/user/profile_user/profile_user.state.js"></script>
+<script src="src/scripts/user/profile_user/update_user/update_user.controller.js"></script>
+<script src="src/scripts/user/profile_user/update_user/update_user.state.js"></script>
+<script src="src/scripts/user/profile_user/profile_user.service.js"></script>
+<script src="src/scripts/user/profile_user/update_user/update_user.service.js"></script>
+<script src="src/scripts/user/profile_company/update_company/update_company.controller.js"></script>
+<script src="src/scripts/user/profile_company/update_company/update_company.service.js"></script>
+<script src="src/scripts/user/profile_company/update_company/update_company.state.js"></script>
+<script src="src/scripts/user/profile_user/education/education.controller.js"></script>
+<script src="src/scripts/user/profile_user/education/education.state.js"></script>
+<script src="src/scripts/user/profile_user/navbar-directive/navbar.directive.js"></script>
+<script src="src/scripts/user/profile_user/education/education.service.js"></script>
+<script src="src/scripts/user/profile_user/update_skill/update_skill.controller.js"></script>
+<script src="src/scripts/user/profile_user/update_skill/update_skill.state.js"></script>
+<script src="src/scripts/user/profile_user/update_skill/update_skill.service.js"></script>
+<script src="src/scripts/user/home/home.service.js"></script>
+<script src="src/scripts/user/profile_user/update_job/update_job.controller.js"></script>
+<script src="src/scripts/user/profile_user/update_job/update_job.state.js"></script>
+<script src="src/scripts/user/profile_user/update_job/update_job.service.js"></script>
+<script src="src/scripts/user/profile_user/education/update.education/update.education.controller.js"></script>
+<script src="src/scripts/user/profile_user/education/update.education/update.education.state.js"></script>
+<script src="src/scripts/user/profile_user/education/update.education/update.education.service.js"></script>
+<script src="src/scripts/user/profile_user/education.fix/educationFix.controller.js"></script>
+<script src="src/scripts/user/profile_user/education.fix/educationFix.state.js"></script>
+<script src="src/scripts/user/profile_user/education.fix/educationFix.service.js"></script>
+<script src="src/scripts/user/profile_user/confirm/confirm.controller.js"></script>
+<script src="src/scripts/user/profile_user/confirm/confirm.service.js"></script>
+<script src="src/scripts/user/profile_user/confirm/confirm.state.js"></script>
+<script src="src/component/user/cookies/cookies.service.js"></script>
 </body>
 
 </html>

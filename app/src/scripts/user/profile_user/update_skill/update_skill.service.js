@@ -6,6 +6,12 @@ angular.module('myApp')
         this.fetchAllSkill = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%20[%22languages%22,%22skills%22]}');
         };
+        this.fetchSkill = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/skills?access_token='+token);
+        };
+        this.fetchLang = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/langs?access_token='+token);
+        };
 
         this.createSkill = function (datapost,token) {
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/skills?access_token='+token,datapost).success(function () {

@@ -189,8 +189,22 @@ angular.module('myApp')
 
                     Profile_userService.createInter($scope.inter, $scope.data.access_token)
                         .then(function () {
+                            $scope.arrInters= [];
+                            Profile_userService.fetchInters($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.dataNewInter = res.data;
+                                    for(var i=0; i<$scope.dataNewInter.length;i++){
+                                        if($scope.dataNewInter[i].personalId == $scope.user.id){
+                                            $scope.arrInters.push($scope.dataNewInter[i]);
+                                        }
+                                    }
+                                    $scope.inters = $scope.arrInters;
+                                })
+                                .catch(function () {
+                                });
+                            $scope.iconShow = !$scope.iconShow;
+                            $scope.isAddInter = !$scope.isAddInter;
                             $scope.inter = {};
-                            $window.location.reload();
                         })
                         .catch(function () {
                             alert("Create failed !");
@@ -199,8 +213,20 @@ angular.module('myApp')
                 $scope.deleteInter = function (id) {
                     Profile_userService.deleteInter(id, $scope.data.access_token)
                         .then(function () {
-                            $scope.inter = {}
-                            $window.location.reload();
+                            $scope.arrInters= [];
+                            Profile_userService.fetchInters($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.dataNewInter = res.data;
+                                    for(var i=0; i<$scope.dataNewInter.length;i++){
+                                        if($scope.dataNewInter[i].personalId == $scope.user.id){
+                                            $scope.arrInters.push($scope.dataNewInter[i]);
+                                        }
+                                    }
+                                    $scope.inters = $scope.arrInters;
+                                })
+                                .catch(function () {
+                                });
+                            $scope.inter = {};
                         }).catch(function () {
                         alert("Delete failed !");
                     });
@@ -218,8 +244,23 @@ angular.module('myApp')
                     $scope.updateInter = function () {
                         Profile_userService.updateInter($scope.inter, id, $scope.data.access_token)
                             .then(function () {
-                                $scope.isInter = {};
-                                $window.location.reload();
+                                $scope.arrInters= [];
+                                Profile_userService.fetchInters($scope.data.access_token)
+                                    .then(function (res) {
+                                        $scope.dataNewInter = res.data;
+                                        for(var i=0; i<$scope.dataNewInter.length;i++){
+                                            if($scope.dataNewInter[i].personalId == $scope.user.id){
+                                                $scope.arrInters.push($scope.dataNewInter[i]);
+                                            }
+                                        }
+                                        $scope.inters = $scope.arrInters;
+                                        $scope.isInter = !$scope.isInter;
+                                    })
+                                    .catch(function () {
+                                    });
+                                $scope.inter = {};
+
+
                             })
                             .catch(function () {
                                 alert("Update failed !");
@@ -259,8 +300,21 @@ angular.module('myApp')
                     $scope.updated_at = new Date();
                     Profile_userService.createCom($scope.comment)
                         .then(function () {
+                            $scope.arrComs= [];
+                            Profile_userService.fetchComs($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.dataNewComs = res.data;
+                                    for(var i=0; i<$scope.dataNewComs.length;i++){
+                                        if($scope.dataNewComs[i].personalId == $scope.user.id){
+                                            $scope.arrComs.push($scope.dataNewComs[i]);
+                                        }
+                                    }
+                                    $scope.showComment = $scope.arrComs;
+                                })
+                                .catch(function () {
+
+                                });
                             $scope.comment = {};
-                            $window.location.reload();
                         }).catch(function () {
                         alert("Create failed !");
                     });
@@ -268,8 +322,21 @@ angular.module('myApp')
                 $scope.deleteCom = function (id) {
                     Profile_userService.deleteCom(id, $scope.data.access_token)
                         .then(function () {
+                            $scope.arrComs= [];
+                            Profile_userService.fetchComs($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.dataNewComs = res.data;
+                                    for(var i=0; i<$scope.dataNewComs.length;i++){
+                                        if($scope.dataNewComs[i].personalId == $scope.user.id){
+                                            $scope.arrComs.push($scope.dataNewComs[i]);
+                                        }
+                                    }
+                                    $scope.showComment = $scope.arrComs;
+                                })
+                                .catch(function () {
+
+                                });
                             $scope.comment = {};
-                            $window.location.reload();
                         }).catch(function () {
                         alert("Delete failed !");
                     });

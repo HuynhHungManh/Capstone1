@@ -4,6 +4,11 @@
 angular.module('myApp')
     .controller('Update_SkillController', function ($scope, Update_SkillService,
                                                     $rootScope ,$stateParams, $filter,$cookieStore,$window) {
+
+        $scope.arrSkillNew = [];
+        $scope.arrLangNew = [];
+
+
         $scope.data = $cookieStore.get('DataLogin');
         $scope.editSkill = {}
         $scope.editLang = {}
@@ -23,7 +28,7 @@ angular.module('myApp')
 
         $scope.closeformskill = function () {
             $scope.statusSkill.toggle = !$scope.statusSkill.toggle;
-        }
+        };
 
         Update_SkillService.fetchAllSkill()
             .then(function (response) {
@@ -75,6 +80,7 @@ angular.module('myApp')
                         });
                 };
                 $scope.updateSkill = function () {
+
                     if ($scope.editSkill.level == 'Beginner')
                         $scope.editSkill.level = 20;
                     else if ($scope.editSkill.level == 'Elementary') {
@@ -92,20 +98,53 @@ angular.module('myApp')
                     }
                     Update_SkillService.updateSkill($scope.editSkill,$scope.skill.id,$scope.data.access_token)
                         .then(function () {
-                            $scope.editSkill = {}
-                            alert("Update success !");
-                            $window.location.reload();
+
+                            Update_SkillService.fetchSkill($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.dataSkills = res.data;
+                                    $scope.arrSkillNew = [];
+                                    for(var i = 0; i<$scope.dataSkills.length; i++){
+                                        if($scope.dataSkills[i].personalId == $scope.user.id){
+                                            $scope.arrSkillNew.push($scope.dataSkills[i]);
+                                        }
+                                    }
+                                    $scope.user.skills = $scope.arrSkillNew;
+                                    $scope.statusSkill.toggle = ! $scope.statusSkill.toggle;
+                                    $scope.editSkill = {}
+                                })
+                                .catch(function () {
+
+                                });
                         })
                         .catch(function () {
                             alert("Update failed !");
                         });
                 };
+
+
+
+
                 $scope.deleteSkill = function (id) {
+
                     $scope.editLang.personalId = $scope.user.id;
 
                     Update_SkillService.deleteSkill(id,$scope.data.access_token)
                         .then(function () {
-                            $window.location.reload();
+                            Update_SkillService.fetchSkill($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.dataSkills = res.data;
+                                    $scope.arrSkillNew = [];
+                                    for( var i = 0; i<$scope.dataSkills.length; i++){
+                                        if($scope.dataSkills[i].personalId == $scope.user.id){
+                                            $scope.arrSkillNew.push($scope.dataSkills[i]);
+                                        }
+                                    }
+
+                                    $scope.user.skills = $scope.arrSkillNew;
+                                })
+                                .catch(function () {
+
+                                });
                         })
                         .catch(function () {
                             alert("Delete failed !");
@@ -129,9 +168,22 @@ angular.module('myApp')
                     $scope.editLang.personalId = $scope.user.id;
                     Update_SkillService.updateLang($scope.editLang,$scope.lang.id,$scope.data.access_token)
                         .then(function () {
+                            Update_SkillService.fetchLang($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.arrLangNew = [];
+                                    $scope.dataLangs = res.data;
+                                    for(var i =0;i<$scope.dataLangs.length; i++){
+                                        if($scope.dataLangs[i].personalId == $scope.user.id){
+                                            $scope.arrLangNew.push($scope.dataLangs[i]);
+                                        }
+                                    }
+                                    $scope.langs = $scope.arrLangNew;
+                                    $scope.status.toggle = !$scope.status.toggle;
+                                })
+                                .catch(function () {
+
+                                });
                             $scope.editLang = {}
-                            alert("Update success !");
-                            $window.location.reload();
                         })
                         .catch(function () {
                             alert("Update failed !");
@@ -141,8 +193,22 @@ angular.module('myApp')
                     $scope.editLang.personalId = $scope.user.id;
                     Update_SkillService.deleteLang($scope.lang.id,$scope.data.access_token)
                         .then(function () {
+                            Update_SkillService.fetchLang($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.arrLangNew = [];
+                                    $scope.dataLangs = res.data;
+                                    for(var i =0;i<$scope.dataLangs.length; i++){
+                                        if($scope.dataLangs[i].personalId == $scope.user.id){
+                                            $scope.arrLangNew.push($scope.dataLangs[i]);
+                                        }
+                                    }
+                                    $scope.langs = $scope.arrLangNew;
+                                    $scope.status.toggle = !$scope.status.toggle;
+                                })
+                                .catch(function () {
+
+                                });
                             $scope.editLang = {}
-                            $window.location.reload();
                         })
                         .catch(function () {
                             alert("Delete failed !");

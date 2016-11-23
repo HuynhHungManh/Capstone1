@@ -147,9 +147,11 @@ angular.module('myApp')
                                 .catch(function () {
                                     alert("Create failed !");
                                 })
+
                         };
-                        $scope.createSkill = function () {
+                        $scope.createSkill = function (id) {
                             $scope.objAddSkill.personalId = $scope.user.id
+                            $scope.objAddSkill.projectId = id;
                             $scope.objAddSkill.created_at = new Date();
                             $scope.objAddSkill.updated_at = new Date();
                             EducationService.createSkill($scope.objAddSkill, $scope.data.access_token)
@@ -160,6 +162,7 @@ angular.module('myApp')
                                 .catch(function () {
                                     alert("Create failed !");
                                 })
+
                         };
 
                         $scope.updateProject = function (id) {
@@ -168,7 +171,7 @@ angular.module('myApp')
                             $scope.editProject.updated_at = new Date();
                             EducationService.updateProject($scope.editProject, id, $scope.data.access_token)
                                 .then(function () {
-                                    deleRe();
+                                    // deleRe();
                                     alert("Update success !");
                                     $scope.editProject = {};
                                     $window.location.reload();
@@ -176,7 +179,10 @@ angular.module('myApp')
                                 .catch(function () {
                                     alert("Update failed !");
                                 });
+
                         };
+
+
                         $scope.deleteProject = function (id) {
                             $scope.editProject.personalId = $scope.user.id;
                             EducationService.deleteProject(id, $scope.data.access_token)
@@ -188,22 +194,64 @@ angular.module('myApp')
                                 });
                         };
 
+                        $scope.tempSkill = [];
+
                         $scope.edit = function (id) {
                             $scope.status.toggle = !$scope.status.toggle;
                             $scope.editer = $filter('filter')($scope.projects, {id: id})[0];
+                            $scope.DelSkill = $scope.editer.skills;
 
-                            $scope.removeSkillReq = function (id) {
-                                console.log('sfsfsf');
-                                $scope.editer = $filter('filter')($scope.projects, {id: id})[0];
-                                console.log($scope.skillReqs);
-                                EducationService.deleteSkillRe(id,$scope.data.access_token)
+                            $scope.removeSkillReq = function (idSkill) {
+                                console.log('rgredg');
+                                console.log(idSkill);
+                                console.log(id);
+                                EducationService.deleteSkillRe(idSkill,$scope.data.access_token)
                                     .then(function () {
+                                        EducationService.fetchAllSkill()
+                                            .then(function (res) {
+                                                $scope.Skill2 = res.data;
+                                                for(var i =0;i<$scope.Skill2.length;i++ ) {
+                                                    if($scope.Skill2[i].projectId ==id){
+                                                        $scope.tempSkill.push($scope.Skill2[i]);
+                                                    }
+                                                }
+                                                $scope.DelSkill = $scope.tempSkill;
+                                            })
+                                            .catch(function () {
+                                                alert("Delete failed !");
+                                            });
+
                                         $scope.user = $filter('filter')($scope.infoEducations, {username: $stateParams.username})[0];
                                         $scope.skillReqs = $scope.user.skills;
                                     })
                                     .catch(function () {
                                         alert("Delete failed !");
                                     })
+                            };
+                            $scope.updateSkillRe = function (idSkill) {
+                                $scope.objAddSkill.created_at = new Date();
+                                $scope.objAddSkill.updated_at = new Date();
+                                EducationService.updateSkill($scope.objAddSkill,idSkill, $scope.data.access_token)
+                                    .then(function () {
+                                        EducationService.fetchAllSkill()
+                                            .then(function (res) {
+                                                $scope.Skill2 = res.data;
+                                                for(var i =0;i<$scope.Skill2.length;i++ ) {
+                                                    if($scope.Skill2[i].projectId ==id){
+                                                        $scope.tempSkill.push($scope.Skill2[i]);
+                                                    }
+                                                }
+                                                $scope.DelSkill = $scope.tempSkill;
+                                                $scope.statusEditSkill.toggle = !$scope.statusEditSkill.toggle;
+                                            })
+                                            .catch(function () {
+                                                alert("Delete failed !");
+                                            });
+                                    })
+                                    .catch(function () {
+                                        alert("Create failed !");
+                                    })
+
                             };
                         }
 

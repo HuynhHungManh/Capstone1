@@ -1,4 +1,4 @@
-<div ng-init="item.isred= false"  style="cursor:pointer" ng-repeat="skill in editer.skills">
+<div ng-init="item.isred= false" style="cursor:pointer" ng-repeat="skill in DelSkill">
     <ul class="row">
         <li class="col-sm-3">
             <h6 class="title-tags">Skills required:</h6>
@@ -6,10 +6,11 @@
         <li class="col-sm-9">
             <div class="row">
                 <div class="col-sm-9">
-                    <div ><a ng-class="{red : isred}" ng-model="red.item.isred">{{skill.name}}</a></div>
+                    <div><a ng-class="{red : isred}" ng-model="red.item.isred">{{skill.name}}</a></div>
                 </div>
                 <div class="col-sm-3">
-                    <a class="editskill" ng-click="removeSkillReq(skill.id)"><i class="fa fa-remove" ng-click="isred =!isred"></i></a>
+                    <a class="editskill" ng-click="removeSkillReq(skill.id)"><i class="fa fa-remove"
+                                                                                ng-click="isred =!isred"></i></a>
                 </div>
             </div>
         </li>
@@ -25,5 +26,12 @@
                 </div>
             </div>
         </li>
+
     </ul>
 </div>
+<div class="buttonRight">
+    <a ng-click="changeformeditskill()"><i class="fa fa-arrow-left" ng-click="isred =!isred"></i></a>&nbsp;
+
+    <a ng-click="changeformeditskill()"><i class="fa fa-check" ></i></a>
+</div>
+

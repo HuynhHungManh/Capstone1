@@ -84,7 +84,6 @@ angular.module('myApp')
 
             Update_userService.update123(dataUpdate,$scope.user.id, $scope.data.access_token)
                 .then(function () {
-                    alert("Update access !");
                     $state.go('profile_user', {"username": $scope.user.username});
                 })
                 .catch(function () {
