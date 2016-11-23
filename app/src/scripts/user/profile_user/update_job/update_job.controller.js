@@ -33,7 +33,6 @@ angular.module('myApp')
                     $scope.editProject.personalId = $scope.user.id;
                     Update_jobService.createProject($scope.editProject,$scope.data.access_token)
                         .then(function () {
-                            alert("Create success !");
                             $scope.editProject = {};
                             $window.location.reload();
                         })
@@ -45,23 +44,50 @@ angular.module('myApp')
                     $scope.editProject.personalId = $scope.user.id;
                     Update_jobService.updateProject($scope.editProject,id,$scope.data.access_token)
                         .then(function () {
+                            $scope.arrJobs = [];
+                            Update_jobService.fetchJobs($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.newJob = res.data;
+                                    for(var i = 0 ; i < $scope.newJob.length;i++){
+                                        if($scope.newJob[i].personalId == $scope.user.id){
+                                            $scope.arrJobs.push($scope.newJob[i]);
+                                        }
+                                    }
+                                    $scope.jobs = $scope.arrJobs;
+                                })
+                                .catch(function () {
+                                    alert("Connect internet failed !");
+                                });
                             $scope.editProject = {};
-                            alert("Update Success !");
-                            $window.location.reload();
+                            $scope.status.toggle = ! $scope.status.toggle;
                         })
                         .catch(function () {
-                            alert("Update failed !");
+                            alert("Connect internet failed !");
                         });
                 }
                 $scope.deleteProject = function (id) {
                     $scope.editProject.personalId = $scope.user.id;
                     Update_jobService.deleteProject(id,$scope.data.access_token)
                         .then(function () {
+                            $scope.arrJobs = [];
+                            Update_jobService.fetchJobs($scope.data.access_token)
+                                .then(function (res) {
+                                    $scope.newJob = res.data;
+                                    for(var i = 0 ; i < $scope.newJob.length;i++){
+                                        if($scope.newJob[i].personalId == $scope.user.id){
+                                            $scope.arrJobs.push($scope.newJob[i]);
+                                        }
+                                    }
+                                    $scope.jobs = $scope.arrJobs;
+                                })
+                                .catch(function () {
+                                    alert("Connect internet failed !");
+                                });
                             $scope.editProject = {};
-                            $window.location.reload();
+                            $scope.status.toggle = ! $scope.status.toggle;
                         })
                         .catch(function () {
-                            alert("Delete failed !");
+                            alert("Connect internet failed !");
                         });
                 };
             })

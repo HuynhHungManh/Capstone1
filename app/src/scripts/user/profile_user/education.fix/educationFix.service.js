@@ -6,6 +6,9 @@ angular.module('myApp')
         this.fetchAllEducation = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%22educations%22}');
         };
+        this.fetchEducation = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/educations?access_token='+token);
+        };
         this.updateEducation =function (dataupdate,id,token) {
             return $http.patch('https://afternoon-sands-21716.herokuapp.com/api/educations/'+id+'?access_token='+token,dataupdate).success(function () {
             });

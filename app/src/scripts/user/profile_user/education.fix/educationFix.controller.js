@@ -3,8 +3,8 @@
  */
 angular.module('myApp')
     .controller('EducationFix_Controller', function ($scope, EducationFixService, $stateParams, $filter,
-                                                    $state, $cookies,
-                                                    $cookieStore, $window, $rootScope) {
+                                                     $state, $cookies,
+                                                     $cookieStore, $window, $rootScope) {
         $rootScope.isToggleLogout = $cookieStore.get('isToggleLogout');
         $scope.data = $cookieStore.get('DataLogin');
         $scope.isEducation = false;
@@ -13,7 +13,6 @@ angular.module('myApp')
         $scope.changeformEdu = function () {
             $scope.isEducation = !$scope.isEducation;
         };
-
 
 
         EducationFixService.fetchAllEducation()
@@ -34,26 +33,53 @@ angular.module('myApp')
                 };
                 $scope.updateEducation = function (id) {
                     $scope.editEducation.personalId = $scope.user.id;
-                    EducationFixService.updateEducation($scope.editEducation,id,$scope.data.access_token)
+                    EducationFixService.updateEducation($scope.editEducation, id, $scope.data.access_token)
                         .then(function () {
-                            alert("Update success !");
+                            $scope.arrEdaucations = [];
+                            EducationFixService.fetchEducation()
+                                .then(function (res) {
+                                    $scope.newEdu = res.data;
+                                    for (var i = 0; i < $scope.newEdu.length; i++) {
+                                        if ($scope.newEdu[i].personalId == $scope.user.id) {
+                                            $scope.arrEdaucations.push($scope.newEdu[i]);
+                                        }
+                                    }
+                                    $scope.educations = $scope.arrEdaucations ;
+                                    $scope.isEducation = !$scope.isEducation;
+                                })
+                                .catch(function () {
+                                    alert("Connect Internet failed !");
+                                });
                             $scope.editEducation = {};
-                            $window.location.reload();
                         })
                         .catch(function () {
-                            alert("Update falied !");
+                            alert("Connect Internet failed !");
                             $scope.editEducation = {};
                         });
                 }
                 $scope.deleteEducation = function (id) {
                     $scope.editEducation.personalId = $scope.user.id;
-                    EducationFixService.deleteEducation(id,$scope.data.access_token)
+                    EducationFixService.deleteEducation(id, $scope.data.access_token)
                         .then(function () {
+                            $scope.arrEdaucations = [];
+                            EducationFixService.fetchEducation()
+                                .then(function (res) {
+                                    $scope.newEdu = res.data;
+                                    for (var i = 0; i < $scope.newEdu.length; i++) {
+                                        if ($scope.newEdu[i].personalId == $scope.user.id) {
+                                            $scope.arrEdaucations.push($scope.newEdu[i]);
+                                        }
+                                    }
+                                    $scope.educations = $scope.arrEdaucations ;
+                                    $scope.isEducation = !$scope.isEducation;
+                                })
+                                .catch(function () {
+                                    alert("Connect Internet failed !");
+                                });
                             $scope.editEducation = {};
-                            $window.location.reload();
                         })
                         .catch(function () {
-                            alert("Delete failed !");
+                            alert("Connect Internet failed !");
                             $scope.editEducation = {};
                         });
                 };

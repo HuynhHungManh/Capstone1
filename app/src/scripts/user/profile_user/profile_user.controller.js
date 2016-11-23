@@ -16,14 +16,10 @@ angular.module('myApp')
         $scope.dataStore = $cookieStore.get('DataLogin');
 
 
-
-
         $scope.addInter = function () {
             $scope.iconShow = !$scope.iconShow;
             $scope.isAddInter = !$scope.isAddInter;
         }
-
-
 
 
         $rootScope.doTheBack = function () {
@@ -35,11 +31,10 @@ angular.module('myApp')
             if ($cookieStore.get('DataLogin') != undefined) {
                 $rootScope.isSearch = !$rootScope.isSearch;
             }
-            else{
+            else {
                 $rootScope.isSearch = false;
             }
         };
-
 
 
         $scope.isEditCom = true;
@@ -83,13 +78,22 @@ angular.module('myApp')
                 alert("Please login Website !");
             }
 
-        }
+        };
+
+        $scope.checkNull = function (data) {
+            if ( data === undefined || data === '')
+                return '<p class="nullData">----- Please enter info user -----</p>';
+            else
+                return data;
+        };
 
 
         Profile_userService.fetchAllUser()
             .then(function (response) {
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
+
+
 
                 if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
                     $scope.isToggle = true;
@@ -189,12 +193,12 @@ angular.module('myApp')
 
                     Profile_userService.createInter($scope.inter, $scope.data.access_token)
                         .then(function () {
-                            $scope.arrInters= [];
+                            $scope.arrInters = [];
                             Profile_userService.fetchInters($scope.data.access_token)
                                 .then(function (res) {
                                     $scope.dataNewInter = res.data;
-                                    for(var i=0; i<$scope.dataNewInter.length;i++){
-                                        if($scope.dataNewInter[i].personalId == $scope.user.id){
+                                    for (var i = 0; i < $scope.dataNewInter.length; i++) {
+                                        if ($scope.dataNewInter[i].personalId == $scope.user.id) {
                                             $scope.arrInters.push($scope.dataNewInter[i]);
                                         }
                                     }
@@ -213,12 +217,12 @@ angular.module('myApp')
                 $scope.deleteInter = function (id) {
                     Profile_userService.deleteInter(id, $scope.data.access_token)
                         .then(function () {
-                            $scope.arrInters= [];
+                            $scope.arrInters = [];
                             Profile_userService.fetchInters($scope.data.access_token)
                                 .then(function (res) {
                                     $scope.dataNewInter = res.data;
-                                    for(var i=0; i<$scope.dataNewInter.length;i++){
-                                        if($scope.dataNewInter[i].personalId == $scope.user.id){
+                                    for (var i = 0; i < $scope.dataNewInter.length; i++) {
+                                        if ($scope.dataNewInter[i].personalId == $scope.user.id) {
                                             $scope.arrInters.push($scope.dataNewInter[i]);
                                         }
                                     }
@@ -244,12 +248,12 @@ angular.module('myApp')
                     $scope.updateInter = function () {
                         Profile_userService.updateInter($scope.inter, id, $scope.data.access_token)
                             .then(function () {
-                                $scope.arrInters= [];
+                                $scope.arrInters = [];
                                 Profile_userService.fetchInters($scope.data.access_token)
                                     .then(function (res) {
                                         $scope.dataNewInter = res.data;
-                                        for(var i=0; i<$scope.dataNewInter.length;i++){
-                                            if($scope.dataNewInter[i].personalId == $scope.user.id){
+                                        for (var i = 0; i < $scope.dataNewInter.length; i++) {
+                                            if ($scope.dataNewInter[i].personalId == $scope.user.id) {
                                                 $scope.arrInters.push($scope.dataNewInter[i]);
                                             }
                                         }
@@ -263,7 +267,7 @@ angular.module('myApp')
 
                             })
                             .catch(function () {
-                                alert("Update failed !");
+                                alert("Connect internet failed !");
                             });
                     };
                 };
@@ -282,7 +286,7 @@ angular.module('myApp')
                                 $scope.comment = {};
                                 $window.location.reload();
                             }).catch(function () {
-                            alert("update failed !");
+                            alert("Connect internet failed !");
                         });
                         $scope.isEditCom = !$scope.isEditCom;
                         alert("Edit success !");
@@ -290,7 +294,7 @@ angular.module('myApp')
                         $scope.comment = {};
                     }
                     else {
-                        alert("Edit failed !");
+                        alert("Connect internet failed !");
                     }
                 }
                 $scope.createCom = function () {
@@ -300,12 +304,12 @@ angular.module('myApp')
                     $scope.updated_at = new Date();
                     Profile_userService.createCom($scope.comment)
                         .then(function () {
-                            $scope.arrComs= [];
+                            $scope.arrComs = [];
                             Profile_userService.fetchComs($scope.data.access_token)
                                 .then(function (res) {
                                     $scope.dataNewComs = res.data;
-                                    for(var i=0; i<$scope.dataNewComs.length;i++){
-                                        if($scope.dataNewComs[i].personalId == $scope.user.id){
+                                    for (var i = 0; i < $scope.dataNewComs.length; i++) {
+                                        if ($scope.dataNewComs[i].personalId == $scope.user.id) {
                                             $scope.arrComs.push($scope.dataNewComs[i]);
                                         }
                                     }
@@ -316,18 +320,18 @@ angular.module('myApp')
                                 });
                             $scope.comment = {};
                         }).catch(function () {
-                        alert("Create failed !");
+                        alert("Connect internet failed !");
                     });
                 };
                 $scope.deleteCom = function (id) {
                     Profile_userService.deleteCom(id, $scope.data.access_token)
                         .then(function () {
-                            $scope.arrComs= [];
+                            $scope.arrComs = [];
                             Profile_userService.fetchComs($scope.data.access_token)
                                 .then(function (res) {
                                     $scope.dataNewComs = res.data;
-                                    for(var i=0; i<$scope.dataNewComs.length;i++){
-                                        if($scope.dataNewComs[i].personalId == $scope.user.id){
+                                    for (var i = 0; i < $scope.dataNewComs.length; i++) {
+                                        if ($scope.dataNewComs[i].personalId == $scope.user.id) {
                                             $scope.arrComs.push($scope.dataNewComs[i]);
                                         }
                                     }
@@ -338,7 +342,7 @@ angular.module('myApp')
                                 });
                             $scope.comment = {};
                         }).catch(function () {
-                        alert("Delete failed !");
+                        alert("Connect internet failed !");
                     });
                 };
 

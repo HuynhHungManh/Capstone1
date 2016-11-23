@@ -1261,11 +1261,18 @@ iframe {
 	margin: 0px;
 	font-size: 14px;
 	color: #fff;
-	background: rgba(0,0,0,0.9);
+	/*background: rgba(0,0,0,0.9);*/
+	/*background: #000000;*/
 	transition: all 0.3s;
 }
+.blue{
+	background: #18a3ff;
+}
+.black{
+	background: #000000;
+}
 .banr-head .login-sec .login-with a:hover {
-	background: #0099ff;
+	/*background: #0099ff;*/
 }
 .banr-head .login-sec .uou-tabs .content > div {
 	padding: 0px;
@@ -1290,13 +1297,15 @@ iframe {
 	font-size: 14px;
 	transition: all 0.3s;
 }
+
+
 .banr-head .login-sec button:hover {
 	background: rgba(0,0,0,0.8);
 }
 .banr-head .login-sec .uou-tabs .tabs li a {
 	border: none;
 	padding: 15px 10px;
-	background: #0099ff;
+	/*background: #0099ff;*/
 	color: #fff;
 }
 .banr-head .login-sec .uou-tabs .tabs li.active a {
@@ -3458,10 +3467,10 @@ ul.rating {
 }
 .buttonRightImg{
 	float: right;
-	margin-top: 30px;
+	margin-top: 70px;
 	margin-right: 20px;
-	width: 90px;
-	height: 90px;
+	width: 60px;
+	height: 60px;
 }
 .indexdes{
 	margin-top: 20px;
@@ -3471,4 +3480,26 @@ ul.rating {
 .imgCom img{
 	width:50px;
 	height: 50px;
+}
+
+.padding{
+	padding: 8px;
+}
+/*.color-icon{*/
+	/*color: #00B7FF;*/
+/*}*/
+.nullData{
+	text-align: center;
+	font-family: "Segoe UI", Arial, sans-serif;
+	font-size: 17px;
+}
+.verified{
+	color: #fcfeff;
+	margin-top: 15px;
+	text-align:center;
+	border-color: #ddded9;
+	font-size: 20px;
+}
+.buttonCenter{
+	text-align: center;
 }

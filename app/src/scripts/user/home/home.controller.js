@@ -12,6 +12,10 @@ angular.module('myApp')
             $rootScope.isToggleLogout = false;
         }
 
+        $scope.isStudent = true;
+
+
+
 
         if($rootScope.isToggleLogout == false){
             $scope.dataLogin = {
@@ -22,6 +26,7 @@ angular.module('myApp')
             $cookieStore.put("DataLogin", $scope.dataLogin);
         }
 
+        console.log('day roi');
         console.log( $cookieStore.get("DataLogin").StoreUser);
 
 
@@ -204,5 +209,6 @@ angular.module('myApp')
                 $scope.err = $scope.error;
             }
         }
+
 
     });

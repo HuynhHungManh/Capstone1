@@ -9,6 +9,9 @@ angular.module('myApp')
         this.fetchAllUser = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%22jobs%22}');
         };
+        this.fetchJobs = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/jobs?access_token='+token);
+        };
         this.createProject = function (datapost,token) {
             console.log('Đã update');
             console.log(token);

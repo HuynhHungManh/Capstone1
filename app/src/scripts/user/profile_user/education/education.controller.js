@@ -141,29 +141,28 @@ angular.module('myApp')
                             $scope.editProject.updated_at = new Date();
                             EducationService.createProject($scope.editProject, $scope.data.access_token)
                                 .then(function () {
-                                    alert("Create success !");
                                     $window.location.reload();
                                 })
                                 .catch(function () {
-                                    alert("Create failed !");
+                                    alert("Connect internet failed !");
                                 })
 
                         };
-                        $scope.createSkill = function (id) {
-                            $scope.objAddSkill.personalId = $scope.user.id
-                            $scope.objAddSkill.projectId = id;
-                            $scope.objAddSkill.created_at = new Date();
-                            $scope.objAddSkill.updated_at = new Date();
-                            EducationService.createSkill($scope.objAddSkill, $scope.data.access_token)
-                                .then(function () {
-                                    alert("Create success !");
-                                    $window.location.reload();
-                                })
-                                .catch(function () {
-                                    alert("Create failed !");
-                                })
-
-                        };
+                        // $scope.createSkill = function (id) {
+                        //     $scope.objAddSkill.personalId = $scope.user.id
+                        //     $scope.objAddSkill.projectId = id;
+                        //     $scope.objAddSkill.created_at = new Date();
+                        //     $scope.objAddSkill.updated_at = new Date();
+                        //     EducationService.createSkill($scope.objAddSkill, $scope.data.access_token)
+                        //         .then(function () {
+                        //             alert("Create success !");
+                        //             $window.location.reload();
+                        //         })
+                        //         .catch(function () {
+                        //             alert("Connect internet failed !");
+                        //         })
+                        //
+                        // };
 
                         $scope.updateProject = function (id) {
                             $scope.editProject.personalId = $scope.user.id;
@@ -171,13 +170,26 @@ angular.module('myApp')
                             $scope.editProject.updated_at = new Date();
                             EducationService.updateProject($scope.editProject, id, $scope.data.access_token)
                                 .then(function () {
-                                    // deleRe();
-                                    alert("Update success !");
+                                    $scope.arrProject = [];
+                                    EducationService.fetchAllProject($scope.data.access_token)
+                                        .then(function (res) {
+                                            $scope.newPro = res.data;
+                                            for(var i=0;i< $scope.newPro.length;i++){
+                                                if($scope.newPro[i].personalId == $scope.user.id){
+                                                    $scope.arrProject.push($scope.arrProject[i]);
+                                                }
+                                            }
+                                            $scope.projects = $scope.arrProject;
+
+                                        })
+                                        .catch(function () {
+                                            alert("Connect internet failed !");
+                                        });
+                                    $scope.status.toggle = !$scope.status.toggle;
                                     $scope.editProject = {};
-                                    $window.location.reload();
                                 })
                                 .catch(function () {
-                                    alert("Update failed !");
+                                    alert("Connect internet failed !");
                                 });
 
                         };
@@ -187,10 +199,26 @@ angular.module('myApp')
                             $scope.editProject.personalId = $scope.user.id;
                             EducationService.deleteProject(id, $scope.data.access_token)
                                 .then(function () {
-                                    $window.location.reload();
+                                    $scope.arrProject = [];
+                                    EducationService.fetchAllProject($scope.data.access_token)
+                                        .then(function (res) {
+                                            $scope.newPro = res.data;
+                                            for(var i=0;i< $scope.newPro.length;i++){
+                                                if($scope.newPro[i].personalId == $scope.user.id){
+                                                    $scope.arrProject.push($scope.arrProject[i]);
+                                                }
+                                            }
+                                            $scope.projects = $scope.arrProject;
+
+                                        })
+                                        .catch(function () {
+                                            $scope.status.toggle = !$scope.status.toggle;
+                                            alert("Connect internet failed !");
+                                        });
+                                    $scope.editProject = {};
                                 })
                                 .catch(function () {
-                                    alert("Delete failed !");
+                                    alert("Connect internet failed !");
                                 });
                         };
 

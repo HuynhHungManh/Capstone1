@@ -8,262 +8,104 @@
                     <h5>Information Student </h5>
                 </div>
                 <div class="buttonRightImg">
-                        <a href=""><img src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"></a> </div>
+                    <a href=""><img src="https://cdn2.iconfinder.com/data/icons/flat-user/114/user-check-512.png"></a>
+                    <p class="verified">Verified</p>
                 </div>
-            </div>
 
-            <!-- Modal POPUP -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="container">
-                            <h6><a class="close" href="#." data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></a> Send Message</h6>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <!-- Profile Company Content -->
-        <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
-            <div class="container">
-                <div class="row">
-
-                    <!-- Nav Tabs -->
-                    <div class="col-md-12">
-                        <ul class="nav nav-tabs">
-                            <li><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a></li>
-                            <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
-                            <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
-                            <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
-                            <li class="active"><a data-toggle="tab"
-                                                  href="#/confirm/username={{user.username}}">Approve</a></li>
-
-
-                            <!--<li><a href=""> <img src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"></a></li>-->
-                        </ul>
-                    </div>
-
-                    <!-- Tab Content -->
-                    <div class="col-md-12">
-                        <div class="tab-content">
-
-                            <!-- PROFILE -->
-                            <div id="profile" class="tab-pane fade in active">
-                                <div class="row">
-
-                                    <div class="col-md-12">
-                                        <!-- Skills -->
-                                        <div class="sidebar">
-                                            <h5 class="main-title">Confirm</h5>
-                                            <div class="job-skills">
-                                                <div class="form-group">
-                                                    <label class="col-lg-3 control-label">Choose name teacher :</label>
-                                                    <div class="col-lg-9">
-                                                        <!--<input list="eLevels" name="eLevel" />-->
-                                                        <input list="status" class="form-control" type="text"
-                                                               name="status" placeholder="Choose name ...">
-                                                        <datalist id="status">
-                                                            <option value="Dinh Tien Vu">
-                                                            <option value="Nguyen Duc Man">
-                                                            <option value="Vo Van Luong">
-                                                            <option value="Nguyen Thi Bao Trang">
-                                                        </datalist>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-3 control-label">Choose default :</label>
-                                                    <div class="col-lg-9">
-                                                        <!--<input list="eLevels" name="eLevel" />-->
-                                                        <input list="personal" class="form-control" type="text"
-                                                               name="personal" placeholder="Choose name ...">
-                                                        <datalist id="personal">
-                                                            <option value="personal">
-                                                        </datalist>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-3 control-label">Message :</label>
-                                                    <div class="col-lg-9">
-                                                        <textarea rows="4" cols="50" placeholder="Enter message..."></textarea>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn btn-info">Send</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Jobs -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-
-<script>
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-    })
-</script>
-
-<div class="form-group">
-
-    <div class="bd-example">
-        <div class="modal fade" id="exampleModaledu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeledu"
-             aria-hidden="true">
+        <!-- Modal POPUP -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="exampleModalLabeledu">Add Project</h4>
+                    <div class="container">
+                        <h6><a class="close" href="#." data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></a> Send Message</h6>
+
                     </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Name Project:</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" ng-model="editProject.name"
-                                               placeholder="Enter name project...">
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Subject :</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" ng-model="editProject.subject"
-                                               placeholder="Enter subject...">
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Profile Company Content -->
+    <div class="profile-company-content user-profile main-user" data-bg-color="f5f5f5">
+        <div class="container">
+            <div class="row">
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Content:</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" ng-model="editProject.content"
-                                               placeholder="Enter content...">
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Nav Tabs -->
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a></li>
+                        <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
+                        <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
+                        <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
+                        <li class="active"><a data-toggle="tab"
+                                              href="#/confirm/username={{user.username}}">Approve</a></li>
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Skills require :</label>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input type="text" ng-model="SkillRe.name">
-                                        <!--<ul class="tags list-inline">-->
-                                        <!--<li style="cursor:pointer"-->
-                                        <!--ng-repeat="skill in skillReqs" ng-init="index = $index">-->
-                                        <!--<a ng-class="{red : isred}" ng-model="skill.id"-->
-                                        <!--ng-click="find(skill.id)">-->
-                                        <!--<span ng-click="isred = !isred">{{skill.name}}</span>-->
-                                        <!--</a>-->
 
-                                        <!--</li>-->
-                                        <!--</ul>-->
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <!--<a ng-click="chooseAcceppSkill()"><i class="edit-pen fa fa-check">-->
-                                        <!--</i></a>-->
-                                        <!--<button type="button" class="btn btn-warning" ng-click="index()">Add</button>-->
-                                        <button type="button" class="btn btn-warning" ng-click="addSkillReq()">Add
-                                        </button>
-                                    </div>
-                                </div>
+                        <!--<li><a href=""> <img src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"></a></li>-->
+                    </ul>
+                </div>
 
-                                <!--<div class="row" ng-repeat="skill in plusSkills">-->
-                                <!--<div class="col-sm-2">-->
-                                <!--<label class="form-control-label">Skills require {{skill.index}}:</label>-->
-                                <!--</div>-->
-                                <!--<div class="col-sm-9" >-->
-                                <!--&lt;!&ndash;<li ng-repeat="skill in choosed"><a>{{skill.name}}</a>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                                <!--<input type="text" ng-model="test">-->
-                                <!--</div>-->
-                                <!--<div class="col-sm-1">-->
-                                <!--<a><i class="edit-pen fa fa-remove" ng-click="deleteIndex(skill.index)">-->
-                                <!--</i></a>-->
-                                <!--</div>-->
-                                <!--</div>-->
-                            </div>
+                <!-- Tab Content -->
+                <div class="col-md-12">
+                    <div class="tab-content">
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Day start :</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="input-group date">
-                                            <div class="dateholder">
-                                                <input type="date" class="datepicker" ng-model="editProject.from_date">
+                        <!-- PROFILE -->
+                        <div id="profile" class="tab-pane fade in active">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <!-- Skills -->
+                                    <div class="sidebar">
+                                        <h5 class="main-title">Confirm</h5>
+                                        <div class="job-skills">
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Choose name teacher :</label>
+                                                <div class="col-lg-9">
+                                                    <!--<input list="eLevels" name="eLevel" />-->
+                                                    <input list="status" class="form-control" type="text"
+                                                           name="status" placeholder="Choose name ...">
+                                                    <datalist id="status">
+                                                        <option value="Dinh Tien Vu">
+                                                        <option value="Nguyen Duc Man">
+                                                        <option value="Vo Van Luong">
+                                                        <option value="Nguyen Thi Bao Trang">
+                                                    </datalist>
+                                                </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Choose default :</label>
+                                                <div class="col-lg-9">
+                                                    <!--<input list="eLevels" name="eLevel" />-->
+                                                    <input list="personal" class="form-control" type="text"
+                                                           name="personal" placeholder="Choose name ...">
+                                                    <datalist id="personal">
+                                                        <option value="personal">
+                                                    </datalist>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-lg-3 control-label">Message :</label>
+                                                <div class="col-lg-9">
+                                                    <textarea rows="4" cols="50"
+                                                              placeholder="Enter message..."></textarea>
+                                                </div>
+                                            </div>
+                                            <button ng-class="buttonCenter" type="button" class="btn btn-info">Send</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Day end :</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <div class="input-group date">
-                                            <div class="dateholder">
-                                                <input type="date" class="datepicker" ng-model="editProject.to_date">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label class="form-control-label">Describe of product :</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <textarea rows="4" cols="50" ng-model="editProject.describe"
-                                                  placeholder="Enter describe..."
-                                                  ng-model="editProject.describe"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    {{updateSkill}}
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary " ng-click="createProject()">Add</button>
+                        </div>
+                        <!-- Jobs -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 

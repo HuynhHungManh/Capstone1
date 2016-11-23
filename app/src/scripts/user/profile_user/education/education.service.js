@@ -6,8 +6,8 @@ angular.module('myApp')
         this.fetchAllEducation = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%20[%22projects%22,%22skills%22,%22educations%22]}');
         };
-        this.fetchAllProject = function () {
-            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%20[%22projects%22,%22skills%22,%22educations%22]}');
+        this.fetchAllProject = function (token) {
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/projects?access_token='+token);
         };
         this.fetchAllSkillOfProject = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/projects?filter=%7B%22include%22%3A%20%22skills%22%7D');

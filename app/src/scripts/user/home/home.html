@@ -25,24 +25,24 @@
 
                             <div class="uou-tabs">
                                 <ul class="tabs">
-                                    <li  ng-click="isLogAndRes = true"><a href="#register" data-toggle="modal" data-target="#exampleModal321">Register
+                                    <li  ng-class="{blue : isLogAndRes}" ng-click="isLogAndRes = true"><a href="#register" data-toggle="modal" data-target="#exampleModal321">Register
                                         Now</a></li>
-                                    <li class="active" ng-click="isLogAndRes = false"><a href="#log-in">Member Login</a></li>
+                                    <li class="active" ng-class="{blue : !isLogAndRes}" ng-click="isLogAndRes = false"><a href="#log-in">Member Login</a></li>
                                 </ul>
 
                                 <!-- REGISTER -->
                                 <div class="content" >
                                     <div id="register" class="active" ng-show="isLogAndRes">
                                         <form >
-                                            <input type="text" placeholder="Enter dtu_id..." ng-model="dtu_id">
+                                            <input ng-show="!isred"  type="text" placeholder="Enter dtu_id..." ng-model="dtu_id">
                                             <input type="text" placeholder="Enter username..." ng-model="usernameRegister">
                                             <input type="email" placeholder="Email Address..." ng-model="emailRegister" >
                                             <input type="password" placeholder="Enter password..." ng-model="passRe">
                                             <input type="password" placeholder="Enter password again..." ng-model="passwordAgain">
                                             <button type="submit"  ng-click="post()">Register</button>
-                                            <div class="login-with"> <span>Who are you ? </span>
-                                                <a href=""><i class="fa fa-user"></i></a>
-                                                <a href=""><i class="fa fa-home"></i></a>
+                                            <div class="login-with"> <span>Who are you ? </span> &nbsp;
+                                                <a href="" ng-class="{blue : !isred ,black : isred}" ng-click="isred=!isred"><i class="fa fa-user"></i></a>&nbsp;
+                                                <a href="" ng-class="{blue : isred ,black : !isred}" ng-click="isred=!isred" ng-model ="isred"><i class="fa fa-home"></i></a>
                                             </div>
                                         </form>
                                         <div class="err">
