@@ -21,11 +21,6 @@ angular.module('myApp')
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
                 $scope.educations = $scope.user.educations;
 
-                console.log($scope.educations.length);
-
-                if ($scope.educations.length == 0) {
-                    alert("Please enter education.. !");
-                }
 
                 $scope.editformEdu = function (id) {
                     $scope.editEdu = $filter('filter')($scope.educations, {id: id})[0];

@@ -1,4 +1,6 @@
-<div class="listing-ver-3" ng-repeat="job in jobs">
+
+<div ng-if="idNullJob = checkNullArr(jobs)"><my-datanull></my-datanull></div>
+<div  ng-if="!idNullJob" class="listing-ver-3" ng-repeat="job in jobs">
     <div class="listing-heading">
         <h5>Company : {{job.name_of_company}}</h5>
     </div>

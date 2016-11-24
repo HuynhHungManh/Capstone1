@@ -50,8 +50,11 @@
                                                                           alt=""></div>
                                         </div>
                                         <div class="media-body">
-                                            <div class="indexdes">
+                                            <div class="indexdes" ng-if="isNullDes = checkNullData(user.desscribe)">
                                                 {{user.desscribe}}
+                                            </div>
+                                            <div class="indexdes" ng-if="!isNullDes">
+                                                <my-datanull></my-datanull>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +64,10 @@
                                 <!-- Skills -->
                                 <div class="sidebar">
                                     <h5 class="main-title">Skills</h5>
-                                    <div class="job-skills">
+                                    <div ng-if="isNullSkill = checkNullArr(user.skills)">
+                                        <my-datanull></my-datanull>
+                                    </div>
+                                    <div ng-if="!isNullSkill" class="job-skills">
                                         <ul class="row" ng-repeat="skill in user.skills">
                                             <li class="col-sm-3">
                                                 <h6><i class="fa fa-check"></i>{{skill.name}}</h6>
@@ -88,17 +94,22 @@
                                         <h5 class="main-title">Language</h5>
 
                                         <!-- Logo Design -->
-                                        <ul class="row">
-                                            <li class="col-sm-9">
-                                                <ul class="single-category com-rate">
-                                                    <li class="row" ng-repeat="lang in langs">
-                                                        <h6 class="title col-xs-4">{{lang.name}}:</h6>
-                                                        <span class="lang col-xs-6">
+                                        <div ng-if="isNullLang = checkNullArr(langs)">
+                                            <my-datanull></my-datanull>
+                                        </div>
+                                        <div ng-if="!isNullLang">
+                                            <ul class="row">
+                                                <li class="col-sm-9">
+                                                    <ul class="single-category com-rate">
+                                                        <li class="row" ng-repeat="lang in langs">
+                                                            <h6 class="title col-xs-4">{{lang.name}}:</h6>
+                                                            <span class="lang col-xs-6">
                                                                     {{lang.level}}
                                                                 </span></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <br>
                                     </div>
                                     <div>
@@ -131,7 +142,10 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="media" ng-repeat="com in showComment" id="321">
+                                        <div class="nullData" ng-if="isNullCom = checkNullArr(showComment)">
+                                            ---------- No comment ----------
+                                        </div>
+                                        <div ng-if="!isNullCom" class="media" ng-repeat="com in showComment" id="321">
                                             <div class="media-left">
                                                 <div class="inn-simi">
                                                     <div class="imgCom"><img class="media-object"
@@ -160,13 +174,13 @@
                                     </div>
                                 </div>
                                 <!--<div class="sidebar">-->
-                                    <!--<h5 class="main-title">Similar Professionals</h5>-->
-                                    <!--&lt;!&ndash; Similar &ndash;&gt;-->
-                                    <!--<div class="similar">-->
-                                        <!--<div class ="nullData">-->
-                                            <!-- -&#45;&#45;&#45;&#45; Please enter info user -&#45;&#45;&#45;&#45;-->
-                                        <!--</div>-->
-                              <!---->
+                                <!--<h5 class="main-title">Similar Professionals</h5>-->
+                                <!--&lt;!&ndash; Similar &ndash;&gt;-->
+                                <!--<div class="similar">-->
+                                <!--<div class ="nullData">-->
+                                <!-- -&#45;&#45;&#45;&#45; Please enter info user -&#45;&#45;&#45;&#45;-->
+                                <!--</div>-->
+                                <!---->
                                 <!--</div>-->
 
                                 <!-- Professional Details -->
@@ -183,34 +197,35 @@
                                         <ul class="single-category">
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Firts Name</h6>
-                                                <span class="subtitle col-xs-6">{{user.firstName}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.firstName)}} </span>
+                                            </li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Firts Name</h6>
-                                                <span class="subtitle col-xs-6">{{user.lastName}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.lastName)}}</span></li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">BirthDay</h6>
-                                                <span class="subtitle col-xs-6">{{user.birthDay}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.birthDay)}}</span></li>
                                             <li class="row">
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Degree</h6>
-                                                <span class="subtitle col-xs-6">{{user.degree}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.degree)}}</span></li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Sex</h6>
-                                                <span class="subtitle col-xs-6">{{user.sex}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.sex)}}</span></li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Phone</h6>
-                                                <span class="subtitle col-xs-6">{{user.phone}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.phone)}}</span></li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Status</h6>
-                                                <span class="subtitle col-xs-6">{{user.status}}</span></li>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.status)}}</span></li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Email</h6>
                                                 <span class="subtitle col-xs-6"><a
-                                                        href="#.">{{user.email}}</a></span>
+                                                        href="#.">{{checkNull(user.email)}}</a></span>
                                             </li>
                                             <li class="row">
                                                 <h6 class="title col-xs-6">Status</h6>
-                                                <span class="subtitle col-xs-6">{{user.status}}</a></span>
+                                                <span class="subtitle col-xs-6">{{checkNull(user.status)}}</a></span>
                                             </li>
                                             <br>
                                         </ul>

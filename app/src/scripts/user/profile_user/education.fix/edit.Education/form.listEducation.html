@@ -1,4 +1,6 @@
-<div class="listing-ver-3" ng-repeat="edu in educations">
+<hr>
+<div ng-if="isNullEdu = checkNullArr(educations)"><my-datanull></my-datanull></div>
+<div ng-if="!isNullEdu" class="listing-ver-3" ng-repeat="edu in educations">
     <div class="listing-heading">
         <h5>{{edu.name_of_school}} University</h5>
     </div>

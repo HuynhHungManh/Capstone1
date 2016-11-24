@@ -1,5 +1,4 @@
 
-
 <div class="row">
     <div class="col-xs-3">
         <h6 class="title">{{lang.name}} :</h6>
@@ -30,7 +29,78 @@
     <div class="col-xs-9">
         <div class="row">
             <div class="col-xs-9">
-                <input type="text" ng-model="editLang.name" placeholder="Enter name language...">
+                <select ng-model="editLang.name" name='menu'>
+                    <option value='Afrikaans'>Afrikaans(AF)</option>
+                    <option value='Albanian'>Albanian	(SQ)</option>
+                    <option value='Arabic'>Arabic (AR)</option>
+                    <option value='Armenian'>Armenian (HY)</option>
+                    <option value='Basque'>Basque (EU)</option>
+                    <option value='Bengali'>Bengali (BN)</option>
+                    <option value='Bulgarian'>Bulgarian (BG</option>
+                    <option value='Catalan'>Catalan (CA</option>
+                    <option value='Cambodian'>Cambodian (KM)</option>
+                    <option value='Chinese'>Chinese (ZH)</option>
+                    <option value='Croatian'>Croatian (HR)</option>
+                    <option value='Czech'>Czech (CS)</option>
+                    <option value='Danish'>Danish (DA)</option>
+                    <option value='Dutch'>Dutch (NL)</option>
+                    <option value='English'>English (EN)</option>
+                    <option value='Estonian'>Estonian (ET</option>
+                    <option value='Fiji'>Estonian (ET</option>
+                    <option value='Finnish'>Finnish (FI)</option>
+                    <option value='French'>French (FR)</option>
+                    <option value='Georgian'>Georgian (KA</option>
+                    <option value='German'>German (DE)</option>
+                    <option value='Greek'>Greek (EL)</option>
+                    <option value='Gujarati'>ujarati (GU'</option>
+                    <option value='Greek'>Greek (EL)</option>
+                    <option value='Gujarati'>Gujarati (GU)</option>
+                    <option value='Hebrew'>Hebrew (HE)</option>
+                    <option value='Hindi'>Hindi (HI)'</option>
+                    <option value='Hungarian'>Hungarian (HU)</option>
+                    <option value='Icelandic'>Icelandic (IS)</option>
+                    <option value='Indonesian)'>Indonesian (ID)</option>
+                    <option value='Irish'>Irish (GA)</option>
+                    <option value='Italian'>Italian (IT)</option>
+                    <option value='Japanese'>Japanese (JA)</option>
+                    <option value='Korean'>Korean (KO)</option>
+                    <option value='Latin'>Latin (LA)</option>
+                    <option value='Latvian>Latvian'> (LV)</option>
+                    <option value='Lithuanian'>Lithuanian (LT)</option>
+                    <option value='Macedonian'>Macedonian (MK)</option>
+                    <option value='Malay'>Malay (MS)</option>
+                    <option value='Malayalam'>Malayalam (ML)</option>
+                    <option value='Maltese'>Maltese (MT)</option>
+                    <option value='Marathi'>Marathi (MR)</option>
+                    <option value='Mongolian'>Mongolian (MN)</option>
+                    <option value='Nepali'>Nepali (NE)</option>
+                    <option value='Norwegian'>Norwegian (NO)</option>
+                    <option value='Persian'>Persian (FA)</option>
+                    <option value='Polish'>Polish (PL)</option>
+                    <option value='Portuguese'>Portuguese (PT)</option>
+                    <option value='Punjabi'>Punjabi (PA)</option>
+                    <option value='Quechua'>Quechua (QU)</option>
+                    <option value='Romanian'>Romanian (RO)</option>
+                    <option value='Russian'>Russian (RU)</option>
+                    <option value='Samoan'>Samoan (SM)</option>
+                    <option value='Serbian '>Serbian (SR)</option>
+                    <option value='Slovenian'>Slovenian (SL)</option>
+                    <option value='Spanishx'>Spanish (ES)</option>
+                    <option value='Swedish'>Swedish (SV)</option>
+                    <option value='Tamil'>Tamil (TA)</option>
+                    <option value='Tatar'>Tatar (TT)</option>
+                    <option value='Telugu'>Telugu (TE)</option>
+                    <option value='Thai'>Thai (TH)</option>
+                    <option value='Tibetan'>Tibetan (BO)</option>
+                    <option value='Tonga'>Tonga (TO)</option>
+                    <option value='Turkish'>Turkish (TR)</option>
+                    <option value='Ukrainian'>Ukrainian (UK)</option>
+                    <option value='Urdu'>Urdu (UR)/option>
+                    <option value='Uzbek'>Uzbek (UZ)</option>
+                    <option value='Vietnamese'>Vietnamese (VI</option>
+                    <option value='Welsh'>Welsh (CY</option>
+                    <option value='Xhosa'>Xhosa (XH)</option>
+                </select>
             </div>
             <div class="col-xs-3">
             </div>
@@ -45,15 +115,13 @@
         <div class="row">
             <div class="col-xs-9">
                 <form>
-                    <input class="datalist" type="text" list="levelsSkillLang"
-                           ng-model="editLang.level" placeholder="Choose level ..."/>
-                    <datalist id="levelsSkillLang">
-                        <option value="Beginner"/>
-                        <option value="Elementary"/>
-                        <option value="Intermediate"/>
-                        <option value="Advanced"/>
-                        <option value="Proficient"/>
-                    </datalist>
+                    <select ng-model="editLang.level" name='menu'>
+                        <option value='Beginner'>Beginner</option>
+                        <option value='Elementary'>Elementary</option>
+                        <option value='Intermediate'>Intermediate</option>
+                        <option value='Advanced'>Advanced</option>
+                        <option value='Proficient'>Proficient</option>
+                    </select>
                 </form>
             </div>
             <div class="col-xs-3">

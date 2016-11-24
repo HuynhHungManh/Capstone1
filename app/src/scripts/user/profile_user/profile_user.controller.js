@@ -80,12 +80,28 @@ angular.module('myApp')
 
         };
 
-        $scope.checkNull = function (data) {
-            if ( data === undefined || data === '')
-                return '<p class="nullData">----- Please enter info user -----</p>';
+        $rootScope.checkNullData = function (data) {
+            if (data == null || data === ''  ||  data === 'string' || data === undefined)
+                return false;
+            else
+                return true;
+        };
+
+        $rootScope.checkNullArr = function (data) {
+            if(data.length  == 0)
+                return true;
+            else
+                return false;
+        };
+
+
+        $rootScope.checkNull = function (data) {
+            if (data == null || data === ''  ||  data ===  'string'  === undefined)
+                return '--------------------------';
             else
                 return data;
         };
+
 
 
         Profile_userService.fetchAllUser()
@@ -93,6 +109,8 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
+
+                // console.log(checkNullArr($scope.user.skills));
 
 
                 if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
@@ -118,7 +136,6 @@ angular.module('myApp')
 
                 if ($scope.user.firstName == undefined || $scope.user.lastName == undefined) {
                     alert("You don't enter first name or lastname !");
-                    $state.go('update_user', {"username": $scope.user.username});
                 }
                 // else if($scope.user.educations[0].name_of_school == undefined ||
                 //     $scope.user.educations[0].address_of_school ==undefined ||

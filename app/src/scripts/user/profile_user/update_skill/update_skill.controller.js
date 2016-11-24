@@ -72,7 +72,6 @@ angular.module('myApp')
                     Update_SkillService.createSkill($scope.editSkill,$scope.data.access_token)
                         .then(function () {
                             $scope.editSkill = {}
-                            alert("Create success !");
                             $window.location.reload();
                         })
                         .catch(function () {
@@ -157,7 +156,6 @@ angular.module('myApp')
                     Update_SkillService.createLang($scope.editLang,$scope.data.access_token)
                         .then(function () {
                             $scope.editLang = {}
-                            alert("Create success !");
                             $window.location.reload();
                         })
                         .catch(function () {

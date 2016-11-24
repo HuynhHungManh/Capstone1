@@ -3473,7 +3473,8 @@ ul.rating {
 	height: 60px;
 }
 .indexdes{
-	margin-top: 20px;
+	margin-top: 40px;
+	margin-left: 10px;
 	text-indent: 20px;
 }
 
@@ -3502,4 +3503,8 @@ ul.rating {
 }
 .buttonCenter{
 	text-align: center;
+}
+select {
+	height:40px;
+	overflow-y: scroll;
 }

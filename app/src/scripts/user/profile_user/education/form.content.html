@@ -1,4 +1,7 @@
-<div class="listing-ver-3" ng-repeat="project in projects">
+<hr>
+<div ng-if="isNullPro = checkNullArr(projects)"><my-datanull></my-datanull></div>
+
+<div ng-if="!isNullPro" class="listing-ver-3" ng-repeat="project in projects">
     <div class="listing-heading">
         <h5>{{project.name}}</h5>
     </div>
