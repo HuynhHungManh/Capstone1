@@ -88,7 +88,11 @@ angular.module('myApp')
         };
 
         $rootScope.checkNullArr = function (data) {
-            if(data.length  == 0)
+            // $scope.arr = [];
+            // $scope.arr = data;
+            // console.log($scope.arr.length)
+
+            if(data === null)
                 return true;
             else
                 return false;

@@ -23,7 +23,8 @@
                     <!-- Company Information -->
                     <div class="sidebar">
                         <h5 class="main-title">My Picture</h5>
-                        <div class="sidebar-thumbnail"><img ng-src={{picture}} id="blah" src="#" alt="your image"/></div>
+                        <div class="sidebar-thumbnail"><img ng-src={{picture}} id="blah" src="#" alt="your image"/>
+                        </div>
 
                         <div class="sidebar-information">
                             <div class="form-group">
@@ -31,7 +32,8 @@
                                 <br>
                                 <div>
                                     <label>Enter link Image online here !</label>
-                                    <input type="text" ng-model="picture" placeholder="Please enter address image online..">
+                                    <input type="text" ng-model="picture"
+                                           placeholder="Please enter address image online..">
                                 </div>
 
                                 <!--<input type="button" ng-click="readURL(this)" value="submit">-->
@@ -117,11 +119,17 @@
                                             <div class="col-lg-8">
                                                 <div class="input-group date">
                                                     <div class="dateholder">
-                                                        <input type="date" class="datepicker" ng-model="birthday">
+                                                        <input type="date" class="datepicker" ng-model="birthday"
+                                                               data-date-format="DD-MM-YYYY">
+                                                        <!--<input type="text" class="form-control"-->
+                                                        <!--data-date-format="DD-MM-YYYY"/>-->
+                                                        <!--<span class="input-group-addon"><span-->
+                                                        <!--class="glyphicon-calendar glyphicon"></span></span>-->
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Address:</label>
                                             <div class="col-lg-8">
@@ -167,11 +175,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" >Status:</label>
+                                            <label class="col-lg-3 control-label">Status:</label>
                                             <div class="col-lg-8">
                                                 <!--<input list="eLevels" name="eLevel" />-->
                                                 <input list="status" class="form-control" type="text"
-                                                    ng-model="status1"  name="status" placeholder="{{user.status}}">
+                                                       ng-model="status1" name="status" placeholder="{{user.status}}">
                                                 <datalist id="status">
                                                     <option value="Single">
                                                     <option value="Married">
@@ -179,11 +187,11 @@
                                             </div>
                                         </div>
                                         <!--<div class="form-group">-->
-                                            <!--<label class="col-lg-3 control-label">Status:</label>-->
-                                            <!--<div class="col-lg-8">-->
-                                                <!--<input class="form-control" type="text" ng-model="status1"-->
-                                                       <!--placeholder="{{user.status}}">-->
-                                            <!--</div>-->
+                                        <!--<label class="col-lg-3 control-label">Status:</label>-->
+                                        <!--<div class="col-lg-8">-->
+                                        <!--<input class="form-control" type="text" ng-model="status1"-->
+                                        <!--placeholder="{{user.status}}">-->
+                                        <!--</div>-->
                                         <!--</div>-->
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Describe:</label>
@@ -199,7 +207,7 @@
                                                        value="Save Changes">
                                                 <span></span>
                                                 <!--<input type="reset" ng-click="doTheBack()" class="btn btn-default"-->
-                                                       <!--value="Cancel">-->
+                                                <!--value="Cancel">-->
                                                 <span></span>
 
                                             </div>
@@ -241,6 +249,7 @@
 
         }
     }
+
 </script>
 
 <!-- Footer -->

@@ -36,6 +36,8 @@ angular.module('myApp')
 
         $scope.result = 'male';
 
+        // angular.element('#datetimepicker1').datetimepicker();
+
 
 
         $scope.post = function (result) {
