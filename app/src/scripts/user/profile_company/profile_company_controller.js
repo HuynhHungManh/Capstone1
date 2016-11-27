@@ -3,7 +3,5 @@
  */
 angular.module('myApp')
     .controller('Profile_comanyController', function ($scope, $stateParams, $filter) {
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
+
     });
