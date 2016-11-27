@@ -24,12 +24,13 @@
             <!-- Nav Tabs -->
             <div class="col-md-12">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a>
+                    <li class="active"><a data-toggle="tab" href="" ng-click="changetap(1)">Profile</a>
                     </li>
-                    <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
-                    <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
-                    <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
-                    <li><a data-toggle="tab" href="#/confirm/username={{user.username}}">Approve</a></li>
+                    <!--<li><a data-toggle="tab" ui-sref="education/username={{userTempSc}}">Education</a></li>-->
+                    <li><a data-toggle="tab" href=""  ng-click="changetap(2)">Education</a></li>
+                    <li><a data-toggle="tab" href="" ng-click="changetap(3)">Project</a></li>
+                    <li><a data-toggle="tab" href=""  ng-click="changetap(4)">Job</a></li>
+                    <li><a data-toggle="tab" href=""  ng-click="changetap(5)">Approve</a></li>
                 </ul>
             </div>
 
@@ -64,7 +65,7 @@
                                 <!-- Skills -->
                                 <div class="sidebar">
                                     <h5 class="main-title">Skills</h5>
-                                    <div ng-if="isNullSkill = checkNullArr(user.skills)">
+                                    <div ng-if="isNullSkill">
                                         <my-datanull></my-datanull>
                                     </div>
                                     <div ng-if="!isNullSkill" class="job-skills">
@@ -94,7 +95,7 @@
                                         <h5 class="main-title">Language</h5>
 
                                         <!-- Logo Design -->
-                                        <div ng-if="isNullLang = checkNullArr(langs)">
+                                        <div ng-if="isNullLang">
                                             <my-datanull></my-datanull>
                                         </div>
                                         <div ng-if="!isNullLang">
@@ -135,14 +136,14 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="media-left">
-                                                        <div class="inn-simi"><a ng-click="createCom()">Comment </a>
+                                                        <div class="inn-simi"><a href="" ng-click="createCom()">Comment </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="nullData" ng-if="isNullCom = checkNullArr(showComment)">
+                                        <div class="nullData" ng-if="isNullCom">
                                             ---------- No comment ----------
                                         </div>
                                         <div ng-if="!isNullCom" class="media" ng-repeat="com in showComment" id="321">
@@ -159,10 +160,10 @@
 
                                                 <p>Working at {{com.commentator.jobs[0].name_of_company}}.</p>
                                                 <p>{{com.content}}
-                                                    <a><i class="edit-pen fa fa-remove"
+                                                    <a><i class="edit-pen fa fa-remove" ng-show="editUserCom(com.commentator.username)"
                                                           ng-click="deleteCom(com.id)">
                                                     </i></a>
-                                                    <a><i ng-show="isCom" class="edit-pen fa fa-edit"
+                                                    <a><i ng-show="isCom" class="edit-pen fa fa-edit" ng-if="editUserCom(com.commentator.username)"
                                                           ng-click="isEditCom = !isEditCom">
                                                     </i></a>
                                                 </p>

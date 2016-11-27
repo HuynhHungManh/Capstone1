@@ -2,12 +2,12 @@
  * Created by PC on 10/12/2016.
  */
 angular.module('myApp')
-    .controller('UpdateEducationController', function ($state,$scope, UpdateEducationService, $stateParams, $filter, $cookieStore,
+    .controller('UpdateEducationController', function ($state,$scope, localStorageService,UpdateEducationService, $stateParams, $filter, $cookieStore,
                                                        $rootScope) {
         $rootScope.doTheBack = function () {
             window.history.back();
         };
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.data = localStorageService.get('DataLogin');
         $scope.updateEduca = {};
         UpdateEducationService.fetchEducation()
             .then(function (res) {

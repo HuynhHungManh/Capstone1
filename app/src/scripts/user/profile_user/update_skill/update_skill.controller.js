@@ -2,14 +2,14 @@
  * Created by PC on 10/21/2016.
  */
 angular.module('myApp')
-    .controller('Update_SkillController', function ($scope, Update_SkillService,
+    .controller('Update_SkillController', function ($scope, Update_SkillService, localStorageService,
                                                     $rootScope ,$stateParams, $filter,$cookieStore,$window) {
 
         $scope.arrSkillNew = [];
         $scope.arrLangNew = [];
 
 
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.data = localStorageService.get('DataLogin');
         $scope.editSkill = {}
         $scope.editLang = {}
         $scope.change = function(){

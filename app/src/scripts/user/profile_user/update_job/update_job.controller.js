@@ -3,24 +3,39 @@
  */
 angular.module('myApp')
     .controller('Update_jobController', function ($scope, Update_jobService,$stateParams,
-                                                  $filter,$rootScope, $state, $cookies, setCredentials, $cookieStore ,$window) {
+                                                  $filter,$rootScope, $state,localStorageService, setCredentials, $cookieStore ,$window) {
         $scope.status = {
             toggle: false
         };
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.userTempSc = localStorageService.get('userTemp');
+        $scope.data = localStorageService.get('DataLogin');
         $scope.editProject = {};
         $scope.close = function () {
             $scope.status.toggle = !$scope.status.toggle;
-
         };
         $rootScope.doTheBack = function () {
             window.history.back();
+        };
+        $scope.changetap = function (tab) {
+            console.log(tab);
+            if (tab == 1)
+                $state.go('profile_user', {"username": $scope.userTempSc});
+            else if (tab == 2)
+                $state.go('education', {"username": $scope.userTempSc});
+            else if (tab == 3)
+                $state.go('project', {"username": $scope.userTempSc});
+            else if (tab == 4)
+                $state.go('update_job', {"username": $scope.userTempSc});
+            else
+                $state.go('confirm', {"username": $scope.userTempSc});
         };
 
         Update_jobService.fetchAllUser()
             .then(function (res) {
                 $scope.user = $filter('filter')(res.data, {username: $stateParams.username})[0];
                 $scope.jobs = $scope.user.jobs;
+
+                $scope.idNullJob = $rootScope.checkNullArr($scope.jobs);
 
                 $scope.edit = function (id) {
                     $scope.status.toggle = !$scope.status.toggle;

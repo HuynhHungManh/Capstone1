@@ -10,7 +10,7 @@
                 <div class="buttonRightImg">
                     <a href=""><img
                             src="https://cdn2.iconfinder.com/data/icons/flat-user/114/user-check-512.png"></a>
-                            <p class="verified">Verified</p>
+                    <p class="verified">Verified</p>
                 </div>
             </div>
         </div>
@@ -24,11 +24,14 @@
                 <!-- Nav Tabs -->
                 <div class="col-md-12">
                     <ul class="nav nav-tabs">
-                        <li><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a></li>
-                        <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
-                        <li class="active"><a data-toggle="tab" href="">Project</a></li>
-                        <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
-                        <li><a data-toggle="tab" href="#/confirm/username={{user.username}}">Approve</a></li>
+                        <li><a data-toggle="tab" href="" ng-click="changetap(1)">Profile</a>
+                        </li>
+                        <!--<li><a data-toggle="tab" ui-sref="education/username={{userTempSc}}">Education</a></li>-->
+                        <li><a data-toggle="tab" href="" ng-click="changetap(2)">Education</a></li>
+                        <li class="active"><a class="active" data-toggle="tab" href=""
+                                              ng-click="changetap(3)">Project</a></li>
+                        <li><a data-toggle="tab" href="" ng-click="changetap(4)">Job</a></li>
+                        <li><a data-toggle="tab" href="" ng-click="changetap(5)">Approve</a></li>
                     </ul>
                 </div>
 
@@ -67,8 +70,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 
 
@@ -140,43 +141,33 @@
                                     <div class="col-sm-2">
                                         <label class="form-control-label">Skills require :</label>
                                     </div>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-10">
                                         <input type="text" ng-model="SkillRe.name">
-                                        <!--<ul class="tags list-inline">-->
-                                        <!--<li style="cursor:pointer"-->
-                                        <!--ng-repeat="skill in skillReqs" ng-init="index = $index">-->
-                                        <!--<a ng-class="{red : isred}" ng-model="skill.id"-->
-                                        <!--ng-click="find(skill.id)">-->
-                                        <!--<span ng-click="isred = !isred">{{skill.name}}</span>-->
-                                        <!--</a>-->
-
-                                        <!--</li>-->
-                                        <!--</ul>-->
                                     </div>
-                                    <div class="col-sm-1">
-                                        <!--<a ng-click="chooseAcceppSkill()"><i class="edit-pen fa fa-check">-->
-                                        <!--</i></a>-->
-                                        <!--<button type="button" class="btn btn-warning" ng-click="index()">Add</button>-->
-                                        <button type="button" class="btn btn-warning" ng-click="addSkillReq()">Add
-                                        </button>
-                                    </div>
+                                    <!--<div class="col-sm-1">-->
+                                        <!--<button type="button" class="btn btn-warning" ng-click="demo()">Add-->
+                                        <!--</button>-->
+                                    <!--</div>-->
                                 </div>
 
-                                <!--<div class="row" ng-repeat="skill in plusSkills">-->
-                                <!--<div class="col-sm-2">-->
-                                <!--<label class="form-control-label">Skills require {{skill.index}}:</label>-->
-                                <!--</div>-->
-                                <!--<div class="col-sm-9" >-->
-                                <!--&lt;!&ndash;<li ng-repeat="skill in choosed"><a>{{skill.name}}</a>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                                <!--<input type="text" ng-model="test">-->
-                                <!--</div>-->
-                                <!--<div class="col-sm-1">-->
-                                <!--<a><i class="edit-pen fa fa-remove" ng-click="deleteIndex(skill.index)">-->
-                                <!--</i></a>-->
-                                <!--</div>-->
-                                <!--</div>-->
                             </div>
+                            <div class="form-group">
+                                <div class="row" ng-repeat="skill in arrSkill">
+                                    <div class="col-sm-2">
+                                        <label class="form-control-label">Name Skill : </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <!--<li ng-repeat="skill in choosed"><a>{{skill.name}}</a>-->
+                                        <!--</li>-->
+                                        <p class="fontBlue" >{{skill}}</p>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <a><i class="edit-pen fa fa-remove" ng-click="deleReq(skill)">
+                                        </i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
 
                             <div class="form-group">
                                 <div class="row">

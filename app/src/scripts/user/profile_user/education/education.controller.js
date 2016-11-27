@@ -2,12 +2,30 @@
  * Created by PC on 10/20/2016.
  */
 angular.module('myApp')
-    .controller('EducationController', function ($scope, $stateParams, $filter, EducationService,$window, $cookieStore, $rootScope) {
+    .controller('EducationController', function ($scope, $stateParams, $filter, EducationService,
+                                                 $state, $window, $rootScope, localStorageService) {
 
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.data = localStorageService.get('DataLogin');
         $scope.status = {
             toggle: false
         };
+
+        $scope.isEditSkill = false;
+
+
+        $scope.changetap = function (tab) {
+            if (tab == 1)
+                $state.go('profile_user', {"username": $scope.userTempSc});
+            else if (tab == 2)
+                $state.go('education', {"username": $scope.userTempSc});
+            else if (tab == 3)
+                $state.go('project', {"username": $scope.userTempSc});
+            else if (tab == 4)
+                $state.go('update_job', {"username": $scope.userTempSc});
+            else
+                $state.go('confirm', {"username": $scope.userTempSc});
+        };
+        $scope.userTempSc = localStorageService.get('userTemp');
         $scope.isAddSkill = false;
         $scope.changaddskill = function () {
             $scope.isAddSkill = !$scope.isAddSkill;
@@ -20,8 +38,6 @@ angular.module('myApp')
         $scope.objAddSkill = {};
 
         $scope.trueFalse = false;
-
-
 
 
         $scope.statusSkillReq = false;
@@ -44,7 +60,7 @@ angular.module('myApp')
 
         $scope.index = function () {
 
-            $scope.objPlusSkills = {'index':''}
+            $scope.objPlusSkills = {'index': ''}
             $scope.objPlusSkills.index = i;
             $scope.plusSkills.push($scope.objPlusSkills);
             i++;
@@ -54,15 +70,15 @@ angular.module('myApp')
         $scope.deleteIndex = function (id) {
 
 
-            delete $scope.plusSkills[id-1]
+            delete $scope.plusSkills[id - 1]
 
         };
 
         $scope.chooseAcceppSkill = function () {
 
             $scope.isBool = true;
-            for(var i =0; i< $scope.skillReqs.length ; i ++){
-                if($scope.chooeSkillReq[i].bool == true){
+            for (var i = 0; i < $scope.skillReqs.length; i++) {
+                if ($scope.chooeSkillReq[i].bool == true) {
                     $scope.isBool = false;
 
                 }
@@ -122,6 +138,21 @@ angular.module('myApp')
                     $scope.temp1[i].name = $scope.skillReqs[i].name;
                     $scope.temp1[i].bool = false;
                 }
+                $scope.arrSkill1 = [];
+                // $scope.demo = function () {
+                //     $scope.arrSkill.push($scope.SkillRe.name);
+                // };
+                // $scope.deleReq = function (nameSkill) {
+                //     for (var i = 0; i < $scope.arrSkill1.length; i++) {
+                //         if (nameSkill == $scope.arrSkill1[i]) {
+                //             $scope.arrSkill1.splice(i, 1);
+                //         }
+                //     }
+                // };
+
+
+
+
 
                 $scope.pro = [];
                 $scope.ArrSkill = [];
@@ -133,14 +164,26 @@ angular.module('myApp')
                             }
                         }
                         $scope.projects = $scope.pro;
-
+                        $scope.isNullPro = $rootScope.checkNullArr($scope.projects)
 
                         $scope.createProject = function () {
-                            $scope.editProject.personalId = $scope.user.id
+                            $scope.editProject.personalId = $scope.user.id;
                             $scope.editProject.created_at = new Date();
                             $scope.editProject.updated_at = new Date();
                             EducationService.createProject($scope.editProject, $scope.data.access_token)
-                                .then(function () {
+                                .then(function (respone) {
+                                    $scope.SkillRe.personalId = $scope.user.id;
+                                    $scope.SkillRe.projectId = respone.data.id;
+                                    $scope.SkillRe.level = 0;
+                                    $scope.SkillRe.created_at = new Date();
+                                    $scope.SkillRe.updated_at = new Date();
+                                    console.log($scope.SkillRe);
+                                    EducationService.createSkillRe($scope.SkillRe, $scope.data.access_token)
+                                        .then(function () {
+                                        })
+                                        .catch(function () {
+                                        });
+
                                     $window.location.reload();
                                 })
                                 .catch(function () {
@@ -148,21 +191,6 @@ angular.module('myApp')
                                 })
 
                         };
-                        // $scope.createSkill = function (id) {
-                        //     $scope.objAddSkill.personalId = $scope.user.id
-                        //     $scope.objAddSkill.projectId = id;
-                        //     $scope.objAddSkill.created_at = new Date();
-                        //     $scope.objAddSkill.updated_at = new Date();
-                        //     EducationService.createSkill($scope.objAddSkill, $scope.data.access_token)
-                        //         .then(function () {
-                        //             alert("Create success !");
-                        //             $window.location.reload();
-                        //         })
-                        //         .catch(function () {
-                        //             alert("Connect internet failed !");
-                        //         })
-                        //
-                        // };
 
                         $scope.updateProject = function (id) {
                             $scope.editProject.personalId = $scope.user.id;
@@ -174,13 +202,12 @@ angular.module('myApp')
                                     EducationService.fetchAllProject($scope.data.access_token)
                                         .then(function (res) {
                                             $scope.newPro = res.data;
-                                            for(var i=0;i< $scope.newPro.length;i++){
-                                                if($scope.newPro[i].personalId == $scope.user.id){
-                                                    $scope.arrProject.push($scope.arrProject[i]);
+                                            for (var i = 0; i < $scope.newPro.length; i++) {
+                                                if ($scope.newPro[i].personalId == $scope.user.id) {
+                                                    $scope.arrProject.push($scope.newPro[i]);
                                                 }
                                             }
                                             $scope.projects = $scope.arrProject;
-
                                         })
                                         .catch(function () {
                                             alert("Connect internet failed !");
@@ -203,16 +230,16 @@ angular.module('myApp')
                                     EducationService.fetchAllProject($scope.data.access_token)
                                         .then(function (res) {
                                             $scope.newPro = res.data;
-                                            for(var i=0;i< $scope.newPro.length;i++){
-                                                if($scope.newPro[i].personalId == $scope.user.id){
-                                                    $scope.arrProject.push($scope.arrProject[i]);
+                                            for (var i = 0; i < $scope.newPro.length; i++) {
+                                                if ($scope.newPro[i].personalId == $scope.user.id) {
+                                                    $scope.arrProject.push($scope.newPro[i]);
                                                 }
                                             }
                                             $scope.projects = $scope.arrProject;
-
+                                            $scope.status.toggle = !$scope.status.toggle;
                                         })
                                         .catch(function () {
-                                            $scope.status.toggle = !$scope.status.toggle;
+
                                             alert("Connect internet failed !");
                                         });
                                     $scope.editProject = {};
@@ -224,22 +251,32 @@ angular.module('myApp')
 
                         $scope.tempSkill = [];
 
+
                         $scope.edit = function (id) {
                             $scope.status.toggle = !$scope.status.toggle;
                             $scope.editer = $filter('filter')($scope.projects, {id: id})[0];
                             $scope.DelSkill = $scope.editer.skills;
 
+
+                            $scope.editSkillRe = function (idSkill) {
+                                for (var i = 0; i < $scope.DelSkill.length; i++) {
+                                    if (idSkill == $scope.DelSkill[i].id)
+                                        $scope.editSkillReq = $scope.DelSkill[i];
+                                }
+
+                                $scope.isEditSkill = !$scope.isEditSkill;
+                            };
+
+
                             $scope.removeSkillReq = function (idSkill) {
-                                console.log('rgredg');
-                                console.log(idSkill);
-                                console.log(id);
-                                EducationService.deleteSkillRe(idSkill,$scope.data.access_token)
+
+                                EducationService.deleteSkillRe(idSkill, $scope.data.access_token)
                                     .then(function () {
                                         EducationService.fetchAllSkill()
                                             .then(function (res) {
                                                 $scope.Skill2 = res.data;
-                                                for(var i =0;i<$scope.Skill2.length;i++ ) {
-                                                    if($scope.Skill2[i].projectId ==id){
+                                                for (var i = 0; i < $scope.Skill2.length; i++) {
+                                                    if ($scope.Skill2[i].projectId == id) {
                                                         $scope.tempSkill.push($scope.Skill2[i]);
                                                     }
                                                 }
@@ -256,28 +293,58 @@ angular.module('myApp')
                                         alert("Delete failed !");
                                     })
                             };
-                            $scope.updateSkillRe = function (idSkill) {
+                            $scope.createSkill = function () {
                                 $scope.objAddSkill.created_at = new Date();
                                 $scope.objAddSkill.updated_at = new Date();
-                                EducationService.updateSkill($scope.objAddSkill,idSkill, $scope.data.access_token)
+                                $scope.objAddSkill.projectId = id;
+                                $scope.objAddSkill.personalId = $scope.user.id;
+                                EducationService.createSkill($scope.objAddSkill, $scope.data.access_token)
                                     .then(function () {
                                         EducationService.fetchAllSkill()
                                             .then(function (res) {
                                                 $scope.Skill2 = res.data;
-                                                for(var i =0;i<$scope.Skill2.length;i++ ) {
-                                                    if($scope.Skill2[i].projectId ==id){
+                                                for (var i = 0; i < $scope.Skill2.length; i++) {
+                                                    if ($scope.Skill2[i].projectId == id) {
                                                         $scope.tempSkill.push($scope.Skill2[i]);
                                                     }
                                                 }
                                                 $scope.DelSkill = $scope.tempSkill;
-                                                $scope.statusEditSkill.toggle = !$scope.statusEditSkill.toggle;
+
+                                                // $scope.statusEditSkill.toggle = !$scope.statusEditSkill.toggle;
                                             })
                                             .catch(function () {
-                                                alert("Delete failed !");
+
                                             });
                                     })
                                     .catch(function () {
                                         alert("Create failed !");
+                                    })
+                            };
+                            $scope.updateSkillRe = function (idSkill) {
+                                $scope.objAddSkill.created_at = new Date();
+                                $scope.objAddSkill.updated_at = new Date();
+                                $scope.objAddSkill.projectId = id;
+                                $scope.objAddSkill.personalId = $scope.user.id;
+                                EducationService.updateSkill($scope.objAddSkill, idSkill, $scope.data.access_token)
+                                    .then(function () {
+                                        EducationService.fetchAllSkill()
+                                            .then(function (res) {
+                                                $scope.Skill2 = res.data;
+                                                for (var i = 0; i < $scope.Skill2.length; i++) {
+                                                    if ($scope.Skill2[i].projectId == id) {
+                                                        $scope.tempSkill.push($scope.Skill2[i]);
+                                                    }
+                                                }
+                                                $scope.DelSkill = $scope.tempSkill;
+
+                                                $scope.statusEditSkill.toggle = !$scope.statusEditSkill.toggle;
+                                            })
+                                            .catch(function () {
+
+                                            });
+                                    })
+                                    .catch(function () {
+                                        alert("Update failed !");
                                     })
 
                             };

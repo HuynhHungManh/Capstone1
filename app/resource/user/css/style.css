@@ -3508,3 +3508,6 @@ select {
 	height:40px;
 	overflow-y: scroll;
 }
+.fontBlue {
+	color: #00B7FF;
+}

@@ -3,12 +3,26 @@
  */
 angular.module('myApp')
     .controller('EducationFix_Controller', function ($scope, EducationFixService, $stateParams, $filter,
-                                                     $state, $cookies,
+                                                     $state, localStorageService,
                                                      $cookieStore, $window, $rootScope) {
-        $rootScope.isToggleLogout = $cookieStore.get('isToggleLogout');
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.data = localStorageService.get('DataLogin');
         $scope.isEducation = false;
         $scope.editEducation = {};
+
+        $scope.userTempSc = localStorageService.get('userTemp');
+
+        $scope.changetap = function (tab) {
+            if (tab == 1)
+                $state.go('profile_user', {"username": $scope.userTempSc});
+            else if (tab == 2)
+                $state.go('education', {"username": $scope.userTempSc});
+            else if (tab == 3)
+                $state.go('project', {"username": $scope.userTempSc});
+            else if (tab == 4)
+                $state.go('update_job', {"username": $scope.userTempSc});
+            else
+                $state.go('confirm', {"username": $scope.userTempSc});
+        };
 
         $scope.changeformEdu = function () {
             $scope.isEducation = !$scope.isEducation;
@@ -20,6 +34,8 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
                 $scope.educations = $scope.user.educations;
+
+                $scope.isNullEdu = $rootScope.checkNullArr($scope.educations)
 
 
                 $scope.editformEdu = function (id) {

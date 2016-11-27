@@ -11,10 +11,10 @@
 <!--</div >-->
 <!--&lt;!&ndash; end .uou-block-1a &ndash;&gt;-->
 <!--</div>-->
-<div class="top-toolbar">
+<div class="top-toolbar" ng-controller="Profile_userController">
     <div class="container">
         <div class="searchUser">
-            <form ng-show ="isSearch" ng-submit="Search()" ng-controller="Profile_userController">
+            <form ng-show ="isSearch" ng-submit="Search(search)">
                 <input type="text" placeholder="Search..." ng-model="search">
 
             </form>
@@ -32,8 +32,8 @@
                     <li><a href="" ng-click="checkCompany()">Company Profile</a>
 
                     </li>
-                    <li><a href="" ng-click="checkUser()" >User Profile</a></li>
-                    <li ng-show="isToggleLogout"><a ng-click="logout()">Logout</a></li>
+                    <li><a href="" ng-click="checkUser()"  >User Profile</a></li>
+                    <li  ng-show="isToggleLogout" ><a ng-click="logout()">Logout</a></li>
                 </ul>
             </nav>
         </div>

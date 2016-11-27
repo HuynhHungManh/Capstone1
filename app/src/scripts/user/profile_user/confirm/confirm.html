@@ -37,12 +37,13 @@
                 <!-- Nav Tabs -->
                 <div class="col-md-12">
                     <ul class="nav nav-tabs">
-                        <li><a data-toggle="tab" href="#/profile_user/username={{user.username}}">Profile</a></li>
-                        <li><a data-toggle="tab" href="#/education/username={{user.username}}">Education</a></li>
-                        <li><a data-toggle="tab" href="#/project/username={{user.username}}">Project</a></li>
-                        <li><a data-toggle="tab" href="#/update_job/username={{user.username}}">Job</a></li>
-                        <li class="active"><a data-toggle="tab"
-                                              href="#/confirm/username={{user.username}}">Approve</a></li>
+                        <li ><a data-toggle="tab" href="" ng-click="changetap(1)">Profile</a>
+                        </li>
+                        <!--<li><a data-toggle="tab" ui-sref="education/username={{userTempSc}}">Education</a></li>-->
+                        <li><a data-toggle="tab" href=""  ng-click="changetap(2)">Education</a></li>
+                        <li><a data-toggle="tab" href="" ng-click="changetap(3)">Project</a></li>
+                        <li><a data-toggle="tab" href=""  ng-click="changetap(4)">Job</a></li>
+                        <li class="active"><a data-toggle="tab" href=""  ng-click="changetap(5)">Approve</a></li>
 
 
                         <!--<li><a href=""> <img src="http://vignette1.wikia.nocookie.net/daftpunk/images/2/2a/Check.png/revision/latest?cb=20140708054958"></a></li>-->

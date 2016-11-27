@@ -3,12 +3,12 @@
  */
 angular.module('myApp')
     .controller('HomeController', function ($scope, $state, $stateParams, $httpParamSerializer,
-                                            $filter, $resource, HomeService, $rootScope, $cookies, $cookieStore, $window) {
+                                            $filter, localStorageService, HomeService, $rootScope, $cookieStore, $window) {
 
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
         $rootScope.isSearch = false;
-        if ($cookieStore.get("isToggleLogout") == undefined) {
+        if (localStorageService.get("isToggleLogout") == undefined || localStorageService.get("isToggleLogout") ==null) {
             $rootScope.isToggleLogout = false;
         }
 
@@ -19,16 +19,12 @@ angular.module('myApp')
 
         if($rootScope.isToggleLogout == false){
             $scope.dataLogin = {
-                "ToggleLogin": "",
-                "StoreUser": "",
-                "access_token": ""
+                ToggleLogin: "",
+                StoreUser: "",
+                access_token: ""
             };
-            $cookieStore.put("DataLogin", $scope.dataLogin);
+            localStorageService.set("DataLogin", $scope.dataLogin);
         }
-
-        console.log('day roi');
-        console.log( $cookieStore.get("DataLogin").StoreUser);
-
 
         $scope.changeLog = function () {
             $scope.isLogAndRes = !$scope.isLogAndRes;
@@ -73,13 +69,16 @@ angular.module('myApp')
                         $state.go('profile_user', {"username": response.data.username});
 
                         $scope.dataLogin = {
-                            "ToggleLogin": true,
-                            "StoreUser": response.data.username,
-                            "access_token": response.data.id
+                            ToggleLogin: true,
+                            StoreUser: response.data.username,
+                            access_token: response.data.id
                         };
-                        $cookieStore.put("DataLogin", $scope.dataLogin);
-                        $rootScope.isToggleLogout = true;
-                        $cookieStore.put("isToggleLogout", $rootScope.isToggleLogout);
+                        localStorageService.set("user",response.data.username);
+                        localStorageService.set("email",response.data.email);
+                        localStorageService.set("userTemp",response.data.username);
+                        localStorageService.set("DataLogin", $scope.dataLogin);
+                        // $rootScope.isToggleLogout = true;
+                        localStorageService.set("isToggleLogout", true);
                     })
                     .catch(function () {
                         alert("Username or password faild, please enter again !");

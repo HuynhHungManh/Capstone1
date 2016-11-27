@@ -1,10 +1,12 @@
 /**
  * Created by PC on 9/28/2016.
  */
+
 angular.module('myApp')
     .controller('Profile_userController', function ($scope, Profile_userService, $stateParams, $filter,
-                                                    $rootScope, $state, $cookies, setCredentials, $cookieStore, $window, $rootScope) {
-        $rootScope.isToggleLogout = $cookieStore.get('isToggleLogout');
+                                                    $rootScope, $state, localStorageService, setCredentials, $cookieStore, $window) {
+        $rootScope.isToggleLogout = localStorageService.get('isToggleLogout');
+
         $scope.comment = {};
         $scope.inter = {};
         $scope.isInter = false;
@@ -13,13 +15,36 @@ angular.module('myApp')
         $scope.isShowIconInter = false;
         $scope.dataLogin = {};
         $rootScope.isGolbalUser = false;
-        $scope.dataStore = $cookieStore.get('DataLogin');
+
+        $scope.userTempSc = localStorageService.get("userTemp");
+
+
+        $scope.editUserCom = function (user) {
+            if(user == localStorageService.get('user'))
+               return true;
+            else
+                return false;
+        };
+
+        $scope.changetap = function (tab) {
+            console.log(tab);
+            if (tab == 1)
+                $state.go('profile_user', {"username": $scope.userTempSc});
+            else if (tab == 2)
+                $state.go('education', {"username": $scope.userTempSc});
+            else if (tab == 3)
+                $state.go('project', {"username": $scope.userTempSc});
+            else if (tab == 4)
+                $state.go('update_job', {"username": $scope.userTempSc});
+            else
+                $state.go('confirm', {"username": $scope.userTempSc});
+        };
 
 
         $scope.addInter = function () {
             $scope.iconShow = !$scope.iconShow;
             $scope.isAddInter = !$scope.isAddInter;
-        }
+        };
 
 
         $rootScope.doTheBack = function () {
@@ -28,7 +53,8 @@ angular.module('myApp')
 
 
         $rootScope.isSearch = function () {
-            if ($cookieStore.get('DataLogin') != undefined) {
+            if (localStorageService.get('DataLogin') != undefined ||
+                localStorageService.get('DataLogin') != null || localStorageService.get('DataLogin') != '') {
                 $rootScope.isSearch = !$rootScope.isSearch;
             }
             else {
@@ -41,13 +67,14 @@ angular.module('myApp')
         $scope.isCom = true;
 
 
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.data = localStorageService.get('DataLogin');
+
 
         $rootScope.status = {
             toggle404: false
         };
         $scope.RemoveCookie = function () {
-            $cookieStore.remove('DataLogin');
+            localStorageService.remove('DataLogin');
         };
         function testemail(x) {
             var email = x; //change form to id or containment selector
@@ -70,38 +97,48 @@ angular.module('myApp')
         };
         $rootScope.checkUser = function () {
             if ($rootScope.isToggleLogout == true) {
-                $state.go('profile_user', {"username": $cookieStore.get('DataLogin').StoreUser});
+                $state.go('profile_user', {"username": localStorageService.get('user')});
 
             }
             else {
-                console.log($cookieStore.get('DataLogin').StoreUser);
+                console.log(localStorageService.get('user'));
                 alert("Please login Website !");
             }
 
         };
 
         $rootScope.checkNullData = function (data) {
-            if (data == null || data === ''  ||  data === 'string' || data === undefined)
+            if (data == null || data === '' || data === 'string' || data === undefined)
                 return false;
             else
                 return true;
         };
 
+
+        function inArray(array) {
+            // var len = array.length;
+            // if(array === null || array === 0
+            //     || array === undefined || array === []){
+            //     return true;
+            // }
+            // else
+            //     return false;
+        }
+
         $rootScope.checkNullArr = function (data) {
-            if(data.length  == 0)
+            if (data === null || data === undefined || data === 'string')
                 return true;
             else
-                return false;
+                false;
         };
 
 
         $rootScope.checkNull = function (data) {
-            if (data == null || data === ''  ||  data ===  'string'  === undefined)
+            if (data == null || data === '' || data === 'string' === undefined)
                 return '--------------------------';
             else
                 return data;
         };
-
 
 
         Profile_userService.fetchAllUser()
@@ -109,11 +146,14 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
+                $scope.isNullSkill = $rootScope.checkNullArr($scope.user.skills);
 
-                // console.log(checkNullArr($scope.user.skills));
+                if (localStorageService.get("user") == $scope.user.username) {
+                    localStorageService.set('picture', $scope.user.picture);
+                }
 
 
-                if ($cookieStore.get('DataLogin').StoreUser == $scope.user.username) {
+                if (localStorageService.get('user') == $scope.user.username) {
                     $scope.isToggle = true;
                     $scope.isToggleCom = false;
                     $scope.isCom = false;
@@ -137,42 +177,48 @@ angular.module('myApp')
                 if ($scope.user.firstName == undefined || $scope.user.lastName == undefined) {
                     alert("You don't enter first name or lastname !");
                 }
-                // else if($scope.user.educations[0].name_of_school == undefined ||
-                //     $scope.user.educations[0].address_of_school ==undefined ||
-                //     $scope.user.educations[0].describe == undefined ||$scope.user.educations[0].major ==undefined||
-                //     $scope.user.educations[0].achiviement == undefined){
-                //     $state.go('education', {"username": $scope.user.username});
-                // }
 
 
                 $scope.showComment = $scope.user.comments;
+                console.log($scope.showComment);
+                $scope.isNullCom = $rootScope.checkNullArr($scope.showComment);
 
                 $scope.inters = $scope.user.interests;
-                $scope.userComent = $filter('filter')($scope.users, {username: $scope.data.StoreUser})[0];
+                $scope.userComent = $filter('filter')($scope.users, {username: $scope.user.username})[0];
 
 
-                if ($scope.userComent.picture == undefined || $scope.userComent.picture == 'string') {
+                console.log($scope.userComent.picture);
+
+
+                if ($scope.userComent.picture == undefined) {
                     $scope.pic = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
                 }
                 else {
-                    $scope.pic = $scope.userComent.picture;
+                    console.log($scope.pic);
+                    $scope.pic = localStorageService.get('picture');
                 }
 
 
                 $scope.langs = $scope.user.languages;
 
+                $scope.isNullLang = $rootScope.checkNullArr($scope.langs);
 
-                $scope.Search = function () {
 
-                    if (testemail($scope.search) == true) {
-                        $scope.user = $filter('filter')($scope.users, {email: $scope.search})[0];
+                $rootScope.Search = function (userSearch) {
+                    console.log(userSearch);
+                    if (testemail(userSearch) == true) {
+                        $scope.user = $filter('filter')($scope.users, {email: userSearch})[0];
                         if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
+                            localStorageService.remove("userTemp");
+                            localStorageService.set("userTemp", $scope.user.username);
                             $state.go('profile_user', {"username": $scope.user.username});
                             $scope.isToggle = false;
                             $scope.searchuser = false;
                         }
                         else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
-                            $state.go('profile_user', {"username": $scope.user.username});
+                            localStorageService.remove("userTemp");
+                            localStorageService.set("userTemp", localStorageService.get("user"));
+                            $state.go('profile_user', {"username": localStorageService.get("user")});
                             $scope.isToggle = false;
                             $scope.searchuser = false;
                             $rootScope.status.toggle404 = !$rootScope.status.toggle404;
@@ -183,16 +229,17 @@ angular.module('myApp')
                     }
 
                     else {
-                        $scope.user = $filter('filter')($scope.users, {username: $scope.search})[0];
-
-
+                        $scope.user = $filter('filter')($scope.users, {username: userSearch})[0];
                         if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
+                            localStorageService.remove("userTemp");
+                            localStorageService.set("userTemp", $scope.user.username);
                             $state.go('profile_user', {"username": $scope.user.username});
                             $scope.isToggle = false;
                             $scope.searchuser = false;
                         }
                         else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
-
+                            localStorageService.remove("userTemp");
+                            localStorageService.set("userTemp", localStorageService.get("user"));
                             $state.go('profile_user', {"username": $scope.user.username});
                             $scope.isToggle = false;
                             $scope.searchuser = false;
@@ -202,7 +249,7 @@ angular.module('myApp')
                             $rootScope.status.toggle404 = true;
                         }
                     }
-                }
+                };
 
 
                 $scope.createInter = function () {
@@ -363,17 +410,30 @@ angular.module('myApp')
                     });
                 };
 
+
             })
             .catch(function () {
                 $scope.users = [];
             });
 
         $rootScope.logout = function () {
+            console.log('wafawd')
             alert("Do you want to out website ?");
-            $cookieStore.remove('isToggleLogout');
-            $cookieStore.remove('DataLogin');
+
+            // console.log($scope.isToggleLogout);
+            // console.log(localStorageService.get('isToggleLogout'));
+            localStorageService.remove('isToggleLogout');
+            localStorageService.remove('DataLogin');
+            localStorageService.remove('user');
+            localStorageService.remove('email');
+            localStorageService.remove('userTemp');
             $rootScope.isToggleLogout = false;
-            Profile_userService.logout($scope.data.access_token);
+
+            Profile_userService.logout($scope.data.access_token)
+                .then(function () {
+                })
+                .catch(function () {
+                });
             $state.go('home');
         };
     });

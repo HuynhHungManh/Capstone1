@@ -3,9 +3,9 @@
  */
 angular.module('myApp')
     .controller('Update_userController', function ($state,$scope, $stateParams, $filter, Update_userService,
-                                                   $rootScope, $cookies, $cookieStore ,$window) {
+                                                   $rootScope, localStorageService, $cookieStore ,$window) {
 
-        $scope.data = $cookieStore.get('DataLogin');
+        $scope.data = localStorageService.get('DataLogin');
 
 
 
@@ -36,7 +36,6 @@ angular.module('myApp')
 
         $scope.result = 'male';
 
-        // angular.element('#datetimepicker1').datetimepicker();
 
 
 
