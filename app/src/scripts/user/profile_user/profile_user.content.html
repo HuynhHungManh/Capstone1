@@ -65,10 +65,10 @@
                                 <!-- Skills -->
                                 <div class="sidebar">
                                     <h5 class="main-title">Skills</h5>
-                                    <div ng-if="isNullSkill">
+                                    <div ng-if="checkNullArr(user.skills)" >
                                         <my-datanull></my-datanull>
                                     </div>
-                                    <div ng-if="!isNullSkill" class="job-skills">
+                                    <div ng-if="!checkNullArr(user.skills)" class="job-skills">
                                         <ul class="row" ng-repeat="skill in user.skills">
                                             <li class="col-sm-3">
                                                 <h6><i class="fa fa-check"></i>{{skill.name}}</h6>

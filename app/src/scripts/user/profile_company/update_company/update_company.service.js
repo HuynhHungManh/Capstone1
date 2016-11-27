@@ -6,12 +6,9 @@ angular.module('myApp')
         this.fetchAllCompany = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/companies');
         };
-        this.updateUser  = function () {
-        }
 
-        this.createCompany = function (datapost) {
-            $http.post('https://afternoon-sands-21716.herokuapp.com/api/companies',datapost).success(function () {
-                console.log('Đã update');
+        this.updateCompany = function (datapost,id, token) {
+            return $http.patch('https://afternoon-sands-21716.herokuapp.com/api/companies/'+id+'?access_token=' + token, datapost).success(function () {
             });
-        }
+        };
     });

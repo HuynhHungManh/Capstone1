@@ -11,7 +11,7 @@
 <!--</div >-->
 <!--&lt;!&ndash; end .uou-block-1a &ndash;&gt;-->
 <!--</div>-->
-<div class="top-toolbar" ng-controller="Profile_userController">
+<div class="top-toolbar">
     <div class="container">
         <div class="searchUser">
             <form ng-show ="isSearch" ng-submit="Search(search)">
@@ -26,13 +26,13 @@
         <div class="container"><a href="" class="logo"><img src="resource/user/images/Logo2.png"
                                                                                alt=""></a> <a
                 href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
-            <nav class="nav">
+            <nav class="nav" ng-if="isNav">
                 <ul class="sf-menu">
-                    <li class="active"><a href="#home"><i class="fa fa-home"></i></a></li>
-                    <li><a href="" ng-click="checkCompany()">Company Profile</a>
+                    <!--<li class="active"><a href="#home"><i class="fa fa-home"></i></a></li>-->
+                    <li ng-if="auth"><a href="" ng-click="checkCompany()">Company Profile</a>
 
                     </li>
-                    <li><a href="" ng-click="checkUser()"  >User Profile</a></li>
+                    <li ng-if="!auth"><a href="" ng-click="checkUser()"  >User Profile</a></li>
                     <li  ng-show="isToggleLogout" ><a ng-click="logout()">Logout</a></li>
                 </ul>
             </nav>

@@ -25,6 +25,8 @@
                         <div class="sidebar-thumbnail"><img
                                 src="http://ataccama.pracevpraze.cz/images/no_avatar_company.png"
                                 alt=""></div>
+                        <label>Enter link your image here :</label>
+                        <input type="text">
                         <div class="sidebar-information">
                             <div class="form-group">
                                 <input type="file" class="filestyle" ng-model="picture" data-icon="false">
@@ -34,32 +36,35 @@
                                 <!-- Professional Details -->
                                 <h5 class="main-title">Professional Details</h5>
                                 <div class="sidebar-information">
+                                    <br>
                                     <ul class="single-category">
-                                        </br>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Name Company</h6>
-                                            <span class="subtitle col-xs-6">{{companys.name}}</span></li>
+                                            <h6 class="title col-xs-6">Username :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.username)}}</span> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Address</h6>
-                                            <span class="subtitle col-xs-6">{{companys.address}}</span></li>
+                                            <h6 class="title col-xs-6">Industry :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.industry_company)}}</span> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Industry company</h6>
-                                            <span class="subtitle col-xs-6">{{companys.industry_company}}</span></li>
+                                            <h6 class="title col-xs-6">Email :</h6>
+                                            <a href=""><span class="subtitle col-xs-6">{{checkNull(company.email)}}</span></a> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Number of member</h6>
-                                            <span class="subtitle col-xs-6">{{companys.number_of_member}} Member</span></li>
+                                            <h6 class="title col-xs-6">Address :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.address)}}</span> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Phone</h6>
-                                            <span class="subtitle col-xs-6">{{companys.phone}}</span></li>
+                                            <h6 class="title col-xs-6">Number of Employees :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.number_of_member)}}</span> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Website</h6>
-                                            <span class="subtitle col-xs-6"><a href="#/">{{companys.website}}</a></span></li>
+                                            <h6 class="title col-xs-6">Industry Company :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.industry_company)}}</span> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Email</h6>
-                                            <span class="subtitle col-xs-6"><a href="#/">{{companys.email}}</a></span></li>
+                                            <h6 class="title col-xs-6">Phone :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.phone)}}</span> </li>
                                         <li class="row">
-                                            <h6 class="title col-xs-4">Describe</h6>
-                                            <span class="subtitle col-xs-6">{{companys.describe}}</span></li>
+                                            <h6 class="title col-xs-6">Realm :</h6>
+                                            <span class="subtitle col-xs-6">{{checkNull(company.realm)}}</span> </li>
+                                        <li class="row">
+                                            <h6 class="title col-xs-6">Website :</h6>
+                                            <a href=""><span class="subtitle col-xs-6">{{checkNull(company.website)}}</span> </a></li>
                                     </ul>
                                     <a href="#/update_user">
                                         <input type="submit" class="btn btn-primary" value="Update">
@@ -70,7 +75,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Tab Content -->
                 <div class="col-md-8">
                     <div class="network">
@@ -86,57 +90,58 @@
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Name company:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="name_company"
-                                                       placeholder="Enter name company...">
+                                                <input class="form-control" type="text" ng-model="objCompany.name_company"
+                                                       placeholder="{{checkNull(company.username)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Address:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="address"
-                                                       placeholder="Enter address...">
+                                                <input class="form-control" type="text" ng-model="objCompany.address"
+                                                       placeholder="{{checkNull(company.address)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Industry company:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="industry_company"
-                                                       placeholder="Enter industry company...">
+                                                <input class="form-control" type="text" ng-model="objCompany.industry_company"
+                                                       placeholder="{{checkNull(company.industry_company)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Number of member:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="number" ng-model="number_of_member"
-                                                       placeholder="Enter number of member...">
+                                                <input class="form-control" type="number" ng-model="objCompany.number_of_member"
+                                                       placeholder="{{checkNull(company.number_of_member)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Phone:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="phone"
-                                                       placeholder="Enter phone...">
+                                                <input class="form-control" type="text" ng-model="objCompany.phone"
+                                                       placeholder="{{checkNull(company.phone)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Website:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="website"
-                                                       placeholder="Enter website...">
+                                                <input class="form-control" type="text" ng-model="objCompany.website"
+                                                       placeholder="{{checkNull(company.website)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Email:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="email"
-                                                       placeholder="Enter email...">
+                                                <input class="form-control" type="text" ng-model="objCompany.email"
+                                                       placeholder="{{checkNull(company.email)}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Describe:</label>
                                             <div class="col-lg-8">
-                                                <input class="form-control" type="text" ng-model="describe"
-                                                       placeholder="Enter describe...">
+
+                                                <textarea rows="4" cols="50" ng-model="objCompany.describe"
+                                                          placeholder="{{checkNull(company.describe)}}"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -144,9 +149,8 @@
                                             <div class="col-md-8">
                                                 <input type="button" class="btn btn-primary" ng-click="post()" value="Save Changes">
                                                 <span></span>
-                                                <input type="reset" class="btn btn-default" value="Cancel">
+                                                <input type="reset" class="btn btn-default" ng-click="doTheBack()" value="Cancel">
                                                 <span></span>
-                                                {{update}}
                                             </div>
                                         </div>
 

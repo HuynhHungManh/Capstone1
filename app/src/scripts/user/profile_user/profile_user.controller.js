@@ -4,7 +4,7 @@
 
 angular.module('myApp')
     .controller('Profile_userController', function ($scope, Profile_userService, $stateParams, $filter,
-                                                    $rootScope, $state, localStorageService, setCredentials, $cookieStore, $window) {
+                                                    CompanyService, $rootScope, $state, localStorageService, setCredentials, $cookieStore, $window) {
         $rootScope.isToggleLogout = localStorageService.get('isToggleLogout');
 
         $scope.comment = {};
@@ -15,8 +15,14 @@ angular.module('myApp')
         $scope.isShowIconInter = false;
         $scope.dataLogin = {};
         $rootScope.isGolbalUser = false;
+        $rootScope.isNav = true;
 
         $scope.userTempSc = localStorageService.get("userTemp");
+
+
+        if(localStorageService.get("Type") == 'personal')
+            $rootScope.auth = false;
+        // $rootScope.auth = false;
 
 
         $scope.editUserCom = function (user) {
@@ -27,7 +33,8 @@ angular.module('myApp')
         };
 
         $scope.changetap = function (tab) {
-            console.log(tab);
+
+
             if (tab == 1)
                 $state.go('profile_user', {"username": $scope.userTempSc});
             else if (tab == 2)
@@ -87,24 +94,14 @@ angular.module('myApp')
         }
 
 
-        $rootScope.checkCompany = function () {
-            if ($rootScope.isToggleLogout == true) {
-                $state.go('profile_company');
-            }
-            else {
-                alert("Please login Website !");
-            }
-        };
+
         $rootScope.checkUser = function () {
             if ($rootScope.isToggleLogout == true) {
                 $state.go('profile_user', {"username": localStorageService.get('user')});
-
             }
             else {
-                console.log(localStorageService.get('user'));
                 alert("Please login Website !");
             }
-
         };
 
         $rootScope.checkNullData = function (data) {
@@ -126,7 +123,7 @@ angular.module('myApp')
         }
 
         $rootScope.checkNullArr = function (data) {
-            if (data === null || data === undefined || data === 'string')
+            if (data !== undefined && data.length === 0 )
                 return true;
             else
                 false;
@@ -134,7 +131,7 @@ angular.module('myApp')
 
 
         $rootScope.checkNull = function (data) {
-            if (data == null || data === '' || data === 'string' === undefined)
+            if (data == null || data === '' || data === 'string' || data === undefined)
                 return '--------------------------';
             else
                 return data;
@@ -180,21 +177,20 @@ angular.module('myApp')
 
 
                 $scope.showComment = $scope.user.comments;
-                console.log($scope.showComment);
                 $scope.isNullCom = $rootScope.checkNullArr($scope.showComment);
 
                 $scope.inters = $scope.user.interests;
                 $scope.userComent = $filter('filter')($scope.users, {username: $scope.user.username})[0];
 
 
-                console.log($scope.userComent.picture);
+
 
 
                 if ($scope.userComent.picture == undefined) {
                     $scope.pic = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
                 }
                 else {
-                    console.log($scope.pic);
+
                     $scope.pic = localStorageService.get('picture');
                 }
 
@@ -204,8 +200,18 @@ angular.module('myApp')
                 $scope.isNullLang = $rootScope.checkNullArr($scope.langs);
 
 
+                CompanyService.fetchAllCompany()
+                    .then(function (response) {
+                        $scope.companies = response.data;
+                        // $scope.company = $filter('filter')($scope.companies, {username : $stateParams.username})[0];
+
+                    })
+                    .catch(function () {
+
+                    });
+
+
                 $rootScope.Search = function (userSearch) {
-                    console.log(userSearch);
                     if (testemail(userSearch) == true) {
                         $scope.user = $filter('filter')($scope.users, {email: userSearch})[0];
                         if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
@@ -230,22 +236,46 @@ angular.module('myApp')
 
                     else {
                         $scope.user = $filter('filter')($scope.users, {username: userSearch})[0];
-                        if ($scope.user != undefined && $rootScope.status.toggle404 == false) {
+                        console.log($scope.user);
+                        $scope.company = $filter('filter')($scope.companies, {username: userSearch})[0];
+                        console.log($scope.company);
+
+
+                        if($scope.user == undefined && $scope.company != undefined)
+                            $scope.temp = $scope.company ;
+                        else if($scope.user != undefined && $scope.company == undefined)
+                            $scope.temp = $scope.user ;
+                        else
+                            $rootScope.status.toggle404 == true;
+
+                        if ($scope.temp != undefined && $scope.company == undefined && $rootScope.status.toggle404 == false) {
                             localStorageService.remove("userTemp");
-                            localStorageService.set("userTemp", $scope.user.username);
-                            $state.go('profile_user', {"username": $scope.user.username});
+                            localStorageService.set("userTemp", $scope.temp.username);
+                            $state.go('profile_user', {"username": $scope.temp.username});
                             $scope.isToggle = false;
                             $scope.searchuser = false;
                         }
-                        else if ($scope.user != undefined && $rootScope.status.toggle404 == true) {
+                        else if($scope.temp != undefined && $scope.user == undefined && $rootScope.status.toggle404 == false){
+                            localStorageService.remove("userTemp");
+                            localStorageService.set("userTemp", $scope.temp.username);
+                            $state.go('profile_company', {"username": $scope.temp.username});
+                        }
+                        else if ($scope.temp != undefined && $scope.company == undefined && $rootScope.status.toggle404 == true) {
                             localStorageService.remove("userTemp");
                             localStorageService.set("userTemp", localStorageService.get("user"));
-                            $state.go('profile_user', {"username": $scope.user.username});
+                            $state.go('profile_user', {"username": $scope.temp.username});
                             $scope.isToggle = false;
                             $scope.searchuser = false;
                             $rootScope.status.toggle404 = !$rootScope.status.toggle404;
                         }
-                        else if ($scope.user == undefined) {
+                        else if ($scope.temp != undefined && $scope.user == undefined && $rootScope.status.toggle404 == true) {
+                            localStorageService.remove("userTemp");
+                            localStorageService.set("userTemp", localStorageService.get("user"));
+                            $state.go('profile_company', {"username": $scope.temp.username});
+                            $rootScope.status.toggle404 = !$rootScope.status.toggle404;
+                        }
+
+                        else if ($scope.temp == undefined) {
                             $rootScope.status.toggle404 = true;
                         }
                     }
@@ -416,17 +446,16 @@ angular.module('myApp')
                 $scope.users = [];
             });
 
-        $rootScope.logout = function () {
-            console.log('wafawd')
-            alert("Do you want to out website ?");
 
-            // console.log($scope.isToggleLogout);
-            // console.log(localStorageService.get('isToggleLogout'));
+
+        $rootScope.logout = function () {
+            alert("Do you want to out website ?");
             localStorageService.remove('isToggleLogout');
             localStorageService.remove('DataLogin');
             localStorageService.remove('user');
             localStorageService.remove('email');
             localStorageService.remove('userTemp');
+            $rootScope.isNav = false;
             $rootScope.isToggleLogout = false;
 
             Profile_userService.logout($scope.data.access_token)

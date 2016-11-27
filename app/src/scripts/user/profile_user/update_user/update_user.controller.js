@@ -39,6 +39,7 @@ angular.module('myApp')
 
 
 
+
         $scope.post = function (result) {
             if ($scope.dtu_id.length == 10) {
             }

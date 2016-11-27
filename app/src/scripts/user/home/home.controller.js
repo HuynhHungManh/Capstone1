@@ -4,20 +4,20 @@
 angular.module('myApp')
     .controller('HomeController', function ($scope, $state, $stateParams, $httpParamSerializer,
                                             $filter, localStorageService, HomeService, $rootScope, $cookieStore, $window) {
-
+        var data = {}
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
         $rootScope.isSearch = false;
-        if (localStorageService.get("isToggleLogout") == undefined || localStorageService.get("isToggleLogout") ==null) {
+        if (localStorageService.get("isToggleLogout") == undefined || localStorageService.get("isToggleLogout") == null) {
             $rootScope.isToggleLogout = false;
         }
-
         $scope.isStudent = true;
 
+        $scope.isred = false;
 
 
 
-        if($rootScope.isToggleLogout == false){
+        if ($rootScope.isToggleLogout == false) {
             $scope.dataLogin = {
                 ToggleLogin: "",
                 StoreUser: "",
@@ -28,7 +28,7 @@ angular.module('myApp')
 
         $scope.changeLog = function () {
             $scope.isLogAndRes = !$scope.isLogAndRes;
-        }
+        };
 
 
         $scope.isToggleForget = true;
@@ -37,11 +37,11 @@ angular.module('myApp')
             if ($scope.isToggleForget == false) {
                 $scope.isToggleForget = true;
             }
-        }
+        };
         $scope.forget = function () {
             $scope.acceptForget = undefined;
             $scope.errForger = undefined;
-        }
+        };
 
         $scope.SubForgetPass = function () {
             if (testemail($scope.emailForget) == true) {
@@ -66,18 +66,21 @@ angular.module('myApp')
                 };
                 HomeService.login(dataUser)
                     .then(function (response) {
-                        $state.go('profile_user', {"username": response.data.username});
+                        if(response.data.type == 'personal')
+                            $state.go('profile_user', {"username": response.data.username});
+                        else
+                            $state.go('profile_company',{"username": response.data.username});
 
                         $scope.dataLogin = {
                             ToggleLogin: true,
                             StoreUser: response.data.username,
                             access_token: response.data.id
                         };
-                        localStorageService.set("user",response.data.username);
-                        localStorageService.set("email",response.data.email);
-                        localStorageService.set("userTemp",response.data.username);
+                        localStorageService.set("user", response.data.username);
+                        localStorageService.set("Type", response.data.type);
+                        localStorageService.set("email", response.data.email);
+                        localStorageService.set("userTemp", response.data.username);
                         localStorageService.set("DataLogin", $scope.dataLogin);
-                        // $rootScope.isToggleLogout = true;
                         localStorageService.set("isToggleLogout", true);
                     })
                     .catch(function () {
@@ -154,46 +157,79 @@ angular.module('myApp')
 
         function dtu_id1(id) {
 
-            console.log(id.length)
 
             if (id == undefined) {
-                $scope.error = "You didn't enter a dtu_id.\n";
-                return false + $scope.error;
+                // $scope.error = "You didn't enter a dtu_id.\n";
+                return false;
             }
             if (id.length != 10) {
-                $scope.error = "The dtu_id is the wrong length.\n";
-                return false + $scope.error;
+                // $scope.error = "The dtu_id is the wrong length.\n";
+                return false;
             }
             else if (isNaN(id)) {
-                $scope.error = "The dtu_id is not number.\n";
-                return false + $scope.error;
+                // $scope.error = "The dtu_id is not number.\n";
+                return false;
             }
             return true;
         }
 
 
         $scope.post = function () {
-            $scope.err = "";
-            if (dtu_id1($scope.dtu_id) == true && validateUsername($scope.usernameRegister) == true && testemail($scope.emailRegister) == true
-                && password($scope.passRe) == true && passwordAgain($scope.passRe, $scope.passwordAgain) == true) {
-                var data = {
+            if ($scope.isred == false) {
+                data = {
                     "username": $scope.usernameRegister,
                     "password": $scope.passRe,
                     "dtu_id": $scope.dtu_id,
                     "email": $scope.emailRegister
                 };
-
-                HomeService.createUser(data)
-                    .then(function () {
-                        alert("Register success!");
-                        $scope.isLogAndRes = !$scope.isLogAndRes;
-                    })
-                    .catch(function () {
-                        alert("Register faild!");
-                    });
             }
-            else if (dtu_id1($scope.dtu_id) == false) {
-                $scope.err = $scope.error;
+            else {
+                data = {
+                    "username": $scope.usernameRegister,
+                    "password": $scope.passRe,
+                    "email": $scope.emailRegister
+                };
+            }
+            $scope.err = "";
+
+            if (validateUsername($scope.usernameRegister) == true && testemail($scope.emailRegister) == true
+                && password($scope.passRe) == true && passwordAgain($scope.passRe, $scope.passwordAgain) == true) {
+                if ($scope.isred == false && dtu_id1($scope.dtu_id) == true) {
+                    HomeService.createUser(data)
+                        .then(function () {
+                            alert("Register user success!");
+                            $scope.isLogAndRes = !$scope.isLogAndRes;
+                            $scope.dtu_id = '';
+                            data={};
+                            $scope.usernameRegister ='';
+                            $scope.passRe ='';
+                            $scope.dtu_id = '';
+                            $scope.emailRegister = '';
+                            $scope.passwordAgain = '';
+                        })
+                        .catch(function () {
+                            alert("Register faild!");
+                        });
+                }
+                else if ($scope.isred == false && dtu_id1($scope.dtu_id) == false) {
+                    $scope.error = "Id dtu incorrect value !";
+                }
+                else if($scope.isred == true && dtu_id1($scope.dtu_id) == false){
+                    HomeService.createCompany(data)
+                        .then(function () {
+                            alert("Register company success!");
+                            $scope.isLogAndRes = !$scope.isLogAndRes;
+                            data={};
+                            $scope.usernameRegister ='';
+                            $scope.passRe ='';
+                            $scope.dtu_id = '';
+                            $scope.emailRegister = '';
+                            $scope.passwordAgain = '';
+                        })
+                        .catch(function () {
+                            alert("Register faild!");
+                        });
+                }
             }
             else if (validateUsername($scope.usernameRegister) == false) {
                 $scope.err = $scope.error;

@@ -41,8 +41,8 @@
                                             <input type="password" placeholder="Enter password again..." ng-model="passwordAgain">
                                             <button type="submit"  ng-click="post()">Register</button>
                                             <div class="login-with"> <span>Who are you ? </span> &nbsp;
-                                                <a href="" ng-class="{blue : !isred ,black : isred}" ng-click="isred=!isred"><i class="fa fa-user"></i></a>&nbsp;
-                                                <a href="" ng-class="{blue : isred ,black : !isred}" ng-click="isred=!isred" ng-model ="isred"><i class="fa fa-home"></i></a>
+                                                <a href="" ng-class="{blue : !isred ,black : isred}" ng-click="isred=false"><i class="fa fa-user"></i></a>&nbsp;
+                                                <a href="" ng-class="{blue : isred ,black : !isred}" ng-click="isred=true" ng-model ="isred"><i class="fa fa-home"></i></a>
                                             </div>
                                         </form>
                                         <div class="err">

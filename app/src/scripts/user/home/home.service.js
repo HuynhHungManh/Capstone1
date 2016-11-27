@@ -6,9 +6,14 @@ angular.module('myApp')
 
 
         this.createUser = function (datapost) {
-            console.log(datapost);
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/personals',datapost).success(function () {
 
+            });
+        };
+
+        this.createCompany = function (datapost) {
+            console.log(datapost);
+            return $http.post('https://afternoon-sands-21716.herokuapp.com/api/companies',datapost).success(function () {
             });
         };
 

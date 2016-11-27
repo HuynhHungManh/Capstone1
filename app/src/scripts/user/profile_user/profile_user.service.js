@@ -16,43 +16,34 @@ angular.module('myApp')
         };
 
         this.createCom = function (datapost) {
-            console.log('Đã update');
-            console.log(datapost);
+
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/commentes', datapost).success(function () {
             });
         };
         this.updateCom = function (dataupdate, id) {
-            console.log('Đã update');
-            console.log(id);
-            console.log(dataupdate);
+
             return $http.patch('https://afternoon-sands-21716.herokuapp.com/api/commentes/' + id, dataupdate).success(function (res) {
-                console.log(res);
+
             });
         };
         this.deleteCom = function (id, token) {
-            console.log(token);
-            console.log(id);
+
             return $http.delete('https://afternoon-sands-21716.herokuapp.com/api/commentes/' + id + '?access_token=' + token).success(function () {
             });
         };
         this.deleteInter = function (id, token) {
-            console.log(token);
-            console.log(id);
+
             return $http.delete('https://afternoon-sands-21716.herokuapp.com/api/interests/' + id + '?access_token=' + token).success(function () {
             });
         };
         this.updateInter = function (dataupdate, id, token) {
-            console.log('Đã update');
-            console.log(id);
-            console.log(token);
-            console.log(dataupdate);
+
             return $http.patch('https://afternoon-sands-21716.herokuapp.com/api/interests/' + id + '?access_token=' + token, dataupdate).success(function (res) {
-                console.log(res);
+
             });
         };
         this.createInter = function (datapost, token) {
-            console.log('Đã update');
-            console.log(datapost);
+
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/interests?access_token=' + token, datapost).success(function () {
             });
         };

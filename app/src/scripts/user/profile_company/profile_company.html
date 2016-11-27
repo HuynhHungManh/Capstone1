@@ -1,7 +1,7 @@
 <div id="main-wrapper">
 
 
-    <div class="compny-profile">
+    <div class="compny-profile" ng-if="!status.toggle404">
         <!-- SUB Banner -->
         <div class="profile-bnr">
             <div class="container">
@@ -9,14 +9,13 @@
                 <!-- User Iinfo -->
                 <div class="user-info">
                     <h1>ENCLAVE. <a data-toggle="tooltip" data-placement="top" title="Verified Member"><img src="resource/user/images/icon-ver.png" alt="" ></a> </h1>
-                    <h6>Dev Website front end</h6>
-                    <p>503 Hoang Dieu St, ZC 55000  (<a href="#.">map</a> / <a href="#.">street</a>)</p>
-
+                    <h6>{{checkNull(company.Website)}}</h6>
+                    <p>{{checkNull(company.address)}} St, {{checkNull(company.industry_company)}}</p>
+                    
                 </div>
 
             </div>
         </div>
-
         <!-- Profile Company Content -->
         <div class="profile-company-content main-user" data-bg-color="f5f5f5">
             <div class="container">
@@ -31,34 +30,35 @@
                                 <ul class="single-category">
                                     <li class="row">
                                         <h6 class="title col-xs-6">Username :</h6>
-                                        <span class="subtitle col-xs-6">Automotive</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.username)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Industry :</h6>
-                                        <span class="subtitle col-xs-6">Automotive</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.industry_company)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Email :</h6>
-                                        <span class="subtitle col-xs-6">Automotive</span> </li>
+                                        <a href=""><span class="subtitle col-xs-6">{{checkNull(company.email)}}</span></a> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Address :</h6>
-                                        <span class="subtitle col-xs-6">California, USA</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.address)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Number of Employees :</h6>
-                                        <span class="subtitle col-xs-6">11,245</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.number_of_member)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Industry Company :</h6>
-                                        <span class="subtitle col-xs-6">Gesselschaft</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.industry_company)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Phone :</h6>
-                                        <span class="subtitle col-xs-6">HSD7589</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.phone)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Realm :</h6>
-                                        <span class="subtitle col-xs-6">10:00 AM - 5:00 PM</span> </li>
+                                        <span class="subtitle col-xs-6">{{checkNull(company.realm)}}</span> </li>
                                     <li class="row">
                                         <h6 class="title col-xs-6">Website :</h6>
-                                        <span class="subtitle col-xs-6">10:00 AM - 5:00 PM</span> </li>
+                                        <a href=""><span class="subtitle col-xs-6">{{checkNull(company.website)}}</span> </a></li>
                                 </ul>
                             </div>
-                            <a href="#/update_company">
+                            <br>
+                            <a href="#/update_company/username={{company.username}}">
                                 <input type="submit" class="btn btn-primary" value="Update">
                             </a>
                         </div>
@@ -72,14 +72,12 @@
                             <div id="profile" class="tab-pane fade in active">
                                 <div class="profile-main">
                                     <h3>About the Company</h3>
-                                    <div class="profile-in">
-                                        <p>Enclave is providing a full range of application development services for new product development and re-engineering existing
-                                            products to new platforms and for maintenance services. </p>
-                                        <p> Enclave Rapid Product development life cycle management services aim to accelerate the creation of software prod
-                                            ucts, reduce time to market, and help predict schedules. With Jira, TFS & Redmine widely being used in Enclave
-                                            , you can manage the product development status and realize your product vision successfully.</p>
+                                    <div ng-if="checkNullCom(company.describe)">
+                                        <my-datanull></my-datanull>
+                                    </div>
 
-
+                                    <div class="profile-in" ng-if="!checkNullCom(company.describe)">
+                                        <p>{{company.describe}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -90,11 +88,7 @@
             </div>
         </div>
     </div>
+    <div ng-if="status.toggle404"
+         ng-include="'src/component/user/loading/loading.html'"></div>
 </div>
 
-
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-</script>
