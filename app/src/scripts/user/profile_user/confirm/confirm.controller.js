@@ -26,4 +26,10 @@ angular.module('myApp')
             })
             .catch(function () {
             });
+        // ConfirmService.fetchAllTeacher()
+        //     .then(function (response) {
+        //         $scope.teacher = $filter('filter')(response.data, {username: $stateParams.username})[0];
+        //     })
+        //     .catch(function () {
+        //     });
     });

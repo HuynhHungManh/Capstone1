@@ -36,7 +36,7 @@
                                         </br>
                                         <li class="row">
                                             <h6 class="title col-xs-4">Student ID</h6>
-                                            <span class="subtitle col-xs-6">{{checkNull(user.dtu_id)}}</span></li>
+                                            <span class="subtitle col-xs-6">{{user.dtu_id}}</span></li>
                                         <li class="row">
                                             <h6 class="title col-xs-4">First name</h6>
                                             <span class="subtitle col-xs-6">{{checkNull(user.firstName)}}</span></li>
@@ -89,28 +89,23 @@
                                         <div class="sidebar">
                                             <h5 class="main-title">Skills</h5>
                                             <div class="job-skills">
-                                                <div  ng-if="!statusSkill.toggle"
-                                                      ng-include="'src/scripts/user/profile_user/update_skill/form.content.skill.html'">
+                                                <div class="row" ng-if="!statusSkill.toggle"
+                                                     ng-include="'src/scripts/user/profile_user/update_skill/form.content.skill.html'">
                                                 </div>
-                                                <div  ng-if="statusSkill.toggle"
-                                                      ng-include="'src/scripts/user/profile_user/update_skill/form.edit.skill.html'">
+                                                <div class="row" ng-if="statusSkill.toggle"
+                                                     ng-include="'src/scripts/user/profile_user/update_skill/form.edit.skill.html'">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="sidebar">
                                             <h5 class="main-title">Language</h5>
                                             <div class="job-skills">
-                                                <ul class="row">
-                                                    <li class="col-sm-12">
-                                                        <ul class="single-category com-rate">
-                                                            <li class="row" ng-if="!status.toggle"
-                                                                ng-include="'src/scripts/user/profile_user/update_skill/form.content.language.html'">
-                                                            </li>
-                                                            <li class="row" ng-if="status.toggle"
-                                                                ng-include="'src/scripts/user/profile_user/update_skill/form.edit.language.html'">
-                                                            </li>
-                                                        </ul>
-                                                    </li>
+                                                <div class="row" ng-if="!status.toggle"
+                                                     ng-include="'src/scripts/user/profile_user/update_skill/form.content.language.html'">
+                                                </div>
+                                                <div class="row" ng-if="status.toggle"
+                                                     ng-include="'src/scripts/user/profile_user/update_skill/form.edit.language.html'">
+                                                </div>
                                                 </ul>
                                                 <br>
                                             </div>
@@ -180,13 +175,13 @@
                                 <label for="recipient-name1" class="form-control-label">Levels Skill:</label>
                                 <form>
                                     <!--<input class="datalist" type="text" list="levels1"-->
-                                           <!--ng-model="editSkill.level" placeholder="Choose level ..."/>-->
+                                    <!--ng-model="editSkill.level" placeholder="Choose level ..."/>-->
                                     <!--<datalist id="levels1">-->
-                                        <!--<option value="Beginner"/>-->
-                                        <!--<option value="Elementary"/>-->
-                                        <!--<option value="Intermediate"/>-->
-                                        <!--<option value="Advanced"/>-->
-                                        <!--<option value="Proficient"/>-->
+                                    <!--<option value="Beginner"/>-->
+                                    <!--<option value="Elementary"/>-->
+                                    <!--<option value="Intermediate"/>-->
+                                    <!--<option value="Advanced"/>-->
+                                    <!--<option value="Proficient"/>-->
                                     <!--</datalist>-->
                                     <select ng-model="editSkill.level" name='menu'>
                                         <option value='Beginner'>Beginner</option>
@@ -228,10 +223,10 @@
                             <div class="form-group">
                                 <label class="form-control-label">Language:</label>
                                 <!--<input type="text" class="form-control" placeholder="Enter name language..." id="recipient-name2"-->
-                                       <!--ng-model="editLang.name">-->
+                                <!--ng-model="editLang.name">-->
                                 <select ng-model="editLang.name" name='menu'>
                                     <option value='Afrikaans'>Afrikaans(AF)</option>
-                                    <option value='Albanian'>Albanian	(SQ)</option>
+                                    <option value='Albanian'>Albanian (SQ)</option>
                                     <option value='Arabic'>Arabic (AR)</option>
                                     <option value='Armenian'>Armenian (HY)</option>
                                     <option value='Basque'>Basque (EU)</option>
@@ -305,17 +300,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label  class="form-control-label">Levels Language:</label>
+                                <label class="form-control-label">Levels Language:</label>
                                 <form>
                                     <!--<input class="datalist" type="text" list="levels12" ng-model="editLang.level"-->
-                                           <!--placeholder="Choose level ..."/>-->
+                                    <!--placeholder="Choose level ..."/>-->
 
                                     <!--<datalist id="levels12">-->
-                                        <!--<option value="Beginner"/>-->
-                                        <!--<option value="Elementary"/>-->
-                                        <!--<option value="Intermediate"/>-->
-                                        <!--<option value="Advanced"/>-->
-                                        <!--<option value="Proficient"/>-->
+                                    <!--<option value="Beginner"/>-->
+                                    <!--<option value="Elementary"/>-->
+                                    <!--<option value="Intermediate"/>-->
+                                    <!--<option value="Advanced"/>-->
+                                    <!--<option value="Proficient"/>-->
                                     <!--</datalist>-->
                                     <select ng-model="editLang.level" name='menu'>
                                         <option value='Beginner'>Beginner</option>
@@ -363,13 +358,13 @@
                                 <label for="recipient3-name" class="form-control-label">Levels Skill:</label>
                                 <form>
                                     <!--<input class="datalist" type="text" list="levels1"-->
-                                           <!--ng-model="levelSkill" placeholder="Choose level ..."/>-->
+                                    <!--ng-model="levelSkill" placeholder="Choose level ..."/>-->
                                     <!--<datalist id="levelsSkill">-->
-                                        <!--<option value="Beginner"/>-->
-                                        <!--<option value="Elementary"/>-->
-                                        <!--<option value="Intermediate"/>-->
-                                        <!--<option value="Advanced"/>-->
-                                        <!--<option value="Proficient"/>-->
+                                    <!--<option value="Beginner"/>-->
+                                    <!--<option value="Elementary"/>-->
+                                    <!--<option value="Intermediate"/>-->
+                                    <!--<option value="Advanced"/>-->
+                                    <!--<option value="Proficient"/>-->
                                     <!--</datalist>-->
                                     <select ng-model="levelSkill" name='menu'>
                                         <option value='Beginner'>Beginner</option>

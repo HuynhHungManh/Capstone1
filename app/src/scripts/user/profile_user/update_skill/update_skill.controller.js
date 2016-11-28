@@ -187,9 +187,9 @@ angular.module('myApp')
                             alert("Update failed !");
                         });
                 };
-                $scope.deleteLang = function () {
+                $scope.deleteLang = function (id) {
                     $scope.editLang.personalId = $scope.user.id;
-                    Update_SkillService.deleteLang($scope.lang.id,$scope.data.access_token)
+                    Update_SkillService.deleteLang(id,$scope.data.access_token)
                         .then(function () {
                             Update_SkillService.fetchLang($scope.data.access_token)
                                 .then(function (res) {
@@ -201,7 +201,7 @@ angular.module('myApp')
                                         }
                                     }
                                     $scope.langs = $scope.arrLangNew;
-                                    $scope.status.toggle = !$scope.status.toggle;
+                                    // $scope.status.toggle = !$scope.status.toggle;
                                 })
                                 .catch(function () {
 
