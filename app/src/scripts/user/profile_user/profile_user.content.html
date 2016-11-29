@@ -27,10 +27,10 @@
                     <li class="active"><a data-toggle="tab" href="" ng-click="changetap(1)">Profile</a>
                     </li>
                     <!--<li><a data-toggle="tab" ui-sref="education/username={{userTempSc}}">Education</a></li>-->
-                    <li><a data-toggle="tab" href=""  ng-click="changetap(2)">Education</a></li>
+                    <li><a data-toggle="tab" href="" ng-click="changetap(2)">Education</a></li>
                     <li><a data-toggle="tab" href="" ng-click="changetap(3)">Project</a></li>
-                    <li><a data-toggle="tab" href=""  ng-click="changetap(4)">Job</a></li>
-                    <li><a data-toggle="tab" href=""  ng-click="changetap(5)">Approve</a></li>
+                    <li><a data-toggle="tab" href="" ng-click="changetap(4)">Job</a></li>
+                    <li><a data-toggle="tab" href="" ng-click="changetap(5)">Approve</a></li>
                 </ul>
             </div>
 
@@ -65,11 +65,11 @@
                                 <!-- Skills -->
                                 <div class="sidebar">
                                     <h5 class="main-title">Skills</h5>
-                                    <div ng-if="checkNullArr(user.skills)" >
+                                    <div ng-if="checkNullArr(user.skills)">
                                         <my-datanull></my-datanull>
                                     </div>
                                     <div ng-if="!checkNullArr(user.skills)" class="job-skills">
-                                        <ul class="row" ng-repeat="skill in user.skills">
+                                        <ul class="row" ng-repeat="skill in arrSkillShows1">
                                             <li class="col-sm-3">
                                                 <h6><i class="fa fa-check"></i>{{skill.name}}</h6>
                                             </li>
@@ -99,15 +99,13 @@
                                             <my-datanull></my-datanull>
                                         </div>
                                         <div ng-if="!isNullLang">
-                                            <ul class="row">
-                                                <li class="col-sm-9">
-                                                    <ul class="single-category com-rate">
-                                                        <li class="row" ng-repeat="lang in langs">
-                                                            <h6 class="title col-xs-4">{{lang.name}}:</h6>
-                                                            <span class="lang col-xs-6">
-                                                                    {{lang.level}}
-                                                                </span></li>
-                                                    </ul>
+                                            <ul class="row" ng-repeat="lang in langs">
+                                                <li class="col-sm-3">
+                                                    <h6><i class="fa fa-check"></i>{{lang.name}}:
+                                                    </h6>
+                                                </li>
+                                                <li class="lang col-sm-3">
+                                                    <span>{{lang.level}}</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -136,7 +134,8 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="media-left">
-                                                        <div class="inn-simi"><a href="" ng-click="createCom()">Comment </a>
+                                                        <div class="inn-simi"><a href=""
+                                                                                 ng-click="createCom()">Comment </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,10 +159,12 @@
 
                                                 <p>Working at {{com.commentator.jobs[0].name_of_company}}.</p>
                                                 <p>{{com.content}}
-                                                    <a><i class="edit-pen fa fa-remove" ng-show="editUserCom(com.commentator.username)"
+                                                    <a><i class="edit-pen fa fa-remove"
+                                                          ng-show="editUserCom(com.commentator.username)"
                                                           ng-click="deleteCom(com.id)">
                                                     </i></a>
-                                                    <a><i ng-show="isCom" class="edit-pen fa fa-edit" ng-if="editUserCom(com.commentator.username)"
+                                                    <a><i ng-show="isCom" class="edit-pen fa fa-edit"
+                                                          ng-if="editUserCom(com.commentator.username)"
                                                           ng-click="isEditCom = !isEditCom">
                                                     </i></a>
                                                 </p>
@@ -235,11 +236,11 @@
                                 </div>
                                 <div class="sidebar">
                                     <h5 class="main-title">Interest Details
-                                        <a ng-if="isShowIconInter"><i ng-show="iconShow" class="edit-pen fa fa-undo"
-                                                                      ng-click="addInter()">
+                                        <a href="" ng-click="addInter()" ng-if="isShowIconInter"><i ng-show="iconShow"
+                                                                                                    class="edit-pen fa fa-undo">
                                         </i></a>
-                                        <a ng-if="isShowIconInter"><i ng-show="!iconShow" class="edit-pen fa fa-plus"
-                                                                      ng-click="addInter()">
+                                        <a href="" ng-if="isShowIconInter" ng-click="addInter()"><i ng-show="!iconShow"
+                                                                                                    class="edit-pen fa fa-plus">
                                         </i></a>
                                     </h5>
                                     <div class="row" ng-show="isAddInter">
@@ -250,7 +251,7 @@
                                             <input type="text" ng-model="inter.name">
                                         </div>
                                         <div class="col-md-2">
-                                            <a><i class="edit-pen fa fa-check" ng-click="createInter()">
+                                            <a href="" ng-click="createInter()"><i class="edit-pen fa fa-check">
                                             </i></a>
                                         </div>
 

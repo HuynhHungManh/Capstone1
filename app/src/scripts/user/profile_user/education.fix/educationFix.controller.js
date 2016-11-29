@@ -10,6 +10,13 @@ angular.module('myApp')
         $scope.editEducation = {};
 
         $scope.userTempSc = localStorageService.get('userTemp');
+        $rootScope.checkNullArr = function (data) {
+            if (data !== undefined && data.length === 0 )
+                return true;
+            else
+                false;
+        };
+
 
         $scope.changetap = function (tab) {
             if (tab == 1)
@@ -34,8 +41,14 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
                 $scope.educations = $scope.user.educations;
+                $scope.checkShowBtn = function () {
+                    if(localStorageService.get('user') == $scope.user.username)
+                        return true;
+                    else
+                        return false;
+                };
 
-                $scope.isNullEdu = $rootScope.checkNullArr($scope.educations)
+                $scope.isNullEdu = $scope.checkNullArr($scope.educations)
 
 
                 $scope.editformEdu = function (id) {

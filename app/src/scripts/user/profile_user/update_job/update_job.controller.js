@@ -16,6 +16,12 @@ angular.module('myApp')
         $rootScope.doTheBack = function () {
             window.history.back();
         };
+        $scope.checkShowBtn = function () {
+            if(localStorageService.get('user') == $scope.user.username)
+                return true;
+            else
+                return false;
+        };
         $scope.changetap = function (tab) {
             console.log(tab);
             if (tab == 1)

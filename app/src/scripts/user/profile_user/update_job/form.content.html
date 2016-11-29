@@ -33,7 +33,7 @@
             <p>{{job.describe}}</p>
         </div>
         <div class="editJob">
-            <input ng-show="isGolbalUser" type="button" class="btn btn-primary" ng-model="job.name"
+            <input ng-if="checkShowBtn()" type="button" class="btn btn-primary" ng-model="job.name"
                    ng-click="edit(job.id)" value="Edit">
         </div>
         <br>
@@ -41,7 +41,7 @@
     </div>
 </div>
 <div class="back">
-    <a href="" ng-show="isGolbalUser" data-toggle="modal"
+    <a href="" ng-if="checkShowBtn()" data-toggle="modal"
        data-target="#exampleModaledu">Add Job</a>
     &nbsp; &nbsp;
     <a href="" ng-click="doTheBack()">Back</a>

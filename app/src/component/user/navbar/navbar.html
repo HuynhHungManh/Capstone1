@@ -11,33 +11,32 @@
 <!--</div >-->
 <!--&lt;!&ndash; end .uou-block-1a &ndash;&gt;-->
 <!--</div>-->
-<div class="top-toolbar">
+<div class="top-toolbar" ng-controller="NavController">
     <div class="container">
         <div class="searchUser">
-            <form ng-show ="isSearch" ng-submit="Search(search)">
+            <form ng-if ="nav()" ng-submit="Search(search)">
                 <input type="text" placeholder="Search..." ng-model="search">
 
             </form>
         </div>
     </div>
 </div>
-<div class="box-shadow-for-ui">
+<div class="box-shadow-for-ui" ng-controller="NavController">
     <div class="uou-block-2b">
         <div class="container"><a href="" class="logo"><img src="resource/user/images/Logo2.png"
                                                                                alt=""></a> <a
                 href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
-            <nav class="nav" ng-if="isNav">
+            <nav class="nav" ng-if="nav()" >
                 <ul class="sf-menu">
                     <!--<li class="active"><a href="#home"><i class="fa fa-home"></i></a></li>-->
                     <li ng-if="auth"><a href="" ng-click="checkCompany()">Company Profile</a>
 
                     </li>
                     <li ng-if="!auth"><a href="" ng-click="checkUser()"  >User Profile</a></li>
-                    <li  ng-show="isToggleLogout" ><a ng-click="logout()">Logout</a></li>
+                    <li  ng-show="nav()" ><a href="" ng-click="logout()">Logout</a></li>
                 </ul>
             </nav>
         </div>
     </div>
-    <!-- end .uou-block-2b -->
 </div>
 

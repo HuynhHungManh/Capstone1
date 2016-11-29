@@ -4,11 +4,15 @@
 angular.module('myApp')
     .controller('HomeController', function ($scope, $state, $stateParams, $httpParamSerializer,
                                             $filter, localStorageService, HomeService, $rootScope, $cookieStore, $window) {
+
+        $rootScope.isNav == false;
         var data = {}
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
         $rootScope.isSearch = false;
-        if (localStorageService.get("isToggleLogout") == undefined || localStorageService.get("isToggleLogout") == null) {
+        console.log(localStorageService.get("isToggleLogout"));
+
+        if (localStorageService.get("isToggleLogout") === undefined || localStorageService.get("isToggleLogout") === null) {
             $rootScope.isToggleLogout = false;
         }
         $scope.isStudent = true;
@@ -71,10 +75,12 @@ angular.module('myApp')
                         else
                             $state.go('profile_company',{"username": response.data.username});
 
+
                         $scope.dataLogin = {
                             ToggleLogin: true,
                             StoreUser: response.data.username,
-                            access_token: response.data.id
+                            access_token: response.data.id,
+                            id: response.data.userId
                         };
                         localStorageService.set("user", response.data.username);
                         localStorageService.set("Type", response.data.type);

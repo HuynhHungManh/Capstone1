@@ -10,7 +10,9 @@ angular.module('myApp')
             toggle: false
         };
 
-        $scope.isEditSkill = false;
+        $scope.isEditSkill = false
+
+
 
 
         $scope.changetap = function (tab) {
@@ -98,6 +100,13 @@ angular.module('myApp')
             }
         }
 
+        $scope.checkNullArr = function (data) {
+            if (data !== undefined && data.length === 0 )
+                return true;
+            else
+                false;
+        };
+
 
         $scope.addSkillReq = function () {
             $scope.statusSkillReq = true
@@ -128,6 +137,14 @@ angular.module('myApp')
                 $scope.infoEducations = response.data;
                 $scope.user = $filter('filter')($scope.infoEducations, {username: $stateParams.username})[0];
                 $scope.education = $scope.user.educations[0];
+
+                $scope.checkShowBtn = function () {
+                    if(localStorageService.get('user') == $scope.user.username)
+                        return true;
+                    else
+                        return false;
+                };
+
 
 
                 $scope.skillReqs = $scope.user.skills;
@@ -164,7 +181,7 @@ angular.module('myApp')
                             }
                         }
                         $scope.projects = $scope.pro;
-                        $scope.isNullPro = $rootScope.checkNullArr($scope.projects)
+                        $scope.isNullPro = $scope.checkNullArr($scope.projects)
 
                         $scope.createProject = function () {
                             $scope.editProject.personalId = $scope.user.id;
@@ -177,14 +194,12 @@ angular.module('myApp')
                                     $scope.SkillRe.level = 0;
                                     $scope.SkillRe.created_at = new Date();
                                     $scope.SkillRe.updated_at = new Date();
-                                    console.log($scope.SkillRe);
                                     EducationService.createSkillRe($scope.SkillRe, $scope.data.access_token)
                                         .then(function () {
                                         })
                                         .catch(function () {
                                         });
-
-                                    $window.location.reload();
+                                    $state.go('project', {"username": $scope.userTempSc});
                                 })
                                 .catch(function () {
                                     alert("Connect internet failed !");
@@ -210,10 +225,9 @@ angular.module('myApp')
                                             $scope.projects = $scope.arrProject;
                                         })
                                         .catch(function () {
-                                            alert("Connect internet failed !");
                                         });
-                                    $scope.status.toggle = !$scope.status.toggle;
                                     $scope.editProject = {};
+                                    $window.location.reload();
                                 })
                                 .catch(function () {
                                     alert("Connect internet failed !");
@@ -236,7 +250,8 @@ angular.module('myApp')
                                                 }
                                             }
                                             $scope.projects = $scope.arrProject;
-                                            $scope.status.toggle = !$scope.status.toggle;
+                                            // $scope.status.toggle = !$scope.status.toggle;
+                                            $window.location.reload();
                                         })
                                         .catch(function () {
 
@@ -269,7 +284,7 @@ angular.module('myApp')
 
 
                             $scope.removeSkillReq = function (idSkill) {
-
+                                $scope.DelSkill = [];
                                 EducationService.deleteSkillRe(idSkill, $scope.data.access_token)
                                     .then(function () {
                                         EducationService.fetchAllSkill()
@@ -309,6 +324,7 @@ angular.module('myApp')
                                                     }
                                                 }
                                                 $scope.DelSkill = $scope.tempSkill;
+                                                $scope.isAddSkill = !$scope.isAddSkill;
 
                                                 // $scope.statusEditSkill.toggle = !$scope.statusEditSkill.toggle;
                                             })

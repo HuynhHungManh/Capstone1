@@ -55,7 +55,7 @@
             <br>
             <br>
             <div>
-                <input ng-show="isGolbalUser" type="button" class="btn btn-primary" ng-model="project.name" ng-click="edit(project.id)"
+                <input  ng-if="checkShowBtn()" type="button" class="btn btn-primary" ng-model="project.name" ng-click="edit(project.id)"
                        value="Edit">
             </div>
         </div>
@@ -63,6 +63,6 @@
 </div>
 
 <div class="back">
-    <a ng-show="isGolbalUser" ref="" data-toggle="modal" data-target="#exampleModaledu">Add Project</a>&nbsp; &nbsp;
+    <a ng-if="checkShowBtn()" href="#/add.project/username={{user.username}}">Add Project</a>&nbsp;
     <a href="" ng-click="doTheBack()">Back</a>
 </div>

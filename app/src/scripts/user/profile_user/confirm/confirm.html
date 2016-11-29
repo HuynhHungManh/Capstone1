@@ -51,7 +51,8 @@
                 </div>
 
                 <!-- Tab Content -->
-                <div class="col-md-12">
+                <div ng-if="checkShowBtn()"></div>
+                <div ng-if="checkShowBtn()" class="col-md-12">
                     <div class="tab-content">
 
                         <!-- PROFILE -->
@@ -67,35 +68,30 @@
                                                 <label class="col-lg-3 control-label">Choose name teacher :</label>
                                                 <div class="col-lg-9">
                                                     <!--<input list="eLevels" name="eLevel" />-->
-                                                    <input list="status" class="form-control" type="text"
-                                                           name="status" placeholder="Choose name ...">
-                                                    <datalist id="status">
-                                                        <option value="Dinh Tien Vu">
-                                                        <option value="Nguyen Duc Man">
-                                                        <option value="Vo Van Luong">
-                                                        <option value="Nguyen Thi Bao Trang">
-                                                    </datalist>
+                                                    <!--<input list="status" class="form-control" type="text"-->
+                                                           <!--name="status" placeholder="Choose name ...">-->
+                                                    <select id="status" ng-model="Veri.reciver_id">
+                                                        <option ng-repeat="tea in teachers" value="{{tea.id}}">{{tea.personal.firstName}}</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-lg-3 control-label">Choose default :</label>
+                                                <label class="col-lg-3 control-label">Choose :</label>
                                                 <div class="col-lg-9">
-                                                    <!--<input list="eLevels" name="eLevel" />-->
-                                                    <input list="personal" class="form-control" type="text"
-                                                           name="personal" placeholder="Choose name ...">
-                                                    <datalist id="personal">
-                                                        <option value="personal">
-                                                    </datalist>
+
+                                                    <select id="personal" ng-model="Veri.type">
+                                                        <option value="personal" >personal</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-lg-3 control-label">Message :</label>
                                                 <div class="col-lg-9">
                                                     <textarea rows="4" cols="50"
-                                                              placeholder="Enter message..."></textarea>
+                                                              placeholder="Enter message..." ng-model="Veri.message"></textarea>
                                                 </div>
                                             </div>
-                                            <button ng-class="buttonCenter" type="button" class="btn btn-info">Send</button>
+                                            <button ng-class="buttonCenter" type="button" class="btn btn-info" ng-click="send()">Send</button>
                                         </div>
                                     </div>
                                 </div>

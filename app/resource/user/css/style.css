@@ -3433,7 +3433,8 @@ ul.rating {
 	text-align: center;
 }
 .loading1{
-	margin-top: 150px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 	color: #b91211;
 }
 .back{

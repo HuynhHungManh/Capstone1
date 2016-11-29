@@ -80,13 +80,13 @@
             <p>{{edu.describe}}.
             </p>
             <div>
-                <input ng-show="isGolbalUser" type="button" class="btn btn-primary"  ng-click="editformEdu(edu.id)"
+                <input ng-show="checkShowBtn()" type="button" class="btn btn-primary"  ng-click="editformEdu(edu.id)"
                        value="Edit">
             </div>
         </div>
     </div>
 </div>
 <div class="back">
-    <a ng-show="isGolbalUser" href="#update_education/username={{user.username}}" ng-click="" >Add Education</a>&nbsp; &nbsp;
+    <a ng-if="checkShowBtn()" href="#update_education/username={{user.username}}" ng-click="" >Add Education</a>&nbsp; &nbsp;
     <a href="" ng-click="doTheBack()">Back</a>
 </div>

@@ -8,6 +8,7 @@ angular.module('myApp')
         $rootScope.isToggleLogout = localStorageService.get('isToggleLogout');
 
         $scope.comment = {};
+        $scope.arrSkillShows = [];
         $scope.inter = {};
         $scope.isInter = false;
         $scope.isAddInter = false;
@@ -15,7 +16,7 @@ angular.module('myApp')
         $scope.isShowIconInter = false;
         $scope.dataLogin = {};
         $rootScope.isGolbalUser = false;
-        $rootScope.isNav = true;
+        $scope.isNav = true;
 
         $scope.userTempSc = localStorageService.get("userTemp");
 
@@ -136,12 +137,28 @@ angular.module('myApp')
             else
                 return data;
         };
+        $scope.checkShowBtn = function () {
+            if(localStorageService.get('user') == $scope.user.username)
+                return true;
+            else
+                return false;
+        };
 
 
         Profile_userService.fetchAllUser()
             .then(function (response) {
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
+
+
+
+                $scope.arrSkillShows1=[];
+                for(var i =0;i<$scope.user.skills.length;i++){
+                    if($scope.user.skills[i].level != 0 && $scope.user.skills[i].level !=null && $scope.user.skills[i].level != undefined)
+                        $scope.arrSkillShows.push($scope.user.skills[i]);
+                }
+                $scope.arrSkillShows1 =$scope.arrSkillShows;
+
 
                 $scope.isNullSkill = $rootScope.checkNullArr($scope.user.skills);
 
@@ -448,21 +465,25 @@ angular.module('myApp')
 
 
 
-        $rootScope.logout = function () {
-            alert("Do you want to out website ?");
-            localStorageService.remove('isToggleLogout');
-            localStorageService.remove('DataLogin');
-            localStorageService.remove('user');
-            localStorageService.remove('email');
-            localStorageService.remove('userTemp');
-            $rootScope.isNav = false;
-            $rootScope.isToggleLogout = false;
 
-            Profile_userService.logout($scope.data.access_token)
-                .then(function () {
-                })
-                .catch(function () {
-                });
-            $state.go('home');
-        };
+
+
+
+        // $rootScope.logout = function () {
+        //     $scope.isNav = false;
+        //     alert("Do you want to out website ?");
+        //     localStorageService.remove('isToggleLogout');
+        //     localStorageService.remove('DataLogin');
+        //     localStorageService.remove('user');
+        //     localStorageService.remove('email');
+        //     localStorageService.remove('userTemp');
+        //     $rootScope.isToggleLogout = false;
+        //
+        //     Profile_userService.logout($scope.data.access_token)
+        //         .then(function () {
+        //         })
+        //         .catch(function () {
+        //         });
+        //     $state.go('home');
+        // };
     });
