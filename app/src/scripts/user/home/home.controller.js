@@ -10,7 +10,6 @@ angular.module('myApp')
         $scope.dataLogin = {};
         $scope.isLogAndRes = false;
         $rootScope.isSearch = false;
-        console.log(localStorageService.get("isToggleLogout"));
 
         if (localStorageService.get("isToggleLogout") === undefined || localStorageService.get("isToggleLogout") === null) {
             $rootScope.isToggleLogout = false;
@@ -82,6 +81,7 @@ angular.module('myApp')
                             access_token: response.data.id,
                             id: response.data.userId
                         };
+
                         localStorageService.set("user", response.data.username);
                         localStorageService.set("Type", response.data.type);
                         localStorageService.set("email", response.data.email);

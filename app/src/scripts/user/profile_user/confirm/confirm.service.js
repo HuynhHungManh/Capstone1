@@ -4,7 +4,7 @@
 angular.module('myApp')
     .service('ConfirmService', function ($http) {
         this.fetchAllUser = function () {
-            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals');
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={ "include": [{ "relation": "verifications","scope": {"where": {"status": true} } } ,"skills","languages","jobs","comments","interests","educations"]}');
         };
         this.fetchAllTeacher = function () {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/teachers?filter={"where": {"or": [{"myRoleId": "583c2733c59f4212004bee9e"},{"myRoleId": "583c26ffc59f4212004bee9d"}]},"include":"personal"}');

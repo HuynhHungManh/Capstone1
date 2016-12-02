@@ -6,10 +6,9 @@
                 <h2>PROFILE</h2>
                 <h5>Information Student</h5>
             </div>
-            <div class="buttonRightImg">
-                <a href=""><img
-                        src="https://cdn2.iconfinder.com/data/icons/flat-user/114/user-check-512.png"></a>
-                <p class="verified">Verified</p></div>
+            <div  ng-if="isVeri">
+                <my-directive-image></my-directive-image>
+            </div>
         </div>
     </div>
 
@@ -120,7 +119,7 @@
 
                                 </div>
                                 <div class="sidebar">
-                                    <h5 class="main-title">Similar Professionals</h5>
+                                    <h5 class="main-title">Comment</h5>
                                     <!-- Similar -->
                                     <div class="similar">
                                         <div class="comment" ng-show="isToggleCom">
@@ -157,15 +156,13 @@
                                                 <h5>
                                                     {{com.commentator.lastName}}&nbsp;{{com.commentator.firstName}}</h5>
 
-                                                <p>Working at {{com.commentator.jobs[0].name_of_company}}.</p>
+                                                <p>Working at {{checkNull(com.commentator.job)}}.</p>
                                                 <p>{{com.content}}
-                                                    <a><i class="edit-pen fa fa-remove"
-                                                          ng-show="editUserCom(com.commentator.username)"
-                                                          ng-click="deleteCom(com.id)">
+                                                    <a href=""  ng-click="deleteCom(com.id)"><i class="edit-pen fa fa-remove"
+                                                          ng-show="editUserCom(com.commentator.username)">
                                                     </i></a>
-                                                    <a><i ng-show="isCom" class="edit-pen fa fa-edit"
-                                                          ng-if="editUserCom(com.commentator.username)"
-                                                          ng-click="isEditCom = !isEditCom">
+                                                    <a href="" ng-click="isEditCom = !isEditCom"><i ng-show="isCom" class="edit-pen fa fa-edit"
+                                                          ng-if="editUserCom(com.commentator.username)">
                                                     </i></a>
                                                 </p>
                                                 <div ng-if="!isEditCom"

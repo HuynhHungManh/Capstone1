@@ -4,7 +4,7 @@
 angular.module('myApp')
     .service('EducationFixService',function ($http) {
         this.fetchAllEducation = function () {
-            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={%22include%22:%22educations%22}');
+            return $http.get('https://afternoon-sands-21716.herokuapp.com/api/personals?filter={ "include": [{ "relation": "verifications","scope": {"where": {"status": true} } } ,"skills","languages","jobs","comments","interests","educations"]}');
         };
         this.fetchEducation = function (token) {
             return $http.get('https://afternoon-sands-21716.herokuapp.com/api/educations?access_token='+token);

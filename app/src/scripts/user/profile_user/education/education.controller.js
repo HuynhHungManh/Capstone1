@@ -138,6 +138,12 @@ angular.module('myApp')
                 $scope.user = $filter('filter')($scope.infoEducations, {username: $stateParams.username})[0];
                 $scope.education = $scope.user.educations[0];
 
+                if($scope.user.verifications === null ||
+                    $scope.user.verifications === [] || $scope.user.verifications === undefined || $scope.user.verifications.length === 0)
+                    $scope.isVeri = false;
+                else
+                    $scope.isVeri = true;
+
                 $scope.checkShowBtn = function () {
                     if(localStorageService.get('user') == $scope.user.username)
                         return true;
@@ -156,20 +162,6 @@ angular.module('myApp')
                     $scope.temp1[i].bool = false;
                 }
                 $scope.arrSkill1 = [];
-                // $scope.demo = function () {
-                //     $scope.arrSkill.push($scope.SkillRe.name);
-                // };
-                // $scope.deleReq = function (nameSkill) {
-                //     for (var i = 0; i < $scope.arrSkill1.length; i++) {
-                //         if (nameSkill == $scope.arrSkill1[i]) {
-                //             $scope.arrSkill1.splice(i, 1);
-                //         }
-                //     }
-                // };
-
-
-
-
 
                 $scope.pro = [];
                 $scope.ArrSkill = [];
@@ -180,30 +172,33 @@ angular.module('myApp')
                                 $scope.pro.push(response.data[i])
                             }
                         }
+
+
                         $scope.projects = $scope.pro;
                         $scope.isNullPro = $scope.checkNullArr($scope.projects)
 
                         $scope.createProject = function () {
-                            $scope.editProject.personalId = $scope.user.id;
-                            $scope.editProject.created_at = new Date();
-                            $scope.editProject.updated_at = new Date();
-                            EducationService.createProject($scope.editProject, $scope.data.access_token)
-                                .then(function (respone) {
-                                    $scope.SkillRe.personalId = $scope.user.id;
-                                    $scope.SkillRe.projectId = respone.data.id;
-                                    $scope.SkillRe.level = 0;
-                                    $scope.SkillRe.created_at = new Date();
-                                    $scope.SkillRe.updated_at = new Date();
-                                    EducationService.createSkillRe($scope.SkillRe, $scope.data.access_token)
-                                        .then(function () {
-                                        })
-                                        .catch(function () {
-                                        });
-                                    $state.go('project', {"username": $scope.userTempSc});
-                                })
-                                .catch(function () {
-                                    alert("Connect internet failed !");
-                                })
+
+                                $scope.editProject.personalId = $scope.user.id;
+                                $scope.editProject.created_at = new Date();
+                                $scope.editProject.updated_at = new Date();
+                                EducationService.createProject($scope.editProject, $scope.data.access_token)
+                                    .then(function (respone) {
+                                        $scope.SkillRe.personalId = $scope.user.id;
+                                        $scope.SkillRe.projectId = respone.data.id;
+                                        $scope.SkillRe.level = 0;
+                                        $scope.SkillRe.created_at = new Date();
+                                        $scope.SkillRe.updated_at = new Date();
+                                        EducationService.createSkillRe($scope.SkillRe, $scope.data.access_token)
+                                            .then(function () {
+                                            })
+                                            .catch(function () {
+                                            });
+                                        $state.go('project', {"username": $scope.userTempSc});
+                                    })
+                                    .catch(function () {
+                                        alert("Connect internet failed !");
+                                    })
 
                         };
 

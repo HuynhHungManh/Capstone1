@@ -33,6 +33,11 @@ angular.module('myApp')
                     else
                         return false;
                 };
+                if($scope.user.verifications === null ||
+                    $scope.user.verifications === [] || $scope.user.verifications === undefined || $scope.user.verifications.length === 0)
+                    $scope.isVeri = false;
+                else
+                    $scope.isVeri = true;
             })
             .catch(function () {
             });

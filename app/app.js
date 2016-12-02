@@ -23,4 +23,10 @@ angular.module('myApp', ['ui.router','validation', 'validation.rule','ngResource
         $rootScope.$on('$stateChangeSuccess', function() {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
         });
+        // $rootScope.$on('$stateChangeSuccess', function (object, state) {
+        //     if (AuthService.isAuthenticated == false && state.url.indexOf('admin') >= 0 ) {
+        //         $state.go('logins');
+        //     }
+        // });
     });
+

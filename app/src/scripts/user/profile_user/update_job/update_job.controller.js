@@ -16,12 +16,6 @@ angular.module('myApp')
         $rootScope.doTheBack = function () {
             window.history.back();
         };
-        $scope.checkShowBtn = function () {
-            if(localStorageService.get('user') == $scope.user.username)
-                return true;
-            else
-                return false;
-        };
         $scope.changetap = function (tab) {
             console.log(tab);
             if (tab == 1)
@@ -40,6 +34,22 @@ angular.module('myApp')
             .then(function (res) {
                 $scope.user = $filter('filter')(res.data, {username: $stateParams.username})[0];
                 $scope.jobs = $scope.user.jobs;
+
+                console.log($scope.user.verifications);
+
+
+                if($scope.user.verifications === null ||
+                    $scope.user.verifications === [] || $scope.user.verifications === undefined || $scope.user.verifications.length === 0)
+                    $scope.isVeri = false;
+                else
+                    $scope.isVeri = true;
+
+                $scope.checkShowBtn = function () {
+                    if(localStorageService.get('user') == $scope.user.username)
+                        return true;
+                    else
+                        return false;
+                };
 
                 $scope.idNullJob = $rootScope.checkNullArr($scope.jobs);
 

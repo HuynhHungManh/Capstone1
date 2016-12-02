@@ -12,7 +12,6 @@ angular.module('myApp')
         };
 
         this.createCompany = function (datapost) {
-            console.log(datapost);
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/companies',datapost).success(function () {
             });
         };
@@ -23,10 +22,9 @@ angular.module('myApp')
         this.login = function (datapost) {
             return $http.post('https://afternoon-sands-21716.herokuapp.com/api/personals/login',datapost)
                 .success(function (data) {
-                    console.log('Đã login');
+
             })
                 .error(function(data, status) {
-                console.error('Repos error', status, data);
             });
         }
 

@@ -3,7 +3,7 @@
  */
 angular.module('myApp')
     .controller('NavController', function ($scope, ConfirmService,
-                                               $rootScope, $stateParams, Profile_userService,$filter,localStorageService, $state ) {
+                                           AlertBox,   $rootScope, $stateParams, Profile_userService,$filter,localStorageService, $state ) {
 
 
 
@@ -21,11 +21,18 @@ angular.module('myApp')
         else{
             $scope.isNav = true;
         }
-        $scope.data = localStorageService.get("DataLogin", $scope.dataLogin);
+        $scope.data = localStorageService.get("DataLogin");
+
+
+
 
         $scope.logout = function () {
+            Profile_userService.logout($scope.data.access_token)
+                .then(function () {
+                })
+                .catch(function () {
+                });
             $scope.isNav = false;
-            alert("Do you want to out website ?");
             localStorageService.remove('isToggleLogout');
             localStorageService.remove('DataLogin');
             localStorageService.remove('user');
@@ -33,11 +40,6 @@ angular.module('myApp')
             localStorageService.remove('userTemp');
             $rootScope.isToggleLogout = false;
 
-            Profile_userService.logout($scope.data.access_token)
-                .then(function () {
-                })
-                .catch(function () {
-                });
             $state.go('home');
         };
 

@@ -32,8 +32,8 @@
                     <li ng-if="auth"><a href="" ng-click="checkCompany()">Company Profile</a>
 
                     </li>
-                    <li ng-if="!auth"><a href="" ng-click="checkUser()"  >User Profile</a></li>
-                    <li  ng-show="nav()" ><a href="" ng-click="logout()">Logout</a></li>
+                    <li ng-if="!auth"><a href="" ng-click="checkUser()"  >My Profile</a></li>
+                    <li  ng-show="nav()" ><a href="" ng-click="logout()" ng-confirm-click="Would you like to say hi?">Logout</a></li>
                 </ul>
             </nav>
         </div>

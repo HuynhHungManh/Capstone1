@@ -150,6 +150,12 @@ angular.module('myApp')
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
 
+                if($scope.user.verifications === null ||
+                    $scope.user.verifications === [] || $scope.user.verifications === undefined || $scope.user.verifications.length === 0)
+                    $scope.isVeri = false;
+                else
+                    $scope.isVeri = true;
+
 
 
                 $scope.arrSkillShows1=[];
@@ -197,13 +203,13 @@ angular.module('myApp')
                 $scope.isNullCom = $rootScope.checkNullArr($scope.showComment);
 
                 $scope.inters = $scope.user.interests;
-                $scope.userComent = $filter('filter')($scope.users, {username: $scope.user.username})[0];
+                $scope.userComent = $filter('filter')($scope.users, {username: localStorageService.get("user")})[0];
 
 
 
 
 
-                if ($scope.userComent.picture == undefined) {
+                if ($scope.userComent.picture === undefined  || $scope.userComent.picture === null) {
                     $scope.pic = 'http://www.translationwebshop.com/wp-content/themes/translationwebshop/images/img_placeholder_avatar.jpg';
                 }
                 else {
@@ -253,9 +259,9 @@ angular.module('myApp')
 
                     else {
                         $scope.user = $filter('filter')($scope.users, {username: userSearch})[0];
-                        console.log($scope.user);
+
                         $scope.company = $filter('filter')($scope.companies, {username: userSearch})[0];
-                        console.log($scope.company);
+
 
 
                         if($scope.user == undefined && $scope.company != undefined)
@@ -387,7 +393,6 @@ angular.module('myApp')
                 $scope.updateCom = function (id) {
                     if ($scope.comment != {} && $scope.comment.content != '') {
 
-
                         $scope.comment.personalId = $scope.user.id;
                         $scope.comment.commentator = $scope.userComent;
                         $scope.created_at = new Date();
@@ -410,9 +415,16 @@ angular.module('myApp')
                 }
                 $scope.createCom = function () {
                     $scope.comment.personalId = $scope.user.id;
-                    $scope.comment.commentator = $scope.userComent;
+
+                    $scope.comment.commentator = {firstName : $scope.userComent.firstName,
+                        lastName : $scope.userComent.lastName,
+                        username: $scope.userComent.username,
+                        picture: $scope.userComent.picture ,
+                        job: $scope.userComent.jobs[0].name_of_company };
+
                     $scope.created_at = new Date();
                     $scope.updated_at = new Date();
+
                     Profile_userService.createCom($scope.comment)
                         .then(function () {
                             $scope.arrComs = [];
