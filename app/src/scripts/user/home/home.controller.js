@@ -82,6 +82,7 @@ angular.module('myApp')
                             id: response.data.userId
                         };
 
+                        localStorageService.set("password", $scope.password);
                         localStorageService.set("user", response.data.username);
                         localStorageService.set("Type", response.data.type);
                         localStorageService.set("email", response.data.email);

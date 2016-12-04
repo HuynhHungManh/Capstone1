@@ -7,6 +7,8 @@ angular.module('myApp')
 
         $scope.data = localStorageService.get('DataLogin');
 
+        $scope.isEditUser = true;
+
         Update_userService.fetchAllUser()
             .then(function (response) {
                 $scope.users = response.data;
@@ -37,48 +39,65 @@ angular.module('myApp')
         $scope.result = 'male';
 
 
-        function checkUpdate(a, b, c, d, e, f, g, h) {
-            if (a === '' || a === null || a === undefined) {
-                alert('You did not enter firstName');
-                return false;
+        $scope.back = function () {
+            $state.go('profile_user', {"username": localStorageService.get('user')});
+        };
+        function checkUpdate(a, b, d, e, f, g, h) {
+
+            if (a != undefined || b != undefined  || d != undefined
+                || e != undefined || f != undefined || g != undefined || h!= undefined) {
+                if (a.length > 10) {
+                    alert('First name too long !');
+                    return false;
+                }
+                else if (b.length < 5 || b.length > 30) {
+                    alert('Last name must larger 5 or smaller 30 !');
+                    return false;
+                }
+                // else if (c === '' || c === null || c === undefined) {
+                //     alert('You did not enter birthday');
+                //     return false;
+                // }
+                else if (d.length < 50) {
+                    alert('You did not enter address');
+                    return false;
+                }
+                else if (isNaN(e) && e.length < 15) {
+                    alert('Phone not number !');
+                    return false;
+                }
+                else if (f.length < 30) {
+                    alert('You did not enter degree');
+                    return false;
+                }
+                else if (g.length < 20) {
+                    alert('You did not enter status');
+                    return false;
+                }
+                else if (h.length < 2000) {
+                    alert('You did not enter desscribe');
+                    return false;
+                }
+                else
+                    return true;
             }
-            else if (b === '' || b === null || b === undefined) {
-                alert('You did not enter lastName');
-                return false;
-            }
-            else if (c === '' || c === null || c === undefined) {
-                alert('You did not enter birthday');
-                return false;
-            }
-            else if (d === '' || d === null || d === undefined) {
-                alert('You did not enter address');
-                return false;
-            }
-            else if (e === '' || e === null || e === undefined) {
-                alert('You did not enter phone');
-                return false;
-            }
-            else if (f === '' || f === null || f === undefined) {
-                alert('You did not enter degree');
-                return false;
-            }
-            else if (g === '' || g === null || g === undefined) {
-                alert('You did not enter status');
-                return false;
-            }
-            else if (h === '' || h === null || h === undefined) {
-                alert('You did not enter desscribe');
-                return false;
-            }
-            else
-                return true;
         }
+        function changePass(passA,passB) {
+            if(passA === passB) {
+                alert('You changed successfully password !');
+                return true
+            }
+            else {
+                alert('You enter the wrong password !');
+                return false;
+            }
+        };
 
 
         $scope.post = function (result) {
 
             if (checkUpdate($scope.firstName,
-                    $scope.lastName, $scope.birthday,
+                    $scope.lastName,
                     $scope.address, $scope.phone, $scope.degree, $scope.status1, $scope.desscribe) === true) {
                 var data123 = {
                     "firstName": $scope.firstName,
@@ -105,9 +124,12 @@ angular.module('myApp')
 
         $scope.update = function (result) {
 
-            if (checkUpdate($scope.firstName,
-                    $scope.lastName, $scope.birthday,
-                    $scope.address, $scope.phone, $scope.degree, $scope.status1, $scope.desscribe) === true) {
+
+
+
+            // if (checkUpdate($scope.firstName,
+            //         $scope.lastName, $scope.birthday,
+            //         $scope.address, $scope.phone, $scope.degree, $scope.status1, $scope.desscribe) === true) {
                 var dataUpdate = {
                     "firstName": $scope.firstName,
                     "lastName": $scope.firstName,
@@ -118,8 +140,17 @@ angular.module('myApp')
                     "degree": $scope.degree,
                     "picture": $scope.picture,
                     "status": $scope.status1,
-                    "desscribe": $scope.desscribe
+                    "desscribe": $scope.desscribe,
+                    "password": $scope.password
                 };
+            if(changePass(localStorageService.get("password"),$scope.password) == true){
+                dataUpdate.password = $scope.newpassword;
+            }
+            else
+                dataUpdate.password = '';
+
+
+
 
                 Update_userService.update123(dataUpdate, $scope.user.id, $scope.data.access_token)
                     .then(function () {
@@ -128,6 +159,6 @@ angular.module('myApp')
                     .catch(function () {
                         alert("Update failed !");
                     });
-            }
+            // }
         }
     });

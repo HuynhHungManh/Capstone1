@@ -94,17 +94,6 @@ angular.module('myApp')
             return true;
         }
 
-
-
-        $rootScope.checkUser = function () {
-            if ($rootScope.isToggleLogout == true) {
-                $state.go('profile_user', {"username": localStorageService.get('user')});
-            }
-            else {
-                alert("Please login Website !");
-            }
-        };
-
         $rootScope.checkNullData = function (data) {
             if (data == null || data === '' || data === 'string' || data === undefined)
                 return false;
@@ -113,15 +102,7 @@ angular.module('myApp')
         };
 
 
-        function inArray(array) {
-            // var len = array.length;
-            // if(array === null || array === 0
-            //     || array === undefined || array === []){
-            //     return true;
-            // }
-            // else
-            //     return false;
-        }
+
 
         $rootScope.checkNullArr = function (data) {
             if (data !== undefined && data.length === 0 )
@@ -261,8 +242,6 @@ angular.module('myApp')
                         $scope.user = $filter('filter')($scope.users, {username: userSearch})[0];
 
                         $scope.company = $filter('filter')($scope.companies, {username: userSearch})[0];
-
-
 
                         if($scope.user == undefined && $scope.company != undefined)
                             $scope.temp = $scope.company ;

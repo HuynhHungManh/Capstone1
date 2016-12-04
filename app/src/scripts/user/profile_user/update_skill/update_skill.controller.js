@@ -10,8 +10,8 @@ angular.module('myApp')
 
 
         $scope.data = localStorageService.get('DataLogin');
-        $scope.editSkill = {}
-        $scope.editLang = {}
+        $scope.editSkill = {};
+        $scope.editLang = {};
         $scope.change = function(){
             $scope.statusSkill.toggle = !$scope.statusSkill.toggle;
         } ;
@@ -37,6 +37,15 @@ angular.module('myApp')
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
                 $scope.skills = $scope.user.skills;
                 $scope.langs = $scope.user.languages;
+
+                $scope.arrSkillShows1=[];
+                $scope.arrSkillShows  = [];
+                for(var i =0;i<$scope.user.skills.length;i++){
+                    if($scope.user.skills[i].level != 0 && $scope.user.skills[i].level != null && $scope.user.skills[i].level != undefined)
+                        $scope.arrSkillShows.push($scope.user.skills[i]);
+                }
+                $scope.arrSkillShows1 =$scope.arrSkillShows;
+
 
                 $scope.changeFormEditSkill = function (id) {
                     $scope.skill = $filter('filter')( $scope.skills, {id: id})[0];

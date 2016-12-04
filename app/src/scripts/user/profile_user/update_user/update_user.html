@@ -77,10 +77,6 @@
                                             <h6 class="title col-xs-4">Status</h6>
                                             <span class="subtitle col-xs-6">{{user.status}}</a></span>
                                         </li>
-                                        <li class="row">
-                                            <h6 class="title col-xs-4">Describe</h6>
-                                            <span class="subtitle col-xs-6">{{user.desscribe}}</a></span>
-                                        </li>
                                     </ul>
                                 </div>
                                 <!-- Rating -->
@@ -90,7 +86,7 @@
                 </div>
 
                 <!-- Tab Content -->
-                <div class="col-md-8">
+                <div class="col-md-8" >
                     <div class="network">
                         <div class="tab-content">
 
@@ -193,6 +189,7 @@
                                         <!--placeholder="{{user.status}}">-->
                                         <!--</div>-->
                                         <!--</div>-->
+
                                         <div class="form-group">
                                             <label class="col-lg-3 control-label">Describe:</label>
                                             <div class="col-lg-8">
@@ -200,7 +197,24 @@
                                                           placeholder="{{user.desscribe}}"></textarea>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
+                                            <label class="col-lg-3 control-label">Password:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="password"
+                                                       placeholder="Enter password ....">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-3 control-label">New Password:</label>
+                                            <div class="col-lg-8">
+                                                <input class="form-control" type="text" ng-model="newpassword"
+                                                       placeholder="Enter new password ...">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-8">
                                                 <input type="button" class="btn btn-primary" ng-click="update(result)"
@@ -209,12 +223,11 @@
                                                 <!--<input type="reset" ng-click="doTheBack()" class="btn btn-default"-->
                                                 <!--value="Cancel">-->
                                                 <span></span>
-
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-3">
-                                                <a href="" ng-click="doTheBack()">Back</a>
+                                                <a href="" ng-click="back()">Back</a>
                                             </div>
                                             <div class="col-md-8">
                                             </div>
@@ -225,6 +238,7 @@
                         </div>
                     </div>
                 </div>
+                <!--<div class = "col-md-8" ng-if="!isEditUser" ng-include="'src/component/user/update_user/edit.password.html'"></div>-->
             </div>
         </div>
     </div>

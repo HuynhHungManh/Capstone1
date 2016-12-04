@@ -15,6 +15,19 @@ angular.module('myApp')
         };
 
 
+        $rootScope.checkUser = function () {
+            localStorageService.remove("userTemp");
+            localStorageService.set("userTemp",  localStorageService.get('user'));
+            if ($rootScope.isToggleLogout == true) {
+                $state.go('profile_user', {"username": localStorageService.get('user')});
+            }
+            else {
+                alert("Please login Website !");
+            }
+        };
+
+
+
         if(localStorageService.get('user') == null){
             $scope.isNav = false;
         }

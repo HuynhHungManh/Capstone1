@@ -5,4 +5,6 @@ angular.module('myApp')
     .controller('AddProjectController', function ($state,$scope, localStorageService,UpdateEducationService, $stateParams, $filter, $cookieStore,
                                                        $rootScope) {
 
+
+
     });

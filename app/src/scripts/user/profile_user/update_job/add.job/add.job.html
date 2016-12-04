@@ -1,0 +1,164 @@
+<!-- end .uou-block-2b -->
+
+<!-- SUB Banner -->
+<div class="profile-bnr sub-bnr user-profile-bnr">
+    <div class="position-center-center">
+        <div class="container">
+            <h2>Add Job</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Compny Profile -->
+<div class="compny-profile">
+
+    <!-- Profile Company Content -->
+    <div class="profile-company-content" data-bg-color="fff">
+        <div class="container">
+            <div class="row">
+
+                <!-- SIDE BAR -->
+
+
+                <!-- Tab Content -->
+                <div class="col-md-12">
+                    <div class="network">
+                        <div class="tab-content">
+
+                            <!-- Connections -->
+                            <div class="tab-pane fade in active">
+                                <div class="net-work-in">
+
+                                    <!-- Members -->
+                                    <div class="main-mem">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Name of comany:</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" placeholder="Enter name..."
+                                                           ng-model="editProject.name_of_company">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Address :</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Enter address..."
+                                                           ng-model="editProject.address_of_company">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Phone:</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Enter phone..."
+                                                           ng-model="editProject.phone_of_company">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Website:</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Enter website..."
+                                                           ng-model="editProject.website_of_company">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Position:</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Enter position..."
+                                                           ng-model="editProject.position">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Type work:</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Enter type work..."
+                                                           ng-model="editProject.type_work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Day start :</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="input-group date">
+                                                        <div class="dateholder">
+                                                            <input type="date" class="datepicker"
+                                                                   ng-model="editProject.from_date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Day end :</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <div class="input-group date">
+                                                        <div class="dateholder">
+                                                            <input type="date" class="datepicker"
+                                                                   ng-model="editProject.to_date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                    <label class="form-control-label">Describe of company :</label>
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <textarea rows="4" cols="50"
+                                                              placeholder="Enter describe..."
+                                                              ng-model="editProject.describe"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-primary " ng-click="createProject()">Add</button>
+                                            <button type="button" class="btn btn-secondary" ng-click="doTheBack()">
+                                                Close
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

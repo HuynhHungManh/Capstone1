@@ -131,6 +131,35 @@ angular.module('myApp')
             $scope.status.toggle = !$scope.status.toggle;
         };
 
+        function checkUpdate(a, b, c, e, f, g) {
+            if (a === '' || a === null || a === undefined) {
+                alert('You did not enter name');
+                return false;
+            }
+            else if (b === '' || b === null || b === undefined) {
+                alert('You did not enter subject');
+                return false;
+            }
+            else if (c === '' || c === null || c === undefined) {
+                alert('You did not enter content');
+                return false;
+            }
+            else if (e === '' || e === null || e === undefined) {
+                alert('You did not enter from date');
+                return false;
+            }
+            else if (f === '' || f === null || f === undefined) {
+                alert('You did not enter to date');
+                return false;
+            }
+            else if (g === '' || g === null || g === undefined) {
+                alert('You did not enter describe');
+                return false;
+            }
+            else
+                return true;
+        }
+
 
         EducationService.fetchAllEducation()
             .then(function (response) {
@@ -175,31 +204,34 @@ angular.module('myApp')
 
 
                         $scope.projects = $scope.pro;
-                        $scope.isNullPro = $scope.checkNullArr($scope.projects)
+                        $scope.isNullPro = $scope.checkNullArr($scope.projects);
+
+
 
                         $scope.createProject = function () {
-
-                                $scope.editProject.personalId = $scope.user.id;
-                                $scope.editProject.created_at = new Date();
-                                $scope.editProject.updated_at = new Date();
-                                EducationService.createProject($scope.editProject, $scope.data.access_token)
-                                    .then(function (respone) {
-                                        $scope.SkillRe.personalId = $scope.user.id;
-                                        $scope.SkillRe.projectId = respone.data.id;
-                                        $scope.SkillRe.level = 0;
-                                        $scope.SkillRe.created_at = new Date();
-                                        $scope.SkillRe.updated_at = new Date();
-                                        EducationService.createSkillRe($scope.SkillRe, $scope.data.access_token)
-                                            .then(function () {
-                                            })
-                                            .catch(function () {
-                                            });
-                                        $state.go('project', {"username": $scope.userTempSc});
-                                    })
-                                    .catch(function () {
-                                        alert("Connect internet failed !");
-                                    })
-
+                                if(checkUpdate($scope.editProject.name,$scope.editProject.subject,$scope.editProject.content,
+                                    $scope.editProject.from_date,$scope.editProject.to_date,$scope.editProject.describe)==true) {
+                                    $scope.editProject.personalId = $scope.user.id;
+                                    $scope.editProject.created_at = new Date();
+                                    $scope.editProject.updated_at = new Date();
+                                    EducationService.createProject($scope.editProject, $scope.data.access_token)
+                                        .then(function (respone) {
+                                            $scope.SkillRe.personalId = $scope.user.id;
+                                            $scope.SkillRe.projectId = respone.data.id;
+                                            $scope.SkillRe.level = 0;
+                                            $scope.SkillRe.created_at = new Date();
+                                            $scope.SkillRe.updated_at = new Date();
+                                            EducationService.createSkillRe($scope.SkillRe, $scope.data.access_token)
+                                                .then(function () {
+                                                })
+                                                .catch(function () {
+                                                });
+                                            $state.go('project', {"username": $scope.userTempSc});
+                                        })
+                                        .catch(function () {
+                                            alert("Connect internet failed !");
+                                        })
+                                }
                         };
 
                         $scope.updateProject = function (id) {
