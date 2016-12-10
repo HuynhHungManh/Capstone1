@@ -6,12 +6,11 @@
                 <h2>PROFILE</h2>
                 <h5>Information Student</h5>
             </div>
-            <div  ng-if="isVeri">
+            <div ng-if="isVeri">
                 <my-directive-image></my-directive-image>
             </div>
         </div>
     </div>
-
     <!-- Modal POPUP -->
 </div>
 
@@ -23,9 +22,7 @@
             <!-- Nav Tabs -->
             <div class="col-md-12">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="" ng-click="changetap(1)">Profile</a>
-                    </li>
-                    <!--<li><a data-toggle="tab" ui-sref="education/username={{userTempSc}}">Education</a></li>-->
+                    <li class="active"><a data-toggle="tab" href="" ng-click="changetap(1)">Profile</a></li>
                     <li><a data-toggle="tab" href="" ng-click="changetap(2)">Education</a></li>
                     <li><a data-toggle="tab" href="" ng-click="changetap(3)">Project</a></li>
                     <li><a data-toggle="tab" href="" ng-click="changetap(4)">Job</a></li>
@@ -60,204 +57,277 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <!-- Skills -->
+
+                            <div ng-if="isType" class="col-md-12">
                                 <div class="sidebar">
-                                    <h5 class="main-title">Skills</h5>
-                                    <div ng-if="checkNullArr(user.skills)">
-                                        <my-datanull></my-datanull>
-                                    </div>
-                                    <div ng-if="!checkNullArr(user.skills)" class="job-skills">
-                                        <ul class="row" ng-repeat="skill in arrSkillShows1">
-                                            <li class="col-sm-3">
-                                                <h6><i class="fa fa-check"></i>{{skill.name}}</h6>
-                                            </li>
-                                            <li class="col-sm-9">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar"
-                                                         aria-valuenow="60" aria-valuemin="0"
-                                                         aria-valuemax="100"
-                                                         style="width: {{skill.level}}%;"></div>
+                                    <h5 class="main-title">Teacher Details</h5>
+                                    <div class="sidebar-information">
+                                        <ul class="single-category">
+                                            <li class="row">
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Firts Name :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.firstName)}} </span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Last Name :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.lastName)}}</span>
                                                 </div>
                                             </li>
+                                            <li class="row">
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Position :</h6>
+                                                    <div class="subtitle col-xs-9">{{checkNull(teacher.position)}}</div>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Department :</h6>
+                                                    <div class="subtitle col-xs-9">{{checkNull(teacher.department)}}</div>
+                                                </div>
+                                            </li>
+                                            <li class="row">
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Email :</h6>
+                                                    <span class="subtitle col-xs-9"><a
+                                                            href="#.">{{checkNull(user.email)}}</a></span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">BirthDay :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.birthDay)}}</span>
+                                                </div>
+                                            </li>
+                                            <li class="row">
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Degree :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.degree)}}</span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Sex :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.sex)}}</span>
+                                                </div>
+                                            </li>
+                                            <li class="row">
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Phone :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.phone)}}</span>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <h6 class="title col-xs-3">Status :</h6>
+                                                    <span class="subtitle col-xs-9">{{checkNull(user.status)}}</span>
+                                                </div>
+                                            </li>
+                                            <br>
                                         </ul>
                                     </div>
-                                    <br>
-                                    <div>
-                                        <a href="#/update_skill/username={{user.username}}">
-                                            <input type="submit" class="btn btn-primary" value="Edit"
-                                                   ng-show="isToggle">
-                                        </a>
-                                    </div>
-                                    <h5 class="main-title"></h5>
-                                    <div class="job-skills">
-                                        <h5 class="main-title">Language</h5>
-
-                                        <!-- Logo Design -->
-                                        <div ng-if="isNullLang">
+                                </div>
+                            </div>
+                            <div ng-if="!isType">
+                                <div class="col-md-8">
+                                    <!-- Skills -->
+                                    <div class="sidebar">
+                                        <h5 class="main-title">Skills</h5>
+                                        <div ng-if="checkNullArr(user.skills)">
                                             <my-datanull></my-datanull>
                                         </div>
-                                        <div ng-if="!isNullLang">
-                                            <ul class="row" ng-repeat="lang in langs">
+                                        <div ng-if="!checkNullArr(user.skills)" class="job-skills">
+                                            <ul class="row" ng-repeat="skill in arrSkillShows1">
                                                 <li class="col-sm-3">
-                                                    <h6><i class="fa fa-check"></i>{{lang.name}}:
-                                                    </h6>
+                                                    <h6><i class="fa fa-check"></i>{{skill.name}}</h6>
                                                 </li>
-                                                <li class="lang col-sm-3">
-                                                    <span>{{lang.level}}</span>
+                                                <li class="col-sm-9">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar"
+                                                             aria-valuenow="60" aria-valuemin="0"
+                                                             aria-valuemax="100"
+                                                             style="width: {{skill.level}}%;"></div>
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
                                         <br>
-                                    </div>
-                                    <div>
-                                        <a href="#/update_skill/username={{user.username}} ">
-                                            <input type="submit" class="btn btn-primary" value="Edit"
-                                                   ng-show="isToggle">
-                                        </a>
-                                    </div>
+                                        <div>
+                                            <a href="#/update_skill/username={{user.username}}">
+                                                <input type="submit" class="btn btn-primary" value="Edit"
+                                                       ng-show="isToggle">
+                                            </a>
+                                        </div>
+                                        <h5 class="main-title"></h5>
+                                        <div class="job-skills">
+                                            <h5 class="main-title">Language</h5>
 
-                                </div>
-                                <div class="sidebar">
-                                    <h5 class="main-title">Comment</h5>
-                                    <!-- Similar -->
-                                    <div class="similar">
-                                        <div class="comment" ng-show="isToggleCom">
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <img src="{{pic}} ">
-                                                </div>
-                                                <div class="col-md-8">
+                                            <!-- Logo Design -->
+                                            <div ng-if="isNullLang">
+                                                <my-datanull></my-datanull>
+                                            </div>
+                                            <div ng-if="!isNullLang">
+                                                <ul class="row" ng-repeat="lang in langs">
+                                                    <li class="col-sm-3">
+                                                        <h6><i class="fa fa-check"></i>{{lang.name}}:
+                                                        </h6>
+                                                    </li>
+                                                    <li class="lang col-sm-3">
+                                                        <span>{{lang.level}}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <div>
+                                            <a href="#/update_skill/username={{user.username}} ">
+                                                <input type="submit" class="btn btn-primary" value="Edit"
+                                                       ng-show="isToggle">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="sidebar">
+                                        <h5 class="main-title">Comment</h5>
+                                        <!-- Similar -->
+                                        <div class="similar">
+                                            <div class="comment" ng-show="isToggleCom">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="{{pic}} ">
+                                                    </div>
+                                                    <div class="col-md-8">
                                                         <textarea placeholder="Enter text here..."
                                                                   ng-model="comment.content"></textarea>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="media-left">
-                                                        <div class="inn-simi"><a href=""
-                                                                                 ng-click="createCom()">Comment </a>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="media-left">
+                                                            <div class="inn-simi"><a href=""
+                                                                                     ng-click="createCom()">Comment </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <div class="nullData" ng-if="isNullCom">
-                                            ---------- No comment ----------
-                                        </div>
-                                        <div ng-if="!isNullCom" class="media" ng-repeat="com in showComment" id="321">
-                                            <div class="media-left">
-                                                <div class="inn-simi">
-                                                    <div class="imgCom"><img class="media-object"
-                                                                             ng-src="{{com.commentator.picture}}"
-                                                    ></div>
-                                                </div>
+                                            <hr>
+                                            <div class="nullData" ng-if="isNullCom">
+                                                ---------- No comment ----------
                                             </div>
-                                            <div class="media-body">
-                                                <h5>
-                                                    {{com.commentator.lastName}}&nbsp;{{com.commentator.firstName}}</h5>
+                                            <div ng-if="!isNullCom" class="media" ng-repeat="com in showComment"
+                                                 id="321">
+                                                <div class="media-left">
+                                                    <div class="inn-simi">
+                                                        <div class="imgCom"><img class="media-object"
+                                                                                 ng-src="{{com.commentator.picture}}"
+                                                        ></div>
+                                                    </div>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5>
+                                                        {{com.commentator.lastName}}&nbsp;{{com.commentator.firstName}}</h5>
 
-                                                <p>Working at {{checkNull(com.commentator.job)}}.</p>
-                                                <p>{{com.content}}
-                                                    <a href=""  ng-click="deleteCom(com.id)"><i class="edit-pen fa fa-remove"
-                                                          ng-show="editUserCom(com.commentator.username)">
-                                                    </i></a>
-                                                    <a href="" ng-click="isEditCom = !isEditCom"><i ng-show="isCom" class="edit-pen fa fa-edit"
-                                                          ng-if="editUserCom(com.commentator.username)">
-                                                    </i></a>
-                                                </p>
-                                                <div ng-if="!isEditCom"
-                                                     ng-include="'src/scripts/user/profile_user/form.content.comment.html'">
+                                                    <p>Working at {{checkNull(com.commentator.job)}}.</p>
+                                                    <p>{{com.content}}
+                                                        <a href="" ng-click="deleteCom(com.id)"><i
+                                                                class="edit-pen fa fa-remove"
+                                                                ng-show="editUserCom(com.commentator.username)">
+                                                        </i></a>
+                                                        <a href="" ng-click="isEditCom = !isEditCom"><i ng-show="isCom"
+                                                                                                        class="edit-pen fa fa-edit"
+                                                                                                        ng-if="editUserCom(com.commentator.username)">
+                                                        </i></a>
+                                                    </p>
+                                                    <div ng-if="!isEditCom"
+                                                         ng-include="'src/scripts/user/profile_user/form.content.comment.html'">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!--<div class="sidebar">-->
+                                    <!--<h5 class="main-title">Similar Professionals</h5>-->
+                                    <!--&lt;!&ndash; Similar &ndash;&gt;-->
+                                    <!--<div class="similar">-->
+                                    <!--<div class ="nullData">-->
+                                    <!-- ----- Please enter info user ------->
+                                    <!--</div>-->
+                                    <!---->
+                                    <!--</div>-->
+
+                                    <!-- Professional Details -->
+
                                 </div>
-                                <!--<div class="sidebar">-->
-                                <!--<h5 class="main-title">Similar Professionals</h5>-->
-                                <!--&lt;!&ndash; Similar &ndash;&gt;-->
-                                <!--<div class="similar">-->
-                                <!--<div class ="nullData">-->
-                                <!-- -&#45;&#45;&#45;&#45; Please enter info user -&#45;&#45;&#45;&#45;-->
-                                <!--</div>-->
-                                <!---->
-                                <!--</div>-->
 
-                                <!-- Professional Details -->
+                                <div class="col-md-4">
 
-                            </div>
-
-                            <!-- Col -->
-                            <div class="col-md-4">
-
-                                <!-- Professional Details -->
-                                <div class="sidebar">
-                                    <h5 class="main-title">Professional Details</h5>
-                                    <div class="sidebar-information">
-                                        <ul class="single-category">
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Firts Name :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.firstName)}} </span>
-                                            </li>
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Firts Name :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.lastName)}}</span></li>
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Email :</h6>
-                                                <span class="subtitle col-xs-6"><a
-                                                        href="#.">{{checkNull(user.email)}}</a></span>
-                                            </li>
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">BirthDay :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.birthDay)}}</span></li>
-                                            <li class="row">
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Degree :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.degree)}}</span></li>
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Sex :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.sex)}}</span></li>
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Phone :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.phone)}}</span></li>
-                                            <li class="row">
-                                                <h6 class="title col-xs-6">Status :</h6>
-                                                <span class="subtitle col-xs-6">{{checkNull(user.status)}}</span></li>
-                                            <br>
-                                        </ul>
-                                        <a href="#/update_user/username={{user.username}} ">
-                                            <input type="submit" class="btn btn-primary" value="Update"
-                                                   ng-show="isToggle">
-                                        </a>
-                                        <!--<button ng-click="isToggle = !isToggle">Toggle</button>-->
+                                    <!-- Professional Details -->
+                                    <div class="sidebar">
+                                        <h5 class="main-title">Professional Details</h5>
+                                        <div class="sidebar-information">
+                                            <ul class="single-category">
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Firts Name :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.firstName)}} </span>
+                                                </li>
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Firts Name :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.lastName)}}</span>
+                                                </li>
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Email :</h6>
+                                                    <span class="subtitle col-xs-6"><a
+                                                            href="#.">{{checkNull(user.email)}}</a></span>
+                                                </li>
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">BirthDay :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.birthDay)}}</span>
+                                                </li>
+                                                <li class="row">
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Degree :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.degree)}}</span>
+                                                </li>
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Sex :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.sex)}}</span></li>
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Phone :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.phone)}}</span>
+                                                </li>
+                                                <li class="row">
+                                                    <h6 class="title col-xs-6">Status :</h6>
+                                                    <span class="subtitle col-xs-6">{{checkNull(user.status)}}</span>
+                                                </li>
+                                                <br>
+                                            </ul>
+                                            <a href="#/update_user/username={{user.username}} ">
+                                                <input type="submit" class="btn btn-primary" value="Update"
+                                                       ng-show="isToggle">
+                                            </a>
+                                            <!--<button ng-click="isToggle = !isToggle">Toggle</button>-->
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="sidebar">
-                                    <h5 class="main-title">Interest Details
-                                        <a href="" ng-click="addInter()" ng-if="isShowIconInter"><i ng-show="iconShow"
-                                                                                                    class="edit-pen fa fa-undo">
-                                        </i></a>
-                                        <a href="" ng-if="isShowIconInter" ng-click="addInter()"><i ng-show="!iconShow"
-                                                                                                    class="edit-pen fa fa-plus">
-                                        </i></a>
-                                    </h5>
-                                    <div class="row" ng-show="isAddInter">
-                                        <div class="col-md-3">
-                                            Name :
-                                        </div>
-                                        <div class="col-md-7">
-                                            <input type="text" ng-model="inter.name">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a href="" ng-click="createInter()"><i class="edit-pen fa fa-check">
+                                    <div class="sidebar">
+                                        <h5 class="main-title">Interest Details
+                                            <a href="" ng-click="addInter()" ng-if="isShowIconInter"><i
+                                                    ng-show="iconShow"
+                                                    class="edit-pen fa fa-undo">
                                             </i></a>
-                                        </div>
+                                            <a href="" ng-if="isShowIconInter" ng-click="addInter()"><i
+                                                    ng-show="!iconShow"
+                                                    class="edit-pen fa fa-plus">
+                                            </i></a>
+                                        </h5>
+                                        <div class="row" ng-show="isAddInter">
+                                            <div class="col-md-3">
+                                                Name :
+                                            </div>
+                                            <div class="col-md-7">
+                                                <input type="text" ng-model="inter.name">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <a href="" ng-click="createInter()"><i class="edit-pen fa fa-check">
+                                                </i></a>
+                                            </div>
 
-                                    </div>
-                                    <div class="sidebar-information" ng-if="!isInter"
-                                         ng-include="'src/scripts/user/profile_user/form.content.inter.html'">
-                                    </div>
-                                    <div class="sidebar-information" ng-if="isInter"
-                                         ng-include="'src/scripts/user/profile_user/form.edit.inter.html'">
+                                        </div>
+                                        <div class="sidebar-information" ng-if="!isInter"
+                                             ng-include="'src/scripts/user/profile_user/form.content.inter.html'">
+                                        </div>
+                                        <div class="sidebar-information" ng-if="isInter"
+                                             ng-include="'src/scripts/user/profile_user/form.edit.inter.html'">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

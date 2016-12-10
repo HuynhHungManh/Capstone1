@@ -3,7 +3,7 @@
  */
 angular.module('myApp')
     .controller('HomeController', function ($scope, $state, $stateParams, $httpParamSerializer,
-                                            $filter, localStorageService, HomeService, $rootScope, $cookieStore, $window) {
+                                            $filter, localStorageService, HomeService, $rootScope, CheckLoginService, $window) {
 
         $rootScope.isNav == false;
         var data = {}
@@ -69,11 +69,11 @@ angular.module('myApp')
                 };
                 HomeService.login(dataUser)
                     .then(function (response) {
-                        if(response.data.type == 'personal')
+                        CheckLoginService.login();
+                        if(response.data.type == 'student' || response.data.type == "teacher")
                             $state.go('profile_user', {"username": response.data.username});
                         else
                             $state.go('profile_company',{"username": response.data.username});
-
 
                         $scope.dataLogin = {
                             ToggleLogin: true,
@@ -81,7 +81,10 @@ angular.module('myApp')
                             access_token: response.data.id,
                             id: response.data.userId
                         };
-
+                        if(response.data.type == "teacher"){
+                            localStorageService.set("teacher", response.data.teacher);
+                        }
+                        localStorageService.set("isAuthor", true);
                         localStorageService.set("password", $scope.password);
                         localStorageService.set("user", response.data.username);
                         localStorageService.set("Type", response.data.type);

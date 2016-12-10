@@ -7,6 +7,7 @@ angular.module('myApp')
                                                     CompanyService, $rootScope, $state, localStorageService, setCredentials, $cookieStore, $window) {
         $rootScope.isToggleLogout = localStorageService.get('isToggleLogout');
 
+        $scope.isType = false;
         $scope.comment = {};
         $scope.arrSkillShows = [];
         $scope.inter = {};
@@ -21,10 +22,17 @@ angular.module('myApp')
         $scope.userTempSc = localStorageService.get("userTemp");
 
 
-        if(localStorageService.get("Type") == 'personal')
-            $rootScope.auth = false;
-        // $rootScope.auth = false;
+        if(localStorageService.get("teacher") != undefined || localStorageService.get("teacher") != null){
+            $scope.isType = true;
+            $scope.teacher = localStorageService.get("teacher");
+        }
+        else{
+            $scope.isType = false;
+        };
 
+
+        if(localStorageService.get("Type") == 'student')
+            $rootScope.auth = false;
 
         $scope.editUserCom = function (user) {
             if(user == localStorageService.get('user'))
@@ -130,6 +138,14 @@ angular.module('myApp')
             .then(function (response) {
                 $scope.users = response.data;
                 $scope.user = $filter('filter')($scope.users, {username: $stateParams.username})[0];
+
+                // if($scope.user.teacher != undefined ||  $scope.user.teacher != null){
+                //     $scope.isType = true;
+                //     $scope.teacher = localStorageService.get("teacher");
+                // }
+                // else{
+                //     $scope.isType = false;
+                // }
 
                 if($scope.user.verifications === null ||
                     $scope.user.verifications === [] || $scope.user.verifications === undefined || $scope.user.verifications.length === 0)
